@@ -33,17 +33,18 @@
         position: relative;
 
         .shoppingCartNum {
-          width: 1.5rem;
-          height: 1.5rem;
+          width: 2rem;
+          height: 2rem;
           border-radius: 50%;
           background-color: secondaryColorDark;
           position: absolute;
-          top: -0.5rem;
-          right: -0.5rem;
+          top: -1rem;
+          right: -1rem;
           display: flex;
           justify-content: center;
           align-items: center;
           color: white;
+          font-size: 1.5rem;
         }
       }
     }
@@ -51,6 +52,8 @@
     svg {
       fill: secondaryColor;
       cursor: pointer;
+      width: 3rem;
+      height: 3rem;
 
       &:hover {
         fill: secondaryColorDark;

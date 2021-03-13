@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import CSSTransition from 'react-transition-group/CSSTransition';
+import SwitchTransition from 'react-transition-group/SwitchTransition';
 import styles from './carousel.module.scss';
+import slideTransition from './slide.module.scss';
+
+import { ReactComponent as LeftIcon } from '../../assets/left-icon.svg';
+import { ReactComponent as RightIcon } from '../../assets/right-icon.svg';
 
 const carouselSlides = [
   {
@@ -27,7 +33,7 @@ const carouselSlides = [
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-    // Slide functions
+  // Slide functions
   const plusSlides = (n) => {
     if (currentSlide === 0 && n === -1) {
       setCurrentSlide(carouselSlides.length - 1)
@@ -41,21 +47,36 @@ const Carousel = () => {
     setCurrentSlide(n)
   }
 
+  useEffect(() => {
+    const autoSlide = setInterval(() => {
+      plusSlides(1);
+    }, 8000);
+    return () => clearInterval(autoSlide)
+  }, [currentSlide])
+
   return (
     <div className={styles.carouselContainer}>
     
-      <div className={styles.carouselSlide} key={currentSlide}>
-        <img src={carouselSlides[currentSlide].imageUrl} alt='accessories' className={styles.image} />
-      </div>
-  
+      <div className={styles.carouselSlide}>
+        <SwitchTransition>
+          <CSSTransition
+            key={currentSlide}
+            timeout={{ enter: 300, exit: 300 }}
+            classNames={slideTransition}
+          >
+            <img src={carouselSlides[currentSlide].imageUrl} alt='accessories' className={styles.image} />
+          </CSSTransition>
+        </SwitchTransition>
+      </div>  
+
       <div className={styles.prevnext}>
-        <div className={styles.prev} onClick={e => plusSlides(-1)}>&#10094;</div>
-        <div className={styles.next} onClick={e => plusSlides(1)}>&#10095;</div>
+        <div className={styles.prev} onClick={e => plusSlides(-1)}><LeftIcon /></div>
+        <div className={styles.next} onClick={e => plusSlides(1)}><RightIcon /></div>
       </div>
   
       <div className={styles.carouselDots}>
-        {carouselSlides.map(item => (
-          <span className={styles.carouselDot} key={item.id} onClick={e => clickSlide(item.id)}></span>
+        {carouselSlides.map((item, index) => (
+          <span className={`${styles.carouselDot} ${index === currentSlide ? styles.carouselDotCurrent : ''}`} key={index} onClick={e => clickSlide(index)}></span>
         ))}
       </div>
       
@@ -64,11 +85,3 @@ const Carousel = () => {
 }
 
 export default Carousel;
-
-
-// {carouselSlides.map((slide, index) => (
-//   <div className={index === currentSlide ? `${styles.carouselSlide} ${styles.carouselActiveSlide}` : styles.carouselSlide} key={index}>
-//     {index === currentSlide && (<img src={slide.imageUrl} alt='accessories' className={styles.image} />)}
-//   </div>
-// )
-// )}
