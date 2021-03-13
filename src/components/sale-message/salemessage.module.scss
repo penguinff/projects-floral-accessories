@@ -1,0 +1,22 @@
+@value colors: '../../app.module.scss';
+@value primaryColor from colors;
+
+.saleMessage {
+  background-color: rgb(241, 229, 229);
+  padding: 0.5rem 0;
+  text-align: center;
+  color: primaryColor;
+  font-size: 1.4rem;
+
+  .messageClear {
+    float: right;
+    margin-right: 1rem;
+    cursor: pointer;
+
+    svg {
+      fill: primaryColor;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+}
