@@ -1,0 +1,68 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.carouselContainer {
+  width: 80%;
+  max-width: 135rem;
+  margin: auto;
+  position: relative;
+  margin-bottom: 3rem;
+
+  .carouselSlide {
+    .image {
+      width: 100%;
+      height: 25vw;
+      object-fit: cover;
+    }
+  }
+
+  .prevnext {
+    .prev,
+    .next {
+      cursor: pointer;
+      font-size: 2.8rem;
+      color: primaryColor;
+      transition: color 0.6s ease;
+      transform: translateY(-50%);
+
+      &:hover {
+        color: primaryColorLight;
+      }
+    }
+
+    .prev {
+      position: absolute;
+      top: 50%;
+      left: -5%;
+    }
+    .next {
+      position: absolute;
+      top: 50%;
+      right: -5%;
+    }
+  }
+
+  .carouselDots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    bottom: -2rem;
+    transform: translateX(-50%);
+
+    .carouselDot {
+      cursor: pointer;
+      height: 1rem;
+      width: 1rem;
+      margin: 0 2px;
+      background-color: primaryColor;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+
+      &:hover {
+        background-color: primaryColorLight;
+      }
+    }
+  }
+}
