@@ -1,4 +1,4 @@
-import styles from './salemessage.module.scss';
+import styles from './sale-message.module.scss';
 
 import { ReactComponent as ClearIcon } from '../../assets/clear-icon.svg';
 

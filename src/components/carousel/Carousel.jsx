@@ -7,6 +7,7 @@ import slideTransition from './slide.module.scss';
 import { ReactComponent as LeftIcon } from '../../assets/left-icon.svg';
 import { ReactComponent as RightIcon } from '../../assets/right-icon.svg';
 
+// carousel data --> will move to redux
 const carouselSlides = [
   {
     id: 0,
@@ -61,7 +62,7 @@ const Carousel = () => {
         <SwitchTransition>
           <CSSTransition
             key={currentSlide}
-            timeout={{ enter: 300, exit: 300 }}
+            timeout={{ enter: 500, exit: 500 }}
             classNames={slideTransition}
           >
             <img src={carouselSlides[currentSlide].imageUrl} alt='accessories' className={styles.image} />
