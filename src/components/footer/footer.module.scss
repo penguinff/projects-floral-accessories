@@ -1,0 +1,46 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.footer {
+  grid-column: full-start / full-end;
+  background-color: rgb(241, 229, 229);
+  color: primaryColor;
+  font-size: 1.4rem;
+  padding: 2rem 0 3rem;
+
+  .lists {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  li {
+    list-style-type: none;
+    line-height: 2.5rem;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  .title {
+    font-size: 1.5rem;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .socialList {
+    display: flex;
+
+    :hover {
+      color: secondaryColor;
+    }
+  }
+
+  .copyright {
+    display: flex;
+    justify-content: center;
+  }
+}

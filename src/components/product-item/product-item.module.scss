@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: repeat(2, 10rem);
   grid-row-gap: 0.5rem;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   transition: all 300ms;
 
   .image {
@@ -30,6 +30,7 @@
     justify-content: flex-end;
     align-items: center;
     fill: primaryColor;
+    color: primaryColor;
 
     :hover {
       fill: secondaryColor;
@@ -37,8 +38,8 @@
 
     svg {
       cursor: pointer;
-      width: 2rem;
-      height: 2rem;
+      width: 1.8rem;
+      height: 1.8rem;
       margin: 0 0.5rem;
     }
   }

@@ -5,7 +5,7 @@ import ProductItem from '../product-item/ProductItem';
 
 // product preview data --> will move to redux
 const productPreviewData = {
-  title: 'New Arrival',
+  title: 'New Arrivals',
   items: [
     {
       id: 0,
@@ -33,21 +33,21 @@ const productPreviewData = {
     },
     {
       id: 4,
-      imageUrl: 'https://images.unsplash.com/photo-1609245340409-cad2474ab1d5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2082&q=80',
-      title: '復古水晶項鏈',
-      price: 1850
+      imageUrl: 'https://images.unsplash.com/photo-1561172478-a203d9c8290e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
+      title: '金色星星耳環',
+      price: 750
     },
     {
       id: 5,
-      imageUrl: 'https://images.unsplash.com/photo-1608543837489-0fab463c925e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
-      title: '鍍金葉子手鐲',
-      price: 950
+      imageUrl: 'https://images.unsplash.com/photo-1601057836799-4ecc7fdfc3b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=632&q=80',
+      title: '大理石紋金髮夾',
+      price: 680
     },
     {
       id: 6,
-      imageUrl: 'https://images.unsplash.com/photo-1566977744263-79e677f4e7cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-      title: '字母指環',
-      price: 850
+      imageUrl: 'https://images.unsplash.com/photo-1557002665-c552e1832483?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
+      title: '豹紋造型髪帶',
+      price: 390
     },
   ]
 }
@@ -62,11 +62,11 @@ const responsive = {
     items: 5
   },
   smallDesktop: {
-    breakpoint: { max: 1400, min: 1000 },
+    breakpoint: { max: 1400, min: 1100 },
     items: 4
   },
   tablet: {
-    breakpoint: { max: 1000, min: 800 },
+    breakpoint: { max: 1100, min: 800 },
     items: 3
   },
   smallTablet: {
@@ -88,8 +88,7 @@ const ProductPreview = () => (
     </div>
 
     <Carousel 
-      swipeable={true}
-      removeArrowOnDeviceType={['mobile', 'tablet']}
+      removeArrowOnDeviceType={'mobile'}
       responsive={responsive} 
       className={styles.previewContainer}
     >
