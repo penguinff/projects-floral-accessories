@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 import SwitchTransition from 'react-transition-group/SwitchTransition';
 import styles from './carousel.module.scss';
@@ -35,7 +35,8 @@ const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Slide functions
-  const plusSlides = (n) => {
+  const plusSlides = useCallback(
+    (n) => {
     if (currentSlide === 0 && n === -1) {
       setCurrentSlide(carouselSlides.length - 1)
     } else if (currentSlide === carouselSlides.length - 1 && n === 1) {
@@ -43,17 +44,18 @@ const Carousel = () => {
     } else {
       setCurrentSlide(currentSlide + n);
     }
-  }
+  }, [currentSlide]);
+  
   const clickSlide = (n) => {
     setCurrentSlide(n)
-  }
+  };
 
   useEffect(() => {
     const autoSlide = setInterval(() => {
       plusSlides(1);
     }, 8000);
     return () => clearInterval(autoSlide)
-  }, [currentSlide])
+  }, [currentSlide, plusSlides]);
 
   return (
     <div className={styles.carouselContainer}>

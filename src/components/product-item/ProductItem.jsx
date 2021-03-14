@@ -1,13 +1,16 @@
 import styles from './product-item.module.scss';
 
+import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
+import { ReactComponent as AddCartIcon } from '../../assets/addcart-icon.svg';
+
 const ProductItem = ({ item }) => (
   <div className={styles.productItem}>
-    <div className={styles.productImageContainer}>
-      <img src={item.imageUrl} alt='product' className={styles.image} />
-    </div>
-    <div className={styles.productInfoContainer}>
-      <span>{item.title}</span>
-      <span>{`NT$${item.price}`}</span>
+    <img src={item.imageUrl} alt='product' className={styles.image} />
+    <span className={styles.productName}>{item.title}</span>
+    <span className={styles.productPrice}>{`NT$${item.price}`}</span>
+    <div className={styles.icons}>
+      <FavoriteIcon />
+      <AddCartIcon />
     </div>
   </div>
 );
