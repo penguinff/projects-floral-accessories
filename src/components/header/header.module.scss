@@ -54,6 +54,7 @@
       cursor: pointer;
       width: 3rem;
       height: 3rem;
+      transition: all 0.3s;
 
       &:hover {
         fill: secondaryColorDark;

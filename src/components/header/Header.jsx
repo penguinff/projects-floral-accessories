@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './header.module.scss';
 
 import { ReactComponent as SideNavIcon } from '../../assets/sidenav-icon.svg';
@@ -18,12 +19,14 @@ const Header = () => (
         <SideNavIcon />
         <SearchIcon />
       </div>
-      <div>
+      <Link to='/'>
         <img src={CompanyLogo} className={styles.companyLogo} alt='company logo'/>
-      </div>
+      </Link>
       <div className={styles.rightOptions}>
         <ContactIcon />
-        <UserIcon />
+        <Link to='/signin'>
+          <UserIcon />
+        </Link>
         <div className={styles.shoppingCartBox}>
           <ShoppingCartIcon className={styles.shoppingCartIcon} />
           <span className={styles.shoppingCartNum}>10</span>
