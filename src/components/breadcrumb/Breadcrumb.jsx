@@ -5,17 +5,28 @@ import routes from '../../routes';
 import styles from './breadcrumb.module.scss';
 
 const Breadcrumb = ({ location }) => {
-  const matchedRoutes = matchRoutes(routes, location.pathname);
+  let matchedRoutes = matchRoutes(routes, location.pathname);
+  matchedRoutes = [
+    {
+      route: {
+        path: '/',
+        breadcrumbName: 'Home'
+      }
+    },
+    ...matchedRoutes
+  ];
 
   return (
     <nav className={styles.breadcrumb}>
       <ul className={styles.breadcrumbList}>
-        <li className={styles.breadcrumbItem}>
-          <Link to='/'>Home</Link>
-        </li>
         {matchedRoutes.map((matchedRoute, index) => {
           const { path, breadcrumbName } = matchedRoute.route;
-          return (
+          const isActive = path === location.pathname;
+          return isActive ? (
+            <li key={index} className={styles.breadcrumbItem}>
+              {breadcrumbName}
+            </li>
+          ) : (
             <li key={index} className={styles.breadcrumbItem}>
               <Link to={path}>{breadcrumbName}</Link>
             </li>
