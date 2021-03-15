@@ -1,8 +1,8 @@
 @value colors: '../../app.module.scss';
-@value primaryColor from colors;
+@value primaryColor, secondaryColorLight from colors;
 
 .saleMessage {
-  background-color: rgb(241, 229, 229);
+  background-color: secondaryColorLight;
   padding: 0.5rem 0;
   text-align: center;
   color: primaryColor;

@@ -1,0 +1,33 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.directory {
+  width: 80%;
+  max-width: 135rem;
+  margin: 9rem auto;
+  border-bottom: 2px solid primaryColorLight;
+
+  .directoryTitle {
+    font-size: 2.5rem;
+    color: primaryColor;
+    text-transform: uppercase;
+    // make word in the middle of the line
+    text-align: center;
+    border-bottom: 2px solid primaryColorLight;
+    line-height: 0.1rem;
+    margin: 1rem 0 2rem;
+
+    span {
+      background-color: white;
+      padding: 0 1rem;
+    }
+  }
+
+  .directoryContainer {
+    margin: 3rem 0 2rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    grid-gap: 2rem;
+  }
+}

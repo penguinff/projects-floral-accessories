@@ -1,9 +1,9 @@
 @value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
 
 .footer {
   grid-column: full-start / full-end;
-  background-color: rgb(241, 229, 229);
+  background-color: secondaryColorLight;
   color: primaryColor;
   font-size: 1.4rem;
   padding: 2rem 0 3rem;

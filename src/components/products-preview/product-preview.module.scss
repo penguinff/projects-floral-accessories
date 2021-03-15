@@ -4,7 +4,7 @@
 .productPreview {
   width: 80%;
   max-width: 135rem;
-  margin: 8rem auto;
+  margin: 9rem auto;
   border-bottom: 2px solid primaryColorLight;
 
   .previewTitle {
@@ -27,5 +27,7 @@
     width: 100%;
     margin-top: 3rem;
     margin-bottom: 2rem;
+    // push the container to middle
+    margin-left: 2.5rem;
   }
 }

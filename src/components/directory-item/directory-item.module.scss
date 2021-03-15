@@ -1,0 +1,23 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.directoryItem {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  .image {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    border: solid 1px primaryColor;
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: primaryColor;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
