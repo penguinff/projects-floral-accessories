@@ -1,0 +1,32 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.breadcrumb {
+  // width: 80%;
+
+  .breadcrumbList {
+    font-size: 1.4rem;
+    list-style: none;
+    display: flex;
+    align-items: center;
+
+    li {
+      &:first-child {
+        border-left: none;
+      }
+      a:link, 
+      a:visited,
+      a:active {
+        text-decoration: none;
+        color: primaryColor;
+      }
+
+    }
+
+    .breadcrumbItem {
+      border-left: solid 1px primaryColorLight;
+      padding: 0 2rem;
+    }
+    
+  }
+}
