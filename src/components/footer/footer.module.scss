@@ -9,10 +9,11 @@
   padding: 2rem 0 3rem;
 
   .lists {
+    max-width: 100rem;
     width: 80%;
     margin: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
   }
 

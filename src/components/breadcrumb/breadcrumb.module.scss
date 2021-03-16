@@ -2,7 +2,8 @@
 @value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
 
 .breadcrumb {
-  // width: 80%;
+  max-width: 80%;
+  margin: auto;
 
   .breadcrumbList {
     font-size: 1.4rem;
@@ -13,6 +14,7 @@
     li {
       &:first-child {
         border-left: none;
+        padding: 0 2rem 0 0;
       }
       a:link, 
       a:visited,
