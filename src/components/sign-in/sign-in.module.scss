@@ -1,0 +1,26 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
+.signIn {
+  min-width: 35rem;
+  max-width: 40%;
+  margin: 6rem;
+  font-size: 1.5rem;
+  color: primaryColorDark;
+
+  .clickSignIn {
+    margin-bottom: 3rem;
+
+    svg {
+      cursor: pointer;
+      padding: 0 0.5rem;
+      opacity: 0.8;
+      transition: all 0.2s;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

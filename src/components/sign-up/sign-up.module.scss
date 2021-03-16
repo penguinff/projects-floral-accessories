@@ -1,0 +1,10 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
+.signUp {
+  min-width: 35rem;
+  max-width: 30%;
+  margin: 6rem;
+  font-size: 1.5rem;
+  color: primaryColorDark;
+}

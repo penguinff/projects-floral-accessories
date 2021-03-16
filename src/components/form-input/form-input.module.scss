@@ -1,0 +1,47 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+@mixin shrinkLabel {
+  top: -1.4rem;
+  font-size: 1.2rem;
+  color: primaryColor;
+}
+
+.formInputGroup {
+  position: relative;
+  margin: 4.5rem 0;
+
+  .formInput {
+    color: primaryColor;
+    font-size: 1.5rem;
+    font-family: 'Dosis', sans-serif;
+    padding: 1rem 1rem 1rem 0.5rem;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: solid 0.1rem primaryColor;
+    margin: 2.5rem 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .formInputLabel {
+      @include shrinkLabel();
+    }
+  }
+
+  .formInputLabel {
+    color: primaryColor;
+    font-size: 1.5rem;
+    position: absolute;
+    pointer-events: none;
+    left: 0.5rem;
+    top: 1rem;
+    transition: all 0.3s ease;
+
+    &.shrink {
+      @include shrinkLabel();
+    }
+  }
+}
