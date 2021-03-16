@@ -4,7 +4,7 @@ import routes from '../../routes';
 
 import styles from './breadcrumb.module.scss';
 
-const Breadcrumb = ({ location }) => {
+const Breadcrumb = ({ location, onMatchedRoutes }) => {
   let matchedRoutes = matchRoutes(routes, location.pathname);
   matchedRoutes = [
     {
@@ -15,6 +15,10 @@ const Breadcrumb = ({ location }) => {
     },
     ...matchedRoutes
   ];
+
+  if (typeof onMatchedRoutes === 'function') {
+    matchedRoutes = onMatchedRoutes(matchedRoutes);
+  }
 
   return (
     <nav className={styles.breadcrumb}>

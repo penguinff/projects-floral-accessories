@@ -14,7 +14,7 @@ const routes = [
     path: '/shop',
     component: ShopPage,
     exact: false,
-    breadcrumbName: 'Shop',
+    breadcrumbName: 'Shop'
   },
   {
     path: '/signin',
