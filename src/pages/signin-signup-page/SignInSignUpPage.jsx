@@ -6,7 +6,7 @@ import styles from './signin-signup-page.module.scss';
 
 const SignInSignUpPage = ({ location }) => (
   <div className={styles.signInSignUpPage}>
-    <Breadcrumb location={location}/>
+    <Breadcrumb location={location} />
     <div className={styles.signInSignUpGroup}>
       <SignIn />
       <SignUp />

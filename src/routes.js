@@ -2,6 +2,7 @@ import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shop-page/ShopPage';
 import SignInSignUpPage from './pages/signin-signup-page/SignInSignUpPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
+import UserProfilePage from './pages/user-profile-page/UserProfilePage';
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     component: CheckoutPage,
     exact: true,
     breadcrumbName: 'Checkout'
+  },
+  {
+    path: '/userprofile',
+    component: UserProfilePage,
+    exact: true,
+    breadcrumbName: 'User Profile'
   },
 ];
 
