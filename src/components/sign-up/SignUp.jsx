@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
+
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
+
+import { signUpStart } from '../../redux/user/user-actions';
+
 import styles from './sign-up.module.scss';
 
-const SignUp = () => {
+const SignUp = ({ signUpStart }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
@@ -11,14 +16,20 @@ const SignUp = () => {
     confirmPassword: ''
   });
 
+  const { displayName, email, password, confirmPassword } = userCredentials;
+
   const handleChange = event => {
     const { name, value } = event.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   }
 
-  // handleSubmit function set later after redux setup
-  const handleSubmit = () => {
-    console.log(userCredentials);
+  const handleSubmit = async event => {
+    event.preventDefault();
+    if (password !== confirmPassword) {
+      alert('password not match');
+      return;
+    }
+    signUpStart({ displayName, email, password });
   }
 
   return (
@@ -29,7 +40,7 @@ const SignUp = () => {
         <FormInput 
           type='text'
           name='displayName'
-          value={userCredentials.displayName}
+          value={displayName}
           onChange={handleChange}
           label='賬戶名稱'
           required
@@ -37,7 +48,7 @@ const SignUp = () => {
         <FormInput 
           type='email'
           name='email'
-          value={userCredentials.email}
+          value={email}
           onChange={handleChange}
           label='電子信箱'
           required
@@ -45,7 +56,7 @@ const SignUp = () => {
         <FormInput 
           type='password'
           name='password'
-          value={userCredentials.password}
+          value={password}
           onChange={handleChange}
           label='密碼'
           required
@@ -53,7 +64,7 @@ const SignUp = () => {
         <FormInput 
           type='password'
           name='confirmPassword'
-          value={userCredentials.confirmPassword}
+          value={confirmPassword}
           onChange={handleChange}
           label='確認密碼'
           required
@@ -61,7 +72,11 @@ const SignUp = () => {
         <CustomButton type='submit'>註冊</CustomButton>
       </form>
     </div>
-  )
+  );
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
+})
+
+export default connect(null, mapDispatchToProps)(SignUp);

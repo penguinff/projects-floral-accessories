@@ -1,32 +1,41 @@
 import { useState } from 'react';
+import { connect } from 'react-redux';
+
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
-import { signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.utils';
+
+import { googleSignInStart, facebookSignInStart, emailSignInStart } from '../../redux/user/user-actions';
 
 import { ReactComponent as GoogleIcon } from '../../assets/google-color-icon.svg';
 import { ReactComponent as FacebookIcon } from '../../assets/facebook-color-icon.svg';
 
 import styles from './sign-in.module.scss';
 
-const SignIn = () => {
-  const [userCredentials, setUserCredentials] = useState({ email: '', password: '' });
+const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart }) => {
+  const [userCredentials, setUserCredentials] = useState({
+    email: '', 
+    password: '' 
+  });
+
+  const { email, password } = userCredentials;
 
   const handleChange = event => {
     const { value, name } = event.target;
     setUserCredentials({ ...userCredentials, [name]: value });
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault();
-    setUserCredentials({ email: '', password: '' });
+    emailSignInStart({ email, password });
+    // setUserCredentials({ email: '', password: '' });
   }
 
   return (
     <div className={styles.signIn}>
       <div className={styles.clickSignIn}>
         <h2>一鍵登入</h2>
-        <GoogleIcon onClick={signInWithGoogle} />
-        <FacebookIcon onClick={signInWithFacebook} />
+        <GoogleIcon onClick={googleSignInStart} />
+        <FacebookIcon onClick={facebookSignInStart} />
       </div>
 
       <div className={styles.typeSignIn}>
@@ -36,14 +45,14 @@ const SignIn = () => {
           <FormInput 
             name='email'
             type='email'
-            value={userCredentials.email}
+            value={email}
             onChange={handleChange}
             label='電子信箱'
             required />
           <FormInput 
             name='password'
             type='password'
-            value={userCredentials.password}
+            value={password}
             onChange={handleChange}
             label='密碼'
             required />
@@ -52,7 +61,12 @@ const SignIn = () => {
       </div>
     </div>
   );
-
 };
 
-export default SignIn;
+const mapDispatchToProps = dispatch => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  facebookSignInStart: () => dispatch(facebookSignInStart()),
+  emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
+})
+
+export default connect(null, mapDispatchToProps)(SignIn);
