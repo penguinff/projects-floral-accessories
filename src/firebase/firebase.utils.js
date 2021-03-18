@@ -14,7 +14,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
+// ----- functions related to users ----- //
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -22,7 +25,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
     try {
       await userRef.set({
         displayName,
@@ -46,9 +48,6 @@ export const getCurrentUser = () => {
   });
 };
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
-
 // Google Signin
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
@@ -58,5 +57,22 @@ export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 export const facebookProvider = new firebase.auth.FacebookAuthProvider();
 facebookProvider.setCustomParameters({ prompt: 'select_account' });
 export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
+
+// ----- functions related to collections ----- //
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollections = collections.docs.map(doc => {
+    const { title, items } = doc.data();
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    };
+  });
+  return transformedCollections.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
 
 export default firebase;
