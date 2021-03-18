@@ -27,8 +27,8 @@ const directoryData = {
     },
     {
       id: 4,
-      imageUrl: 'https://images.unsplash.com/photo-1601938219471-fb3393955f15?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80',
-      title: 'Hair Accessories',
+      imageUrl: 'https://images.unsplash.com/photo-1609536834325-f9ecf43992f6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+      title: 'Hairpins',
     },
     {
       id: 5,
