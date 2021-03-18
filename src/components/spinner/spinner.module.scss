@@ -1,0 +1,21 @@
+@value colors: '../../app.module.scss';
+@value primaryColorDark from colors;
+
+.spinnerOverlay {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .spinnerContainer {
+    display: flex;
+    flex-direction: column;
+
+    pre {
+      text-align: center;
+      font-size: 1.4rem;
+      color: primaryColorDark;
+    }
+  }
+}
