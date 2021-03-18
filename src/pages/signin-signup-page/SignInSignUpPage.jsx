@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router-dom';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 import SignIn from '../../components/sign-in/SignIn';
@@ -14,4 +15,4 @@ const SignInSignUpPage = ({ location }) => (
   </div>
 );
 
-export default SignInSignUpPage;
+export default withRouter(SignInSignUpPage);
