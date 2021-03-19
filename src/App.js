@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCurrentUser } from './redux/user/user-selector';
+import { selectCurrentUser } from './redux/user/user-selectors';
 import { checkUserSession } from './redux/user/user-actions';
 
 import Spinner from './components/spinner/Spinner';
