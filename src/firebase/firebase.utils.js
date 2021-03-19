@@ -61,12 +61,13 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
 // ----- functions related to collections ----- //
 export const convertCollectionsSnapshotToMap = (collections) => {
   const transformedCollections = collections.docs.map(doc => {
-    const { title, items } = doc.data();
+    const { title, items, banner } = doc.data();
     return {
       routeName: encodeURI(title.toLowerCase()),
       id: doc.id,
       title,
-      items
+      items,
+      banner
     };
   });
   return transformedCollections.reduce((accumulator, collection) => {

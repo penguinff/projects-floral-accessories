@@ -19,13 +19,13 @@ const CollectionPage = ({ match, location, collection }) => {
     ]
   };
 
-  const { title, items } = collection;
+  const { title, items, banner } = collection;
 
   return (
     <div className={styles.collectionPage}>
       <div className={styles.collectionPageGroup}>
         <div className={styles.collectionBanner}>
-          <img src='https://images.unsplash.com/photo-1523270237992-7772a8344078?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='title' />
+          <img src={banner} alt='title banner' />
           <div className={styles.title}>{title}</div>
         </div>
         <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes} />

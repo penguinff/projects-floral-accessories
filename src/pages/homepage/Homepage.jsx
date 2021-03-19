@@ -1,13 +1,13 @@
 import styles from './homepage.module.scss';
 import Carousel from '../../components/carousel/Carousel';
-import ProductPreview from '../../components/products-preview/ProductPreview';
+import ProductsPreview from '../../components/products-preview/ProductsPreview';
 import OurStory from '../../components/our-story/OurStory';
 import Directory from '../../components/directory/Directory';
 
 const Homepage = () => (
   <div className={styles.homepage}>
     <Carousel />
-    <ProductPreview />
+    <ProductsPreview />
     <OurStory />
     <Directory />
   </div>

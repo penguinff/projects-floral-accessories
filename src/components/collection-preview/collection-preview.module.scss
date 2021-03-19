@@ -1,0 +1,47 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.titleGroup {
+  max-width: 100rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 2px solid primaryColorLight;
+  line-height: 0.1rem;
+  margin: 1rem auto 2rem;
+
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+    color: primaryColor;
+    font-size: 3rem;
+    margin-right: 1rem;
+  }
+
+  .seeMore {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: secondaryColorDark;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      color: secondaryColor;
+      transition: all 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        color: secondaryColorDark;
+      }
+    }
+  }
+}
+
+.preview {
+  margin: 3rem 0;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  grid-gap: 5rem;
+}

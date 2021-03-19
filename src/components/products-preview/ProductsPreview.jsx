@@ -1,10 +1,10 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import styles from './product-preview.module.scss';
+import styles from './products-preview.module.scss';
 import ProductItem from '../product-item/ProductItem';
 
-// product preview data --> will move to redux
-const productPreviewData = {
+// products preview data --> will move to redux
+const productsPreviewData = {
   title: 'New Arrivals',
   items: [
     {
@@ -79,11 +79,11 @@ const responsive = {
   }
 };
 
-const ProductPreview = () => (
+const ProductsPreview = () => (
   <div className={styles.productPreview}>
     <div className={styles.previewTitle}>
       <span>
-        {productPreviewData.title}
+        {productsPreviewData.title}
       </span>
     </div>
 
@@ -92,11 +92,11 @@ const ProductPreview = () => (
       responsive={responsive} 
       className={styles.previewContainer}
     >
-      {productPreviewData.items.map((item, index) => (
+      {productsPreviewData.items.map((item, index) => (
         <ProductItem item={item} key={item.id}/>
       ))}
     </Carousel>
   </div>
 );
 
-export default ProductPreview;
+export default ProductsPreview;

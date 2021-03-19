@@ -39,7 +39,9 @@ const Header = () => (
 
     <div className={styles.categoryList}>
       <div className={styles.categoryItem}>新品上市</div>
-      <div className={styles.categoryItem}>商品分類</div>
+      <Link to='/shop'>
+        <div className={styles.categoryItem}>商品分類</div>
+      </Link>
       <div className={styles.categoryItem}>會員專區</div>
       <div className={styles.categoryItem}>潮流話題</div>
     </div>

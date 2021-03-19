@@ -1,0 +1,10 @@
+.collectionsOverviewPage {
+  grid-column: full-start / full-end;
+
+  .previews {
+    width: 80%;
+    margin: 5rem auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
