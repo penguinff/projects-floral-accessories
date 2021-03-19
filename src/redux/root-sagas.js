@@ -5,5 +5,5 @@ import { shopSagas } from './shop/shop-sagas';
 import { cartSagas } from './cart/cart-sagas';
 
 export default function* rootSagas() {
-  yield all([call(userSagas), call(shopSagas)]);
+  yield all([call(userSagas), call(shopSagas), call(cartSagas)]);
 }

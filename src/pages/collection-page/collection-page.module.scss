@@ -19,12 +19,13 @@
       .title {
         position: absolute;
         left: 15%;
-        top: 20%;
+        top: 25%;
         text-transform: uppercase;
         font-size: 6rem;
         font-weight: 500;
         color: primaryColor;
         text-shadow: 0 0.3rem 0.3rem rgba(17, 17, 17, 0.459);
+        user-select: none;
       }
     }
 
