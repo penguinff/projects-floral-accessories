@@ -1,4 +1,68 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
 .checkoutPage {
-    grid-column: full-start / full-end;
+  grid-column: full-start / full-end;
+  min-height: 65vh;
+
+  h1 {
+    margin: 5rem 20%;
+    font-size: 3rem;
+    color: primaryColorDark;
   }
-  
+
+  .checkoutHeader {
+    width: 80%;
+    max-width: 100rem;
+    margin: 5rem auto 0;
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
+    text-align: center;
+    border-bottom: solid 1px primaryColorLight;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: primaryColor;
+      margin: 0.5rem;
+    }
+  }
+
+  .totalGroup {
+    width: 80%;
+    max-width: 100rem;
+    margin: 0 auto 5rem;
+    border-top: solid 1px primaryColorLight;
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: primaryColor;
+      margin: 1rem;
+      text-align: center;
+    }
+
+    .note {
+      grid-column: 3 / 4;
+    }
+
+    .total {
+      grid-column: 4 / 5;
+    }
+  }
+
+  .withoutCartItems {
+    width: 80%;
+    max-width: 100rem;
+    margin: 5rem auto;
+    text-align: center;
+
+    h2 {
+      margin: 3rem;
+      color: primaryColor;
+      font-size: 1.8rem;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.checkoutItem {
+  width: 80%;
+  max-width: 100rem;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr 1fr 0.5fr;
+  align-items: center;
+  border-top: solid 1px primaryColorLight;
+  border-bottom: solid 1px primaryColorLight;
+  text-align: center;
+
+  svg {
+    cursor: pointer;
+    fill: primaryColor;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    &:hover {
+      fill: secondaryColorDark;
+    }
+  }
+
+  span {
+    font-size: 1.4rem;
+    color: primaryColor;
+  }
+
+  .image {
+    img {
+      width: 12rem;
+      height: 17rem;
+      object-fit: cover;
+    }
+  }
+
+  .quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
