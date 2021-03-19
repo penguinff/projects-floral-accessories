@@ -1,7 +1,8 @@
-import styles from './directory.module.scss';
 import DirectoryItem from '../directory-item/DirectoryItem';
 
-// directory data --> will move to redux
+import styles from './directory.module.scss';
+
+// directory data
 const directoryData = {
   title: 'Shop By Category',
   items: [
@@ -48,7 +49,7 @@ const Directory = () => (
 
     <div className={styles.directoryContainer}>
       {directoryData.items.map((item, index) => (
-        <DirectoryItem item={item} key={item.id}/>
+        <DirectoryItem item={item} key={item.id} />
       ))}
     </div>
   </div>
