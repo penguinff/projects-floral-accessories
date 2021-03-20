@@ -32,6 +32,10 @@
       width: 12rem;
       display: flex;
       justify-content: space-around;
+
+      .cartGroup {
+        position: relative;
+      }
     }
 
     svg {

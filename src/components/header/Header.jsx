@@ -1,21 +1,29 @@
 import { Link } from 'react-router-dom';
-import styles from './header.module.scss';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectCartHidden } from '../../redux/cart/cart-selectors';
+import { selectCartItems } from '../../redux/cart/cart-selectors';
+import { toggleCartHidden } from '../../redux/cart/cart-actions';
+
 import SaleMessage from '../sale-message/SaleMessage';
 import CartIcon from '../cart-icon/cartIcon';
-import CompanyLogo from '../../assets/logo_transparent_cut.png';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 
+import styles from './header.module.scss';
+
+import CompanyLogo from '../../assets/logo_transparent_cut.png';
 import { ReactComponent as SideNavIcon } from '../../assets/sidenav-icon.svg';
 import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
-const Header = () => (
+const Header = ({ hidden, cartItems, toggleCartHidden }) => (
   <div className={styles.header}>
 
     <SaleMessage />
 
     <div className={styles.mainHeader}>
-
       <div className={styles.leftOptions}>
         <SideNavIcon />
         <SearchIcon />
@@ -30,11 +38,17 @@ const Header = () => (
         <Link to='/signin'>
           <UserIcon />
         </Link>
-        <Link to='/checkout'>
-          <CartIcon />
-        </Link>
+        <div 
+          className={styles.cartGroup} 
+          onMouseEnter={() => toggleCartHidden(false)} 
+          onMouseLeave={() => toggleCartHidden(true)}
+        >
+          <Link to='/checkout'>
+            <CartIcon />
+          </Link>
+          { hidden || !cartItems.length ? null : <CartDropdown /> }
+        </div>
       </div>
-
     </div>
 
     <div className={styles.categoryList}>
@@ -49,4 +63,13 @@ const Header = () => (
   </div>
 )
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+  hidden: selectCartHidden,
+  cartItems: selectCartItems
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
