@@ -11,9 +11,9 @@ const CollectionsOverviewPageContainer = lazy(() => import('../collection-overvi
 const CollectionPageContainer = lazy(() => import('../collection-page/CollectionPageContainer'));
 
 const ShopPage = ({ fetchCollectionsStart, match }) => {
-  useEffect(() => {
-    fetchCollectionsStart();
-  }, [fetchCollectionsStart]);
+  // useEffect(() => {
+  //   fetchCollectionsStart();
+  // }, [fetchCollectionsStart]);
 
   return (
     <div className={styles.shopPage}>

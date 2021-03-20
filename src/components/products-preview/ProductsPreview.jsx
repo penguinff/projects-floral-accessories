@@ -1,57 +1,16 @@
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import styles from './products-preview.module.scss';
+
+import { selectCollectionsForPreview } from '../../redux/shop/shop-selectors';
+
+import Spinner from '../spinner/Spinner';
 import ProductItem from '../product-item/ProductItem';
 
-// products preview data --> will move to redux
-const productsPreviewData = {
-  title: 'New Arrivals',
-  items: [
-    {
-      id: 0,
-      imageUrl: 'https://images.unsplash.com/photo-1551844533-144ea0d19c93?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-      name: '玩味木頭流蘇耳環',
-      price: 590
-    },
-    {
-      id: 1,
-      imageUrl: 'https://images.unsplash.com/photo-1609245340409-cad2474ab1d5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2082&q=80',
-      name: '復古水晶項鏈',
-      price: 1850
-    },
-    {
-      id: 2,
-      imageUrl: 'https://images.unsplash.com/photo-1608543837489-0fab463c925e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80',
-      name: '鍍金葉子手鐲',
-      price: 950
-    },
-    {
-      id: 3,
-      imageUrl: 'https://images.unsplash.com/photo-1566977744263-79e677f4e7cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-      name: '字母指環',
-      price: 850
-    },
-    {
-      id: 4,
-      imageUrl: 'https://images.unsplash.com/photo-1561172478-a203d9c8290e?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-      name: '金色星星耳環',
-      price: 750
-    },
-    {
-      id: 5,
-      imageUrl: 'https://images.unsplash.com/photo-1601057836799-4ecc7fdfc3b4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=632&q=80',
-      name: '大理石紋金髮夾',
-      price: 680
-    },
-    {
-      id: 6,
-      imageUrl: 'https://images.unsplash.com/photo-1557002665-c552e1832483?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80',
-      name: '豹紋造型髪帶',
-      price: 390
-    },
-  ]
-}
+import styles from './products-preview.module.scss';
 
+// carousel responsive setting
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -79,24 +38,38 @@ const responsive = {
   }
 };
 
-const ProductsPreview = () => (
-  <div className={styles.productPreview}>
-    <div className={styles.previewTitle}>
-      <span>
-        {productsPreviewData.title}
-      </span>
+const ProductsPreview = ({ collections }) => {
+  // create New Arrival Array from shop collections
+  let newArrivalArray = [];
+  collections.map(collection => {
+    let numberOfItems = collection.items.length;
+    let newItems = collection.items.filter((item, index) => index > numberOfItems - 3);
+    newItems.map(newItem => newArrivalArray.push(newItem));
+  });
+
+  return (
+    <div className={styles.productPreview}>
+      <div className={styles.previewTitle}>
+        <span>New Arrival</span>
+      </div>
+      {newArrivalArray.length ?
+        <Carousel 
+          removeArrowOnDeviceType={'mobile'}
+          responsive={responsive} 
+          className={styles.previewContainer}
+        >
+          {newArrivalArray.map((item, index) => (
+            <ProductItem item={item} key={item.id}/>
+          ))}
+        </Carousel>
+        : <Spinner />
+      }
     </div>
+  )
+};
 
-    <Carousel 
-      removeArrowOnDeviceType={'mobile'}
-      responsive={responsive} 
-      className={styles.previewContainer}
-    >
-      {productsPreviewData.items.map((item, index) => (
-        <ProductItem item={item} key={item.id}/>
-      ))}
-    </Carousel>
-  </div>
-);
+const mapStateToProps = createStructuredSelector({
+  collections: selectCollectionsForPreview
+});
 
-export default ProductsPreview;
+export default connect(mapStateToProps)(ProductsPreview);

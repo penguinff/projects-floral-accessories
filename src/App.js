@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from './redux/user/user-selectors';
 import { checkUserSession } from './redux/user/user-actions';
+import { fetchCollectionsStart } from './redux/shop/shop-actions';
 
 import Spinner from './components/spinner/Spinner';
 import Header from './components/header/Header';
@@ -18,10 +19,11 @@ const SignInSignUpPage = lazy(() => import('./pages/signin-signup-page/SignInSig
 const UserProfilePage = lazy(() => import('./pages/user-profile-page/UserProfilePage'));
 
 
-const App = ({ checkUserSession, currentUser }) => {
+const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
-    checkUserSession()
-  }, [checkUserSession]);
+    checkUserSession();
+    fetchCollectionsStart();
+  }, [checkUserSession, fetchCollectionsStart]);
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
@@ -61,7 +63,8 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkUserSession: () => dispatch(checkUserSession())
+  checkUserSession: () => dispatch(checkUserSession()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
