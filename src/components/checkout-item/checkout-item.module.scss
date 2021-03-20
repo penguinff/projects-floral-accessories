@@ -4,11 +4,11 @@
 .checkoutItem {
   width: 80%;
   max-width: 100rem;
-  margin: 1rem auto;
+  margin: 1rem auto 0;
+  padding-bottom: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 0.5fr 1fr 0.5fr;
   align-items: center;
-  border-top: solid 1px primaryColorLight;
   border-bottom: solid 1px primaryColorLight;
   text-align: center;
 

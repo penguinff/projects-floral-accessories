@@ -1,5 +1,5 @@
-import { useEffect, lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { useEffect, useLayoutEffect, lazy, Suspense } from 'react';
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -22,6 +22,10 @@ const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
     checkUserSession()
   }, [checkUserSession]);
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [useLocation().pathname]);
 
   return (
     <div className={styles.app}>

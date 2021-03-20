@@ -7,21 +7,23 @@
   top: 3.5rem;
   width: 30rem;
   max-height: 65vh;
-  z-index: 1002;
   padding: 2rem;
   background-color: rgb(241, 235, 235);
-  // background-color: secondaryColorLight;
   font-size: 1.5rem;
   font-weight: 600;
   display: flex;
   flex-direction: column;
+  // animation
+  animation-name: appear;
+  animation-duration: 0.5s;
 
   .cartItems {
     min-height: 8rem;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    // flex-direction: column-reverse;
     overflow-y: auto;
-    margin: 2rem 0 1rem;
+    margin: 1.5rem 0 1rem;
     border-bottom: solid 1px primaryColor;
   }
 
@@ -33,5 +35,15 @@
 
   button {
     float: right;
+  }
+}
+
+// animation
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

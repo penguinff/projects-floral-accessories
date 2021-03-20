@@ -18,7 +18,7 @@
     display: grid;
     grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
     text-align: center;
-    border-bottom: solid 1px primaryColorLight;
+    border-bottom: solid 2px primaryColorLight;
 
     span {
       font-size: 1.5rem;
@@ -26,6 +26,11 @@
       color: primaryColor;
       margin: 0.5rem;
     }
+  }
+
+  .cartItems {
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .totalGroup {

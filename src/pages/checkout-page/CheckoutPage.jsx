@@ -22,7 +22,9 @@ const CheckoutPage = ({ location, cartItems, total }) => (
           <span>數量</span>
           <span>總金額</span>
         </div>
-        {cartItems.map(cartItem => <CheckoutItem key={cartItem.id} cartItem={cartItem} />)}
+        <div className={styles.cartItems}>
+          {cartItems.map(cartItem => <CheckoutItem key={cartItem.id} cartItem={cartItem} />)}
+        </div>
         <div className={styles.totalGroup}>
           <span className={styles.note}>小計:</span>
           <span className={styles.total}>NT${total}</span>

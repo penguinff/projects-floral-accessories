@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,50 +19,51 @@ import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
-const Header = ({ hidden, cartItems, toggleCartHidden }) => (
-  <div className={styles.header}>
-
-    <SaleMessage />
-
-    <div className={styles.mainHeader}>
-      <div className={styles.leftOptions}>
-        <SideNavIcon />
-        <SearchIcon />
-      </div>
-
-      <Link to='/'>
-        <img src={CompanyLogo} className={styles.companyLogo} alt='company logo'/>
-      </Link>
-
-      <div className={styles.rightOptions}>
-        <ContactIcon />
-        <Link to='/signin'>
-          <UserIcon />
+const Header = ({ hidden, cartItems, toggleCartHidden }) => {
+  useEffect(() => {
+    let timer = setTimeout(() => toggleCartHidden(true), 4000);
+    return () => clearTimeout(timer);
+  }, [cartItems]);
+  
+  return (
+    <div className={styles.header}>
+      <SaleMessage />
+      <div className={styles.mainHeader}>
+        <div className={styles.leftOptions}>
+          <SideNavIcon />
+          <SearchIcon />
+        </div>
+        <Link to='/'>
+          <img src={CompanyLogo} className={styles.companyLogo} alt='company logo'/>
         </Link>
-        <div 
-          className={styles.cartGroup} 
-          onMouseEnter={() => toggleCartHidden(false)} 
-          onMouseLeave={() => toggleCartHidden(true)}
-        >
-          <Link to='/checkout'>
-            <CartIcon />
+        <div className={styles.rightOptions}>
+          <ContactIcon />
+          <Link to='/signin'>
+            <UserIcon />
           </Link>
-          { hidden || !cartItems.length ? null : <CartDropdown /> }
+          <div 
+            className={styles.cartGroup} 
+            onMouseEnter={() => toggleCartHidden(false)} 
+            onMouseLeave={() => toggleCartHidden(true)}
+          >
+            <Link to='/checkout'>
+              <CartIcon />
+            </Link>
+            { hidden || !cartItems.length ? null : <CartDropdown /> }
+          </div>
         </div>
       </div>
+      <div className={styles.categoryList}>
+        <div className={styles.categoryItem}>新品上市</div>
+        <Link to='/shop'>
+          <div className={styles.categoryItem}>商品分類</div>
+        </Link>
+        <div className={styles.categoryItem}>會員專區</div>
+        <div className={styles.categoryItem}>潮流話題</div>
+      </div>
     </div>
-
-    <div className={styles.categoryList}>
-      <div className={styles.categoryItem}>新品上市</div>
-      <Link to='/shop'>
-        <div className={styles.categoryItem}>商品分類</div>
-      </Link>
-      <div className={styles.categoryItem}>會員專區</div>
-      <div className={styles.categoryItem}>潮流話題</div>
-    </div>
-
-  </div>
-)
+  )
+}
 
 const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden,
