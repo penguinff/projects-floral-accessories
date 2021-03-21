@@ -11,50 +11,72 @@
     color: primaryColorDark;
   }
 
-  .cartHeader {
-    width: 80%;
-    max-width: 100rem;
-    margin: 5rem auto 0;
-    display: grid;
-    grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
-    text-align: center;
-    border-bottom: solid 2px primaryColorLight;
-
-    span {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: primaryColor;
-      margin: 0.5rem;
-    }
-  }
-
-  .cartItems {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .totalGroup {
-    width: 80%;
-    max-width: 100rem;
-    margin: 0 auto 5rem;
-    border-top: solid 1px primaryColorLight;
-    display: grid;
-    grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
-
-    span {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: primaryColor;
-      margin: 1rem;
+  .withCartItems {
+    .cartHeader {
+      width: 80%;
+      max-width: 100rem;
+      margin: 5rem auto 0;
+      display: grid;
+      grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
       text-align: center;
+      border-bottom: solid 2px primaryColorLight;
+
+      span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: primaryColor;
+        margin: 0.5rem;
+      }
     }
 
-    .note {
-      grid-column: 3 / 4;
+    .cartItems {
+      display: flex;
+      flex-direction: column-reverse;
     }
 
-    .total {
-      grid-column: 4 / 5;
+    .totalGroup {
+      width: 80%;
+      max-width: 100rem;
+      margin: 0 auto;
+      border-top: solid 1px primaryColorLight;
+      display: grid;
+      grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
+      position: relative;
+
+      span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: primaryColor;
+        margin: 1rem;
+        text-align: center;
+      }
+
+      .note {
+        grid-column: 3 / 4;
+      }
+
+      .total {
+        grid-column: 4 / 5;
+      }
+
+      .button {
+        grid-column: 3 / 5;
+        button {
+          width: 100%;
+        }
+      }
+
+      &:last-of-type {
+        border-top: 0;
+        margin: 0 auto 8rem;
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          width: 55%;
+          border-top: solid 1px primaryColorLight;
+        }
+      }
     }
   }
 
