@@ -22,7 +22,7 @@ const CartDropdown = ({ cartItems, cartItemsCount, cartTotal, toggleCartHidden }
       <span>全部</span>
       <span>NT${cartTotal}</span>
     </div>
-    <Link to='/checkout'><CustomButton onClick={() => toggleCartHidden(true)}>查看購物車</CustomButton></Link>
+    <Link to='/cart'><CustomButton onClick={() => toggleCartHidden(true)}>查看購物車</CustomButton></Link>
   </div>
 );
 

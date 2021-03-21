@@ -14,6 +14,7 @@ import styles from './app.module.scss';
 
 const Homepage = lazy(() => import('./pages/homepage/Homepage'));
 const ShopPage = lazy(() => import('./pages/shop-page/ShopPage'));
+const CartPage = lazy(() => import('./pages/cart-page/CartPage'));
 const CheckoutPage = lazy(() => import('./pages/checkout-page/CheckoutPage'));
 const SignInSignUpPage = lazy(() => import('./pages/signin-signup-page/SignInSignUpPage'));
 const UserProfilePage = lazy(() => import('./pages/user-profile-page/UserProfilePage'));
@@ -25,9 +26,11 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
     fetchCollectionsStart();
   }, [checkUserSession, fetchCollectionsStart]);
 
+  // make pages always scroll to top after loaded
+  const { pathname } = useLocation();
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
-  }, [useLocation().pathname]);
+  }, [pathname]);
 
   return (
     <div className={styles.app}>
@@ -36,6 +39,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
         <Suspense fallback={<Spinner />}>
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShopPage} />
+          <Route exact path='/cart' component={CartPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route 
             exact

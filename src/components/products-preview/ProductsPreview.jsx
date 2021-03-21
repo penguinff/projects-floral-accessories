@@ -41,7 +41,7 @@ const responsive = {
 const ProductsPreview = ({ collections }) => {
   // create New Arrival Array from shop collections
   let newArrivalArray = [];
-  collections.map(collection => {
+  collections.forEach(collection => {
     let numberOfItems = collection.items.length;
     let newItems = collection.items.filter((item, index) => index > numberOfItems - 3);
     newItems.map(newItem => newArrivalArray.push(newItem));

@@ -1,6 +1,7 @@
 import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/shop-page/ShopPage';
 import SignInSignUpPage from './pages/signin-signup-page/SignInSignUpPage';
+import CartPage from './pages/cart-page/CartPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
 import UserProfilePage from './pages/user-profile-page/UserProfilePage';
 
@@ -22,6 +23,12 @@ const routes = [
     component: SignInSignUpPage,
     exact: true,
     breadcrumbName: 'Sign-in'
+  },
+  {
+    path: '/cart',
+    component: CartPage,
+    exact: true,
+    breadcrumbName: 'Shopping Cart'
   },
   {
     path: '/checkout',

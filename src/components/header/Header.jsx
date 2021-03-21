@@ -23,7 +23,7 @@ const Header = ({ hidden, cartItems, toggleCartHidden }) => {
   useEffect(() => {
     let timer = setTimeout(() => toggleCartHidden(true), 4000);
     return () => clearTimeout(timer);
-  }, [cartItems]);
+  }, [cartItems, toggleCartHidden]);
   
   return (
     <div className={styles.header}>
@@ -46,7 +46,7 @@ const Header = ({ hidden, cartItems, toggleCartHidden }) => {
             onMouseEnter={() => toggleCartHidden(false)} 
             onMouseLeave={() => toggleCartHidden(true)}
           >
-            <Link to='/checkout'>
+            <Link to='/cart'>
               <CartIcon />
             </Link>
             { hidden || !cartItems.length ? null : <CartDropdown /> }
