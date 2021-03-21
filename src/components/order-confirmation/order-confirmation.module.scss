@@ -1,0 +1,32 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
+.orderConfirmation {
+  .title {
+    background-color: primaryColorDark;
+    color: white;
+    margin-right: 3rem;
+
+    h2 {
+      padding: 0.7rem;
+    }
+  }
+
+  .shippingInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .info,
+    .method {
+      display: flex;
+      flex-direction: column;
+      grid-column: span 1;
+      overflow-wrap: break-word;
+
+      :first-child {
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

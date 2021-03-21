@@ -1,14 +1,26 @@
 @value colors: '../../app.module.scss';
-@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
 
 .checkoutForm {
   min-width: 35rem;
   width: 100%;
-  margin: 0 10vw 3rem 0;
   font-size: 1.5rem;
   color: primaryColorDark;
+  position: relative;
 
-  label {
-    margin-right: 2rem;
+  .amend {
+    cursor: pointer;
+    color: secondaryColor;
+    position: absolute;
+    right: 4.5rem;
+    top: 9.5rem;
+  }
+
+  .upperPart {
+    margin: 0 10vw 3rem 0;
+
+    label {
+      margin-right: 2rem;
+    }
   }
 }
