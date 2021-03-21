@@ -12,10 +12,11 @@
   // }
 
   .group {
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    max-width: 120rem;
+    margin: 3rem auto;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    // flex-wrap: wrap;
   }
 }

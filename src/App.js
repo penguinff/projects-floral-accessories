@@ -40,13 +40,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/cart' component={CartPage} />
-          <Route 
-          exact 
-          path='/checkout' 
-          render={() =>
-            currentUser ? <CheckoutPage /> : <Redirect to='/signin' />
-          }
-          />
+          <Route exact path='/checkout' component={CheckoutPage} />
           <Route 
             exact
             path='/signin'
@@ -78,3 +72,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// <Route 
+//   exact 
+//   path='/checkout' 
+//   render={() =>
+//     currentUser ? <CheckoutPage /> : <Redirect to='/signin' />
+//   }
+// />

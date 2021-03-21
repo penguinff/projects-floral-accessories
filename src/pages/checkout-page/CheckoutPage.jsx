@@ -6,6 +6,7 @@ import { selectCartItemsCount, selectCartItems, selectCartTotal } from '../../re
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CheckoutForm from '../../components/checkout-form/CheckoutForm';
+import CartSummary from '../../components/cart-summary/CartSummary';
 
 import styles from './checkout-page.module.scss';
 
@@ -38,6 +39,7 @@ const CheckoutPage = ({ match, location, itemsCount, cartItems, total }) => {
       <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes}/>
       <div className={styles.group}>
         <CheckoutForm />
+        <CartSummary />
       </div>
     </div>
   )

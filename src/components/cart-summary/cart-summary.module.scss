@@ -1,0 +1,59 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
+.summaryBox {
+  border: solid 2px primaryColor;
+  width: 30rem;
+  color: primaryColor;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+
+  .header {
+    background-color: primaryColorDark;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      margin-left: 1rem;
+      color: white;
+    }
+
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-right: 1rem;
+      fill: white;
+      cursor: pointer;
+
+      &:hover {
+        fill: secondaryColorDark;
+      }
+    }
+  }
+
+  .cartItems {
+    padding: 1rem 1rem 0 1rem;
+  }
+
+  .footer {
+    padding: 0 1rem 1rem 1rem;
+    background-color: rgb(241, 235, 235);
+
+    div,
+    h3 {
+      display: flex;
+      justify-content: space-between;
+      margin: 0.5rem 0;
+    }
+
+    h3 {
+      border-bottom: solid 1.5px primaryColor;
+      padding: 1rem 0;
+
+      &:last-of-type {
+        border-top: solid 1.5px primaryColor;
+      }
+    }
+  }
+}

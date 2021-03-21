@@ -8,13 +8,13 @@ import styles from './checkout-form.module.scss';
 const CheckoutForm = () => {
   const [shippingInfo, setShippingInfo] = useState({
     title: 'ms',
-    surname: '',
-    firstname: '',
+    name: '',
+    email: '',
     phone: '',
     address: ''
   });
 
-  const { title, surname, firstname, phone, address } = shippingInfo;
+  const { title, name, email, phone, address } = shippingInfo;
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -41,7 +41,6 @@ const CheckoutForm = () => {
           id='ms'
         />
         <label htmlFor='ms'>女士</label>
-        <br></br>
         <input 
           type='radio'
           name='title'
@@ -52,18 +51,18 @@ const CheckoutForm = () => {
         <label htmlFor='mr'>先生</label>
         <FormInput 
           type='text'
-          name='surname'
-          value={surname}
+          name='name'
+          value={name}
           onChange={handleChange}
-          label='姓氏'
+          label='收件人姓名'
           required
         />
         <FormInput 
-          type='text'
-          name='firstname'
-          value={firstname}
+          type='email'
+          name='email'
+          value={email}
           onChange={handleChange}
-          label='名字'
+          label='電子信箱'
           required
         />
         <FormInput 
@@ -80,7 +79,7 @@ const CheckoutForm = () => {
           name='address'
           value={address}
           onChange={handleChange}
-          label='地址'
+          label='收件地址'
           required
         />
         <CustomButton type='submit'>繼續</CustomButton>
