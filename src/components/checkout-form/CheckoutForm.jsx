@@ -7,14 +7,14 @@ import styles from './checkout-form.module.scss';
 
 const CheckoutForm = () => {
   const [shippingInfo, setShippingInfo] = useState({
-    title: '',
+    title: 'ms',
     surname: '',
     firstname: '',
     phone: '',
     address: ''
   });
 
-  const { surname, firstname, phone, address } = shippingInfo;
+  const { title, surname, firstname, phone, address } = shippingInfo;
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -36,14 +36,17 @@ const CheckoutForm = () => {
           type='radio'
           name='title'
           value='ms'
+          checked={title === 'ms'}
           onChange={handleChange}
           id='ms'
-          checked />
+        />
         <label htmlFor='ms'>女士</label>
+        <br></br>
         <input 
           type='radio'
           name='title'
           value='mr'
+          checked={title === 'mr'}
           onChange={handleChange}
           id='mr'/>
         <label htmlFor='mr'>先生</label>

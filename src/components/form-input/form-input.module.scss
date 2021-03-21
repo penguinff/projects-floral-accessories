@@ -9,7 +9,6 @@
 
 .formInputGroup {
   position: relative;
-  margin: 4.5rem 0;
 
   .formInput {
     color: primaryColor;
@@ -20,7 +19,7 @@
     width: 100%;
     border: none;
     border-bottom: solid 0.1rem primaryColor;
-    margin: 2.5rem 0;
+    margin: 4rem 0;
 
     &:focus {
       outline: none;
