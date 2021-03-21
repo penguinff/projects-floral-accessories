@@ -40,7 +40,13 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
           <Route exact path='/' component={Homepage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/cart' component={CartPage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
+          <Route 
+          exact 
+          path='/checkout' 
+          render={() =>
+            currentUser ? <CheckoutPage /> : <Redirect to='/signin' />
+          }
+          />
           <Route 
             exact
             path='/signin'

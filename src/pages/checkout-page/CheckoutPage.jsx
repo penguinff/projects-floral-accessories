@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { selectCartItemsCount, selectCartItems, selectCartTotal } from '../../redux/cart/cart-selectors';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
-import CustomButton from '../../components/custom-button/CustomButton';
+import CheckoutForm from '../../components/checkout-form/CheckoutForm';
 
 import styles from './checkout-page.module.scss';
 
@@ -36,8 +36,9 @@ const CheckoutPage = ({ match, location, itemsCount, cartItems, total }) => {
   return (
     <div className={styles.checkoutPage}>
       <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes}/>
-      <h1>結賬</h1>
-      <CustomButton>繼續</CustomButton>
+      <div className={styles.group}>
+        <CheckoutForm />
+      </div>
     </div>
   )
 };
@@ -48,4 +49,4 @@ const mapStateToProps = createStructuredSelector({
   total: selectCartTotal
 });
 
-export default connect(mapStateToProps)(CheckoutPage);
+export default connect(mapStateToProps)(withRouter(CheckoutPage));

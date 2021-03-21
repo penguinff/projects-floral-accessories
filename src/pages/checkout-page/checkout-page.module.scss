@@ -5,9 +5,17 @@
   grid-column: full-start / full-end;
   min-height: 65vh;
 
-  h1 {
-    margin: 5rem 20%;
-    font-size: 3rem;
-    color: primaryColorDark;
+  // h1 {
+  //   margin: 5rem 20%;
+  //   font-size: 3rem;
+  //   color: primaryColorDark;
+  // }
+
+  .group {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

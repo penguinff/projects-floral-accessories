@@ -1,0 +1,10 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
+.checkoutForm {
+  min-width: 35rem;
+  max-width: 30%;
+  margin: 3rem 5vw;
+  font-size: 1.5rem;
+  color: primaryColorDark;
+}
