@@ -97,20 +97,20 @@ export const createOrder = async (currentUser, cartItems, shippingInfo) => {
       [currentUserId + createdAt]: orderDetails
     });
   } catch(error) {
-    console.log(error);
+    console.log('error creating order', error);
   };
 };
 
+// ----- functions related to user cart ----- //
 export const storeUserCart = async (currentUser, cartItems) => {
   const currentUserId = currentUser.id;
   const userRef = firestore.doc(`users/${currentUserId}`);
   try {
-    console.log('hihi')
     await userRef.update({
       cartItems
     });
   } catch(error) {
-    console.log(error);
+    console.log('error saving user cart', error);
   };
 };
 
