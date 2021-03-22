@@ -31,3 +31,8 @@ export const selectCartTotal = createSelector(
       0
     )
 );
+
+export const selectShippingFee = createSelector(
+  [selectCartTotal],
+  (cartTotal) => cartTotal >= 1000 ? 0 : 100
+);

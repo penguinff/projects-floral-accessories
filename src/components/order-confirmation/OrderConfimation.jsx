@@ -1,7 +1,15 @@
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
+
+import StripeCheckoutButton from '../stripe-checkout-button/StripeCheckoutButton';
+
 import styles from './order-confirmation.module.scss'
 
-const OrderConfirmation = ({ shippingInfo }) => {
+const OrderConfirmation = ({ shippingInfo, cartTotal, shippingFee }) => {
   const { title, name, email, phone, address } = shippingInfo;
+  const totalToPay = cartTotal + shippingFee;
 
   return (
     <div className={styles.orderConfirmation}>
@@ -26,10 +34,16 @@ const OrderConfirmation = ({ shippingInfo }) => {
         <h2>2. 信用卡付款</h2>
       </div>
       <div className={styles.payment}>
-        Stripe
+        <p>我們網店使用第三方支付Stripe，安全又便捷！<span><a href='https://stripe.com/'>了解更多</a></span></p>
+        <StripeCheckoutButton price={totalToPay} shippingInfo={shippingInfo} />
       </div>
     </div>
   )
 };
 
-export default OrderConfirmation;
+const mapStateToProps = createStructuredSelector({
+  cartTotal: selectCartTotal,
+  shippingFee: selectShippingFee
+});
+
+export default connect(mapStateToProps)(OrderConfirmation);

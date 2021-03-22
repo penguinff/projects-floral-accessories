@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { Link, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { selectCartItemsCount, selectCartItems, selectCartTotal } from '../../redux/cart/cart-selectors';
 
@@ -10,7 +10,7 @@ import CartSummary from '../../components/cart-summary/CartSummary';
 
 import styles from './checkout-page.module.scss';
 
-const CheckoutPage = ({ match, location, itemsCount, cartItems, total }) => {
+const CheckoutPage = ({ match, location }) => {
   const onMatchedRoutes = () => {
     return [
       {

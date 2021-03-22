@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCartItems, selectCartItemsCount, selectCartTotal } from '../../redux/cart/cart-selectors';
+import { selectCartItems, selectCartItemsCount, selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
 
 import CartItem from '../cart-item/CartItem';
 
@@ -12,10 +12,8 @@ import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-down-icon.sv
 import { ReactComponent as ArrowUpIcon } from '../../assets/arrow-up-icon.svg';
 
 
-const CartSummary = ({ cartItems, cartItemsCount, cartTotal }) => {
+const CartSummary = ({ cartItems, cartItemsCount, cartTotal, shippingFee }) => {
   const [isItemsHidden, setIsItemsHidden] = useState(true);
-
-  const shippingFee = cartTotal >= 1000 ? 0 : 100;
 
   return (
     <div className={styles.cartSummary}>
@@ -42,7 +40,8 @@ const CartSummary = ({ cartItems, cartItemsCount, cartTotal }) => {
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   cartItemsCount: selectCartItemsCount,
-  cartTotal: selectCartTotal
+  cartTotal: selectCartTotal,
+  shippingFee: selectShippingFee
 })
 
 export default connect(mapStateToProps)(CartSummary);

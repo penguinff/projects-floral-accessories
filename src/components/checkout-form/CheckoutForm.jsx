@@ -1,8 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-import { clearCart } from '../../redux/cart/cart-actions';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -10,7 +6,7 @@ import OrderConfirmation from '../order-confirmation/OrderConfimation';
 
 import styles from './checkout-form.module.scss';
 
-const CheckoutForm = ({ clearCart }) => {
+const CheckoutForm = () => {
   const [shippingInfo, setShippingInfo] = useState({
     title: 'Ms.',
     name: '',
@@ -31,13 +27,6 @@ const CheckoutForm = ({ clearCart }) => {
     event.preventDefault();
     setIsSubmitted(true);
   }
-  
-  // will make it upload to firebase later
-  const handleUpload = event => {
-    // upload to firebase
-    console.log(shippingInfo);
-    alert('已成功提交訂單');
-  }
 
   return (
     <div className={styles.checkoutForm}>
@@ -45,6 +34,7 @@ const CheckoutForm = ({ clearCart }) => {
       <div className={styles.amend} hidden={!isSubmitted} onClick={() => setIsSubmitted(!isSubmitted)}>
         <span>編輯</span>
       </div>
+
       <div className={styles.upperPart} hidden={isSubmitted}>
         <h2>宅配到府</h2>
         <form className={styles.name} onSubmit={handleSubmit}>
@@ -100,28 +90,13 @@ const CheckoutForm = ({ clearCart }) => {
           />
           <CustomButton type='submit'>繼續</CustomButton>
         </form>
-      
       </div>
+
       <div className={styles.lowerPart} hidden={!isSubmitted}>
         <OrderConfirmation shippingInfo={shippingInfo} />
-      </div>
-      
-      <div 
-        className={styles.submit} 
-        hidden={!isSubmitted} 
-        onClick={() => {
-          handleUpload();
-          clearCart();
-        }
-        }>
-        <Link to='/userprofile'><CustomButton>提交訂單</CustomButton></Link>
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  clearCart: () => dispatch(clearCart())
-});
-
-export default connect(null, mapDispatchToProps)(CheckoutForm);
+export default CheckoutForm;
