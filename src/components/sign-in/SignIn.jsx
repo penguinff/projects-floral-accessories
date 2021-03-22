@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -11,13 +12,18 @@ import { ReactComponent as FacebookIcon } from '../../assets/facebook-color-icon
 
 import styles from './sign-in.module.scss';
 
-const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart }) => {
+const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, location, history }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: '', 
     password: '' 
   });
 
   const { email, password } = userCredentials;
+  
+  // redirect after signin
+  const redirect = () => {
+    location.state ? history.push(location.state.from) : history.push('/userprofile');
+  }
 
   const handleChange = event => {
     const { value, name } = event.target;
@@ -27,7 +33,7 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart }) =>
   const handleSubmit = async event => {
     event.preventDefault();
     emailSignInStart(email, password);
-    // setUserCredentials({ email: '', password: '' });
+    redirect();
   }
 
   return (
@@ -69,4 +75,4 @@ const mapDispatchToProps = dispatch => ({
   emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
 })
 
-export default connect(null, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(withRouter(SignIn));

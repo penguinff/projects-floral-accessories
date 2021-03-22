@@ -23,7 +23,7 @@ const CartSummary = ({ cartItems, cartItemsCount, cartTotal, shippingFee }) => {
           { isItemsHidden ? <ArrowDownIcon /> : <ArrowUpIcon /> }
         </div>
         <div className={styles.cartItems} hidden={isItemsHidden}>
-          {cartItems.map(cartItem => <CartItem cartItem={cartItem} />)}
+          {cartItems.map((cartItem) => <CartItem key={cartItem.id} cartItem={cartItem} />)}
         </div>
         <div className={styles.footer}>
           <h3>訂單摘要</h3>

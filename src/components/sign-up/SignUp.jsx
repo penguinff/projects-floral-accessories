@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -8,7 +9,7 @@ import { signUpStart } from '../../redux/user/user-actions';
 
 import styles from './sign-up.module.scss';
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = ({ signUpStart, location, history }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
@@ -17,6 +18,11 @@ const SignUp = ({ signUpStart }) => {
   });
 
   const { displayName, email, password, confirmPassword } = userCredentials;
+
+  // redirect after signup
+  const redirect = () => {
+    location.state ? history.push(location.state.from) : history.push('/userprofile');
+  }
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -30,6 +36,7 @@ const SignUp = ({ signUpStart }) => {
       return;
     }
     signUpStart({ displayName, email, password });
+    redirect();
   }
 
   return (
@@ -79,4 +86,4 @@ const mapDispatchToProps = dispatch => ({
   signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
 })
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(null, mapDispatchToProps)(withRouter(SignUp));

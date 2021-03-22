@@ -8,11 +8,18 @@ import { signOutStart } from '../../redux/user/user-actions';
 
 import styles from './user-profile-page.module.scss';
 
-const UserProfilePage = ({ location, signOutStart }) => (
+const UserProfilePage = ({ location, history, signOutStart }) => (
   <div className={styles.userProfilePage}>
     <Breadcrumb location={location} />
     User Profile Page
-    <CustomButton onClick={signOutStart}>登出</CustomButton>
+    <CustomButton 
+      onClick={() => {
+        signOutStart(); 
+        history.push('/signin');
+      }}
+    >
+      登出
+    </CustomButton>
   </div>
 );
 

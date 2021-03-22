@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCartHidden } from '../../redux/cart/cart-selectors';
 import { selectCartItems } from '../../redux/cart/cart-selectors';
 import { toggleCartHidden } from '../../redux/cart/cart-actions';
+import { selectCurrentUser } from '../../redux/user/user-selectors';
 
 import SaleMessage from '../sale-message/SaleMessage';
 import CartIcon from '../cart-icon/cartIcon';
@@ -19,11 +20,15 @@ import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
-const Header = ({ hidden, cartItems, toggleCartHidden }) => {
+const Header = ({ hidden, cartItems, toggleCartHidden, history, currentUser }) => {
   useEffect(() => {
     let timer = setTimeout(() => toggleCartHidden(true), 4000);
     return () => clearTimeout(timer);
   }, [cartItems, toggleCartHidden]);
+
+  const redirect = () => {
+    currentUser ? history.push('/userprofile') : history.push('/signin');
+  }
   
   return (
     <div className={styles.header}>
@@ -38,9 +43,7 @@ const Header = ({ hidden, cartItems, toggleCartHidden }) => {
         </Link>
         <div className={styles.rightOptions}>
           <ContactIcon />
-          <Link to='/signin'>
-            <UserIcon />
-          </Link>
+          <UserIcon onClick={redirect} />
           <div 
             className={styles.cartGroup} 
             onMouseEnter={() => toggleCartHidden(false)} 
@@ -67,11 +70,12 @@ const Header = ({ hidden, cartItems, toggleCartHidden }) => {
 
 const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden,
-  cartItems: selectCartItems
+  cartItems: selectCartItems,
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
   toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
