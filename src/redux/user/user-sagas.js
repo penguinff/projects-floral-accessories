@@ -3,6 +3,7 @@ import { takeLatest, put, all, call } from 'redux-saga/effects';
 import UserActionTypes from './user-types';
 
 import { signInSuccess, signInFailure, signOutSuccess, signOutFailure, signUpSuccess, signUpFailure } from './user-actions';
+import { restoreCart } from '../cart/cart-actions';
 
 import { auth, googleProvider, facebookProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
 
@@ -75,6 +76,10 @@ export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserAuth(user, additionalData);
 }
 
+export function* restoreCartAfterSignIn({ payload: { cartItems }}) {
+  yield put(restoreCart(cartItems));
+}
+
 export function* onGoogleSignInStart() {
   yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
@@ -103,6 +108,10 @@ export function* onSignUpSuccess() {
   yield takeLatest(UserActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
+export function* onSignInSuccess() {
+  yield takeLatest(UserActionTypes.SIGN_IN_SUCCESS, restoreCartAfterSignIn);
+}
+
 export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
@@ -111,6 +120,7 @@ export function* userSagas() {
     call(onCheckUserSession),
     call(onSignOutStart),
     call(onSignUpStart),
-    call(onSignUpSuccess)
+    call(onSignUpSuccess),
+    call(onSignInSuccess)
   ]);
 }

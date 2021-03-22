@@ -23,3 +23,8 @@ export const clearItemFromCart = item => ({
 export const clearCart = () => ({
   type: CartActionTypes.CLEAR_CART
 });
+
+export const restoreCart = items => ({
+  type: CartActionTypes.RESTORE_CART,
+  payload: items
+})
