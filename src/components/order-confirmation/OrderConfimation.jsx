@@ -34,7 +34,7 @@ const OrderConfirmation = ({ shippingInfo, cartTotal, shippingFee }) => {
         <h2>2. 信用卡付款</h2>
       </div>
       <div className={styles.payment}>
-        <p>我們網店使用第三方支付Stripe，安全又便捷！<span><a href='https://stripe.com/'>了解更多</a></span></p>
+        <p>我們網店使用第三方支付Stripe，安全又便捷！<span><a href='https://stripe.com/' target='_blank'>了解更多</a></span></p>
         <StripeCheckoutButton price={totalToPay} shippingInfo={shippingInfo} />
       </div>
     </div>
