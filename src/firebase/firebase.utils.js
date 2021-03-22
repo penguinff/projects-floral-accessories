@@ -76,4 +76,42 @@ export const convertCollectionsSnapshotToMap = (collections) => {
   }, {});
 };
 
+// ----- functions related to user orders ----- //
+export const createOrder = async (currentUser, cartItems, shippingInfo) => {
+  const currentUserId = currentUser.id;
+  const userRef = firestore.doc(`users/${currentUserId}`);
+  const ordersRef = firestore.doc('orders/users-orders');
+  const createdAt = new Date();
+  const orderDetails = {
+    time: createdAt,
+    items: cartItems,
+    shippingInfo: shippingInfo
+  }
+  try {
+    await userRef.set({
+      orders: {
+        [createdAt]: orderDetails
+      }
+    }, {merge: true});
+    await ordersRef.update({
+      [currentUserId + createdAt]: orderDetails
+    });
+  } catch(error) {
+    console.log(error);
+  };
+};
+
+export const storeUserCart = async (currentUser, cartItems) => {
+  const currentUserId = currentUser.id;
+  const userRef = firestore.doc(`users/${currentUserId}`);
+  try {
+    console.log('hihi')
+    await userRef.update({
+      cartItems
+    });
+  } catch(error) {
+    console.log(error);
+  };
+};
+
 export default firebase;

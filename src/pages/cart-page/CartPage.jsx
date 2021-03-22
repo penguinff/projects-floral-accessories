@@ -42,7 +42,7 @@ const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, curren
             <span className={styles.note}>總額:</span>
             <span className={styles.total}>NT${cartTotal + shippingFee}</span>
             <span className={styles.button} onClick={redirect}>
-              <CustomButton>前往結賬</CustomButton>
+              <CustomButton>{currentUser ? '前往結賬' : '先登入再結賬'}</CustomButton>
             </span>
           </div>
         </div>

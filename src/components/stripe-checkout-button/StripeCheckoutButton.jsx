@@ -3,13 +3,16 @@ import { createStructuredSelector } from 'reselect';
 import StripeCheckout from 'react-stripe-checkout';
 import { withRouter } from 'react-router-dom';
 
+import { createOrder } from '../../firebase/firebase.utils';
+
+import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { selectCartItems } from '../../redux/cart/cart-selectors';
 import { clearCart } from '../../redux/cart/cart-actions';
 
 import CustomButton from '../custom-button/CustomButton';
 import CompanyLogo from '../../assets/logo.png';
 
-const StripeCheckoutButton = ({ price, shippingInfo, cartItems, clearCart, history }) => {
+const StripeCheckoutButton = ({ price, shippingInfo, cartItems, currentUser, clearCart, history }) => {
   const priceForStripe = price * 100;
   const publishableKey = 'pk_test_51Gs8LHGm0HT5YB3DuO8XmMMNiQ9oOeulR6UruC3pru13wZDM3NkdsuCGM8S6Q2SEIJ6x8PPhTqHXeggdpGONZQic00soELdq0K';
   
@@ -17,6 +20,7 @@ const StripeCheckoutButton = ({ price, shippingInfo, cartItems, clearCart, histo
     // will link to backend server later
     console.log(`Credit Card Info: ${token}`);
     // upload the order details to firebase after payment successful
+    createOrder(currentUser, cartItems, shippingInfo);
     console.log(`Shipping Info: ${shippingInfo}`);
     console.log(`Order Details: ${cartItems}`);
     // after successful payment
@@ -43,7 +47,8 @@ const StripeCheckoutButton = ({ price, shippingInfo, cartItems, clearCart, histo
 };
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems
+  cartItems: selectCartItems,
+  currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
