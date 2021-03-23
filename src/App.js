@@ -54,13 +54,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
               currentUser ? <UserProfilePage /> : <Redirect to='/signin' />
             }
           />
-          <Route 
-            exact 
-            path='/checkout'
-            render={() =>
-              currentUser ? <CheckoutPage /> : <Redirect to='/signin' />
-            }
-          />
+          <Route exact path='/checkout' component={CheckoutPage} />
         </Suspense>
       </Switch>
       <Footer />

@@ -44,6 +44,11 @@ const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, curren
             <span className={styles.button} onClick={redirect}>
               <CustomButton>{currentUser ? '前往結賬' : '先登入再結賬'}</CustomButton>
             </span>
+            { currentUser ? '' : 
+              <span className={styles.button}>
+                <Link to='/checkout'><CustomButton>訪客結賬</CustomButton></Link>
+              </span>
+            }
           </div>
         </div>
         :
