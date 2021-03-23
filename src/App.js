@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from './redux/user/user-selectors';
-import { checkUserSession } from './redux/user/user-actions';
+// import { checkUserSession } from './redux/user/user-actions';
 import { fetchCollectionsStart } from './redux/shop/shop-actions';
 
 import Spinner from './components/spinner/Spinner';
@@ -20,11 +20,16 @@ const SignInSignUpPage = lazy(() => import('./pages/signin-signup-page/SignInSig
 const UserProfilePage = lazy(() => import('./pages/user-profile-page/UserProfilePage'));
 
 
-const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
+// const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
+  // useEffect(() => {
+  //   checkUserSession();
+  //   fetchCollectionsStart();
+  // }, [checkUserSession, fetchCollectionsStart]);
+
+const App = ({ fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
-    checkUserSession();
     fetchCollectionsStart();
-  }, [checkUserSession, fetchCollectionsStart]);
+  }, [fetchCollectionsStart]);
 
   // make pages always scroll to top after loaded
   const { pathname } = useLocation();
@@ -67,7 +72,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  checkUserSession: () => dispatch(checkUserSession()),
+  // checkUserSession: () => dispatch(checkUserSession()),
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
