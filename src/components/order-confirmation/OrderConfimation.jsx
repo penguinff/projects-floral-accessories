@@ -35,6 +35,11 @@ const OrderConfirmation = ({ shippingInfo, cartTotal, shippingFee }) => {
       </div>
       <div className={styles.payment}>
         <p>我們網店使用第三方支付Stripe，安全又便捷！<span><a href='https://stripe.com/' target='_blank' rel='noreferrer noopener'>了解更多</a></span></p>
+        <p className={styles.testCardInfo}>
+          <span>***請用以下信用卡資料作測試用途***</span>
+          <br/>
+          <span>Card No.: 4242 4242 4242 4242 - Exp: 01/22 - CVV: 123</span>
+        </p>
         <StripeCheckoutButton price={totalToPay} shippingInfo={shippingInfo} />
       </div>
     </div>
