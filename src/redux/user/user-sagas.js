@@ -76,8 +76,8 @@ export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserAuth(user, additionalData);
 }
 
-export function* restoreCartAfterSignIn({ payload: { cartItems }}) {
-  yield put(restoreCart(cartItems));
+export function* restoreCartAfterSignIn({ payload: { storedCart }}) {
+  yield put(restoreCart(storedCart));
 }
 
 export function* onGoogleSignInStart() {

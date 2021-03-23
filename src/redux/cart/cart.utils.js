@@ -25,3 +25,15 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
       : cartItem
   );
 };
+
+export const mergeCurrentAndStoredCart = (cartItems, storedCart) => {
+  let newItems = [];
+  storedCart.forEach(storedCartItem => {
+    let sameId = element => element.id === storedCartItem.id;
+    let id = cartItems.findIndex(sameId);
+    if (id === -1) {
+      newItems.push(storedCartItem);
+    }
+  })
+  return [...cartItems, ...newItems];
+}

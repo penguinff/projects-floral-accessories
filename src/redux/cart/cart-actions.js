@@ -27,4 +27,4 @@ export const clearCart = () => ({
 export const restoreCart = items => ({
   type: CartActionTypes.RESTORE_CART,
   payload: items
-})
+});

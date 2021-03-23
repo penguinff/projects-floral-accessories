@@ -1,5 +1,5 @@
 import CartActionTypes from './cart-types';
-import { addItemToCart, removeItemFromCart } from '../cart/cart.utils';
+import { addItemToCart, removeItemFromCart, mergeCurrentAndStoredCart } from '../cart/cart.utils';
 
 const INITIAL_STATE = {
   hidden: true,
@@ -38,7 +38,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case CartActionTypes.RESTORE_CART:
       return {
         ...state,
-        cartItems: action.payload
+        cartItems: mergeCurrentAndStoredCart(state.cartItems, action.payload)
       }
     default:
       return state;

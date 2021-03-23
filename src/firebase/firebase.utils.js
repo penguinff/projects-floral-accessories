@@ -30,7 +30,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
-        cartItems: [],
+        storedCart: [],
         favorites: [],
         orders: [],
         ...additionalData
@@ -110,7 +110,7 @@ export const storeUserCart = async (currentUser, cartItems) => {
   const userRef = firestore.doc(`users/${currentUserId}`);
   try {
     await userRef.update({
-      cartItems
+      storedCart: cartItems
     });
   } catch(error) {
     console.log('error saving user cart', error);
