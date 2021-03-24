@@ -106,6 +106,7 @@ export const createOrder = async (currentUser, cartItems, shippingInfo) => {
 
 // ----- functions related to user cart ----- //
 export const storeUserCart = async (currentUser, cartItems) => {
+  if (!currentUser) return;
   const currentUserId = currentUser.id;
   const userRef = firestore.doc(`users/${currentUserId}`);
   try {

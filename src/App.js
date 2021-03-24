@@ -4,8 +4,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCurrentUser } from './redux/user/user-selectors';
-// import { checkUserSession } from './redux/user/user-actions';
+import { selectCartItems } from './redux/cart/cart-selectors';
+import { checkUserSession } from './redux/user/user-actions';
 import { fetchCollectionsStart } from './redux/shop/shop-actions';
+
+import { storeUserCart } from './firebase/firebase.utils';
 
 import Spinner from './components/spinner/Spinner';
 import Header from './components/header/Header';
@@ -20,16 +23,18 @@ const SignInSignUpPage = lazy(() => import('./pages/signin-signup-page/SignInSig
 const UserProfilePage = lazy(() => import('./pages/user-profile-page/UserProfilePage'));
 
 
-// const App = ({ checkUserSession, fetchCollectionsStart, currentUser }) => {
-  // useEffect(() => {
-  //   checkUserSession();
-  //   fetchCollectionsStart();
-  // }, [checkUserSession, fetchCollectionsStart]);
+const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems }) => {
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
 
-const App = ({ fetchCollectionsStart, currentUser }) => {
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
+
+  useEffect(() => {
+    storeUserCart(currentUser, cartItems);
+  }, [currentUser, cartItems]);
 
   // make pages always scroll to top after loaded
   const { pathname } = useLocation();
@@ -68,11 +73,12 @@ const App = ({ fetchCollectionsStart, currentUser }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  cartItems: selectCartItems
 });
 
 const mapDispatchToProps = dispatch => ({
-  // checkUserSession: () => dispatch(checkUserSession()),
+  checkUserSession: () => dispatch(checkUserSession()),
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 });
 
