@@ -27,7 +27,7 @@ const Header = ({ hidden, cartItems, toggleCartHidden, history, currentUser }) =
   }, [cartItems, toggleCartHidden]);
 
   const redirect = () => {
-    currentUser ? history.push('/userprofile') : history.push('/signin');
+    currentUser ? history.push('/user-profile') : history.push('/sign-in');
   }
   
   return (

@@ -26,7 +26,7 @@ const StripeCheckoutButton = ({ price, shippingInfo, cartItems, currentUser, cle
     // after successful payment
     alert('Payment Successful');
     clearCart();
-    history.push('/userprofile');
+    history.push('/user-profile');
   }
 
   return (

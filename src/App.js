@@ -53,18 +53,12 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
           <Route exact path='/cart' component={CartPage} />
           <Route 
             exact
-            path='/signin'
+            path='/sign-in'
             render={() => 
-              currentUser ? <Redirect to='/userprofile' /> : <SignInSignUpPage />
+              currentUser ? <Redirect to='/user-profile' /> : <SignInSignUpPage />
             }
           />
-          <Route 
-            exact 
-            path='/userprofile' 
-            render={() =>
-              currentUser ? <UserProfilePage /> : <Redirect to='/signin' />
-            }
-          />
+          <Route path='/user-profile' component={UserProfilePage} />
           <Route exact path='/checkout' component={CheckoutPage} />
         </Suspense>
       </Switch>

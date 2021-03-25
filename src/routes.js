@@ -4,6 +4,8 @@ import SignInSignUpPage from './pages/signin-signup-page/SignInSignUpPage';
 import CartPage from './pages/cart-page/CartPage';
 import CheckoutPage from './pages/checkout-page/CheckoutPage';
 import UserProfilePage from './pages/user-profile-page/UserProfilePage';
+import MyWishlistPage from './pages/my-wishlist-page/MyWishlistPage';
+import MyOrderHistoryPage from './pages/my-order-history-page/MyOrderHistoryPage';
 
 const routes = [
   {
@@ -19,7 +21,7 @@ const routes = [
     breadcrumbName: 'Shop'
   },
   {
-    path: '/signin',
+    path: '/sign-in',
     component: SignInSignUpPage,
     exact: true,
     breadcrumbName: 'Sign-in'
@@ -37,10 +39,22 @@ const routes = [
     breadcrumbName: 'Checkout'
   },
   {
-    path: '/userprofile',
+    path: '/user-profile',
     component: UserProfilePage,
-    exact: true,
-    breadcrumbName: 'User Profile'
+    exact: false,
+    breadcrumbName: 'User Profile',
+    routes: [
+      {
+        path: '/user-profile/my-wishlist',
+        component: MyWishlistPage,
+        breadcrumbName: 'My Wishlist'
+      },
+      {
+        path: '/user-profile/my-order-history',
+        component: MyOrderHistoryPage,
+        breadcrumbName: 'My Order History'
+      }
+    ]
   },
 ];
 

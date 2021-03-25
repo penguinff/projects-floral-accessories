@@ -1,32 +1,22 @@
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
-import { selectCurrentUser } from '../../redux/user/user-selectors';
-import { signOutStart } from '../../redux/user/user-actions';
+import { Switch, Route } from 'react-router-dom';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
-import CustomButton from '../../components/custom-button/CustomButton';
+
+import UserProfileSidebar from '../../components/user-profile-sidebar/UserProfileSideBar';
+import MyWishlistPage from '../../pages/my-wishlist-page/MyWishlistPage';
+import MyOrderHistoryPage from '../../pages/my-order-history-page/MyOrderHistoryPage';
 
 import styles from './user-profile-page.module.scss';
 
-const UserProfilePage = ({ location, signOutStart, currentUser }) => (
+const UserProfilePage = ({ match, location }) => (
   <div className={styles.userProfilePage}>
     <Breadcrumb location={location} />
-    User Profile Page
-    {currentUser.displayName}
-    <CustomButton onClick={signOutStart}>
-      登出
-    </CustomButton>
+    <UserProfileSidebar />
+    <Switch>
+      <Route exact path={`${match.path}/my-wishlist`} component={MyWishlistPage} />
+      <Route exact path={`${match.path}/my-order-history`} component={MyOrderHistoryPage} />
+    </Switch>
   </div>
 )
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-})
-
-const mapDispatchToProps = dispatch => ({
-  signOutStart: () => dispatch(signOutStart())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserProfilePage));
+export default UserProfilePage;

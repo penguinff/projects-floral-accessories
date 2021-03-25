@@ -21,7 +21,7 @@ const SignUp = ({ signUpStart, location, history }) => {
 
   // redirect after signup
   const redirect = () => {
-    location.state ? history.push(location.state.from) : history.push('/userprofile');
+    location.state ? history.push(location.state.from) : history.push('/user-profile');
   }
 
   const handleChange = event => {
