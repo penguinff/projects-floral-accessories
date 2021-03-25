@@ -35,13 +35,21 @@
       width: 1.8rem;
       height: 1.8rem;
       margin: 0 0.5rem;
-      fill: primaryColor;
-      color: primaryColor;
+      fill: rgb(210, 210, 210);
+      color: rgb(210, 210, 210);
       transition: all 0.3s;
 
       &:hover {
         fill: secondaryColor;
         color: secondaryColor;
+      }
+    }
+
+    .onWishlist {
+      fill: secondaryColorDark;
+
+      &:hover {
+        fill: secondaryColorDark;
       }
     }
   }
