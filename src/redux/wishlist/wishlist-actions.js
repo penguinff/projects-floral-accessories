@@ -1,7 +1,7 @@
 import WishlishActionTypes from './wishlist-types';
 
-export const addWishlist = item => ({
-  type: WishlishActionTypes.ADD_WISHLIST,
+export const toggleWishlist = item => ({
+  type: WishlishActionTypes.TOGGLE_WISHLIST,
   payload: item
 });
 

@@ -1,5 +1,5 @@
 import WishlistActionTypes from './wishlist-types';
-import { addItemtoWishlist, mergeCurrentAndStoredWishlist } from './wishlist.utils';
+import { toggleItemtoWishlist, mergeCurrentAndStoredWishlist } from './wishlist.utils';
 
 const INITIAL_STATE = {
   wishlistItems: []
@@ -7,10 +7,10 @@ const INITIAL_STATE = {
 
 const wishlistReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case WishlistActionTypes.ADD_WISHLIST:
+    case WishlistActionTypes.TOGGLE_WISHLIST:
       return {
         ...state,
-        wishlistItems: addItemtoWishlist(state.wishlistItems, action.payload)
+        wishlistItems: toggleItemtoWishlist(state.wishlistItems, action.payload)
       };
     case WishlistActionTypes.REMOVE_WISHLIST:
       return {

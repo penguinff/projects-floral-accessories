@@ -1,11 +1,11 @@
-export const addItemtoWishlist = (wishlistItems, wishlistItemToAdd) => {
+export const toggleItemtoWishlist = (wishlistItems, wishlistItemToToggle) => {
   const existingWishlistItem = wishlistItems.find(
-    wishlistItem => wishlistItem.id === wishlistItemToAdd.id
+    wishlistItem => wishlistItem.id === wishlistItemToToggle.id
   );
   if (existingWishlistItem) {
-    return wishlistItems.filter(wishlistItem => wishlistItem.id !== wishlistItemToAdd.id)
+    return wishlistItems.filter(wishlistItem => wishlistItem.id !== wishlistItemToToggle.id)
   };
-  return [wishlistItemToAdd, ...wishlistItems];
+  return [wishlistItemToToggle, ...wishlistItems];
 }
 
 export const mergeCurrentAndStoredWishlist = (wishlistItems, storedWishlist) => {
