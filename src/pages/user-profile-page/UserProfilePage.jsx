@@ -11,11 +11,13 @@ import styles from './user-profile-page.module.scss';
 const UserProfilePage = ({ match, location }) => (
   <div className={styles.userProfilePage}>
     <Breadcrumb location={location} />
-    <UserProfileSidebar />
-    <Switch>
-      <Route exact path={`${match.path}/my-wishlist`} component={MyWishlistPage} />
-      <Route exact path={`${match.path}/my-order-history`} component={MyOrderHistoryPage} />
-    </Switch>
+    <div className={styles.components}>
+      <UserProfileSidebar />
+      <Switch>
+        <Route exact path={`${match.path}/my-wishlist`} component={MyWishlistPage} />
+        <Route exact path={`${match.path}/my-order-history`} component={MyOrderHistoryPage} />
+      </Switch>
+    </div>
   </div>
 )
 

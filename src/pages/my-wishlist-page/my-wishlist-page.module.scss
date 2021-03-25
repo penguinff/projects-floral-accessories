@@ -1,0 +1,16 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+
+.myWishlistPage {
+  grid-column: col-start 4 / col-end 9;
+  grid-row: 1 / -1;
+  margin: 5rem;
+  color: primaryColorDark;
+
+  .wishlistItems {
+    display: flex;
+    flex-direction: column;
+    border-top: solid 1px primaryColorLight;
+    border-bottom: solid 1px primaryColorLight;
+  }
+}

@@ -22,7 +22,7 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, loca
   
   // redirect after signin
   const redirect = () => {
-    location.state ? history.push(location.state.from) : history.push('/userprofile');
+    location.state ? history.push(location.state.from) : history.push('/user-profile');
   }
 
   const handleChange = event => {
