@@ -3,8 +3,8 @@ export const addItemtoWishlist = (wishlistItems, wishlistItemToAdd) => {
     wishlistItem => wishlistItem.id === wishlistItemToAdd.id
   );
   if (existingWishlistItem) {
-    return [...wishlistItems];
-  }
+    return wishlistItems.filter(wishlistItem => wishlistItem.id !== wishlistItemToAdd.id)
+  };
   return [wishlistItemToAdd, ...wishlistItems];
 }
 

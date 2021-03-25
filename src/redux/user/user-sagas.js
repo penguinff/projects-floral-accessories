@@ -4,6 +4,7 @@ import UserActionTypes from './user-types';
 
 import { signInSuccess, signInFailure, signOutSuccess, signOutFailure, signUpSuccess, signUpFailure } from './user-actions';
 import { restoreCart } from '../cart/cart-actions';
+import { restoreWishlist } from '../wishlist/wishlist-actions';
 
 import { auth, googleProvider, facebookProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
 
@@ -76,8 +77,9 @@ export function* signInAfterSignUp({ payload: { user, additionalData } }) {
   yield getSnapshotFromUserAuth(user, additionalData);
 }
 
-export function* restoreCartAfterSignIn({ payload: { storedCart }}) {
+export function* restoreCartAndWishlistAfterSignIn({ payload: { storedCart, storedWishlist }}) {
   yield put(restoreCart(storedCart));
+  yield put(restoreWishlist(storedWishlist));
 }
 
 export function* onGoogleSignInStart() {
@@ -109,7 +111,7 @@ export function* onSignUpSuccess() {
 }
 
 export function* onSignInSuccess() {
-  yield takeLatest(UserActionTypes.SIGN_IN_SUCCESS, restoreCartAfterSignIn);
+  yield takeLatest(UserActionTypes.SIGN_IN_SUCCESS, restoreCartAndWishlistAfterSignIn);
 }
 
 export function* userSagas() {

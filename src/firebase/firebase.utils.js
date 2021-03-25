@@ -31,7 +31,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         email,
         createdAt,
         storedCart: [],
-        wishlist: [],
+        storedWishlist: [],
         orders: [],
         ...additionalData
       })
@@ -104,17 +104,18 @@ export const createOrder = async (currentUser, cartItems, shippingInfo) => {
   };
 };
 
-// ----- functions related to user cart ----- //
-export const storeUserCart = async (currentUser, cartItems) => {
+// ----- functions related to user cart & wishlist----- //
+export const storeUserCartAndWishlist = async (currentUser, cartItems, wishlistItems) => {
   if (!currentUser) return;
   const currentUserId = currentUser.id;
   const userRef = firestore.doc(`users/${currentUserId}`);
   try {
     await userRef.update({
-      storedCart: cartItems
+      storedCart: cartItems,
+      storedWishlist: wishlistItems
     });
   } catch(error) {
-    console.log('error saving user cart', error);
+    console.log('error saving user cart and wishlist', error);
   };
 };
 
