@@ -18,7 +18,7 @@ const ProductItem = ({ item, addItem, toggleCartHidden, toggleWishlist, wishlist
     <div className={styles.productItem}>
       <img src={item.imageUrl} alt='product' className={styles.image} />
       <span className={styles.productName}>{item.name}</span>
-      <span className={styles.productPrice}>{`NT$${item.price}`}</span>
+      <span className={styles.productPrice}>{`NT$${item.price.toLocaleString()}`}</span>
       <div className={styles.icons}>
         <FavoriteIcon 
           className={existingWishlistItem && styles.onWishlist}

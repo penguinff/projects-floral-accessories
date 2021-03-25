@@ -34,13 +34,13 @@ const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, curren
           </div>
           <div className={styles.totalGroup}>
             <span className={styles.note}>小計:</span>
-            <span className={styles.total}>NT${cartTotal}</span>
+            <span className={styles.total}>NT${cartTotal.toLocaleString()}</span>
             <span className={styles.note}>運費:</span>
             <span className={styles.total}>NT${shippingFee}</span>
           </div>
           <div className={styles.totalGroup}>
             <span className={styles.note}>總額:</span>
-            <span className={styles.total}>NT${cartTotal + shippingFee}</span>
+            <span className={styles.total}>NT${(cartTotal + shippingFee).toLocaleString()}</span>
             <span className={styles.button} onClick={redirect}>
               <CustomButton>{currentUser ? '前往結賬' : '先登入再結賬'}</CustomButton>
             </span>

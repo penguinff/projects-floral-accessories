@@ -12,7 +12,7 @@ const CartItem = ({ cartItem }) => {
       </div>
       <div className={styles.group}>
         <div className={styles.total}>
-          <span>NT${price * quantity}</span>
+          <span>NT${(price * quantity).toLocaleString()}</span>
         </div>
         <div className={styles.quantity}>
           <span>數量：{quantity}</span>

@@ -27,9 +27,9 @@ const CartSummary = ({ cartItems, cartItemsCount, cartTotal, shippingFee }) => {
         </div>
         <div className={styles.footer}>
           <h3>訂單摘要</h3>
-          <div><span>總計：</span><span>NT${cartTotal}</span></div>
-          <div><span>運費：</span><span>NT${shippingFee}</span></div>
-          <h3><span>總額：</span><span>NT${cartTotal + shippingFee}</span></h3>
+          <div><span>總計：</span><span>NT${cartTotal.toLocaleString()}</span></div>
+          <div><span>運費：</span><span>NT${shippingFee.toLocaleString()}</span></div>
+          <h3><span>總額：</span><span>NT${(cartTotal + shippingFee).toLocaleString()}</span></h3>
         </div>
       </div>
     </div>

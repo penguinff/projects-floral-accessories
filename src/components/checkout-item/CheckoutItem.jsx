@@ -20,7 +20,7 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItemFromCart }) => {
         <span>{name}</span>
       </div>
       <div className={styles.price}>
-        <span>NT${price}</span>
+        <span>NT${price.toLocaleString()}</span>
       </div>
       <div className={styles.quantity}>
         <LeftIcon onClick={() => removeItem(cartItem)} />
@@ -28,7 +28,7 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItemFromCart }) => {
         <RightIcon onClick={() => addItem(cartItem)}/>
       </div>
       <div className={styles.total}>
-        <span>NT${price * quantity}</span>
+        <span>NT${(price * quantity).toLocaleString()}</span>
       </div>
       <div className={styles.removeButton} onClick={() => clearItemFromCart(cartItem)}>
         <ClearIcon />

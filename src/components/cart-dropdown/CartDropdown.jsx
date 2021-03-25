@@ -20,7 +20,7 @@ const CartDropdown = ({ cartItems, cartItemsCount, cartTotal, toggleCartHidden }
     </div>
     <div className={styles.total}>
       <span>全部</span>
-      <span>NT${cartTotal}</span>
+      <span>NT${cartTotal.toLocaleString()}</span>
     </div>
     <Link to='/cart'><CustomButton onClick={() => toggleCartHidden(true)}>查看購物車</CustomButton></Link>
   </div>
