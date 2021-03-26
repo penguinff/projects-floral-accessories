@@ -14,7 +14,7 @@ import styles from './cart-page.module.scss';
 const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, currentUser }) => {
   // if user not signed in, redirect to signin page and pass current path to location.state
   const redirect = () => {
-    currentUser ? history.push('/checkout') : history.push({pathname: '/signin', state: {from: '/cart'}});
+    currentUser ? history.push('/checkout') : history.push({pathname: '/sign-in', state: {from: '/cart'}});
   };
 
   return (
