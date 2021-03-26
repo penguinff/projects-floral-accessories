@@ -10,7 +10,7 @@ const Breadcrumb = ({ location, onMatchedRoutes }) => {
     {
       route: {
         path: '/',
-        breadcrumbName: 'Home'
+        breadcrumbName: '首頁'
       }
     },
     ...matchedRoutes

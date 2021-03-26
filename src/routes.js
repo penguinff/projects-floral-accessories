@@ -6,53 +6,86 @@ import CheckoutPage from './pages/checkout-page/CheckoutPage';
 import UserProfilePage from './pages/user-profile-page/UserProfilePage';
 import MyWishlistPage from './pages/my-wishlist-page/MyWishlistPage';
 import MyOrderHistoryPage from './pages/my-order-history-page/MyOrderHistoryPage';
+import CollectionPageContainer from './pages/collection-page/CollectionPageContainer';
 
 const routes = [
   {
     path: '/',
     component: Homepage,
     exact: true,
-    breadcrumbName: 'Home'
+    breadcrumbName: '首頁'
   },
   {
     path: '/shop',
     component: ShopPage,
     exact: false,
-    breadcrumbName: 'Shop'
+    breadcrumbName: '商品',
+    routes: [
+      {
+        path: '/shop/earrings',
+        component: CollectionPageContainer,
+        breadcrumbName: '耳環'
+      },
+      {
+        path: '/shop/necklaces',
+        component: CollectionPageContainer,
+        breadcrumbName: '項鏈'
+      },
+      {
+        path: '/shop/bracelets',
+        component: CollectionPageContainer,
+        breadcrumbName: '手鏈'
+      },
+      {
+        path: '/shop/rings',
+        component: CollectionPageContainer,
+        breadcrumbName: '戒指'
+      },
+      {
+        path: '/shop/hairpins',
+        component: CollectionPageContainer,
+        breadcrumbName: '髮夾'
+      },
+      {
+        path: '/shop/hats',
+        component: CollectionPageContainer,
+        breadcrumbName: '帽子'
+      },
+    ]
   },
   {
     path: '/sign-in',
     component: SignInSignUpPage,
     exact: true,
-    breadcrumbName: 'Sign-in'
+    breadcrumbName: '登入'
   },
   {
     path: '/cart',
     component: CartPage,
     exact: true,
-    breadcrumbName: 'Shopping Cart'
+    breadcrumbName: '我的購物車'
   },
   {
     path: '/checkout',
     component: CheckoutPage,
     exact: true,
-    breadcrumbName: 'Checkout'
+    breadcrumbName: '結賬'
   },
   {
     path: '/user-profile',
     component: UserProfilePage,
     exact: false,
-    breadcrumbName: 'User Profile',
+    breadcrumbName: '我的賬戶',
     routes: [
       {
         path: '/user-profile/my-wishlist',
         component: MyWishlistPage,
-        breadcrumbName: 'My Wishlist'
+        breadcrumbName: '願望清單'
       },
       {
         path: '/user-profile/my-order-history',
         component: MyOrderHistoryPage,
-        breadcrumbName: 'My Order History'
+        breadcrumbName: '訂單記錄'
       }
     ]
   },

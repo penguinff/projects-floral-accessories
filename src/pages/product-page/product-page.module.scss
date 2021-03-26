@@ -1,0 +1,7 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+
+.productPage {
+  grid-column: full-start / full-end;
+  min-height: 65vh;
+}

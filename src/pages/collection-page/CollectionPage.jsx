@@ -6,18 +6,7 @@ import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import ProductItem from '../../components/product-item/ProductItem';
 import styles from './collection-page.module.scss';
 
-const CollectionPage = ({ match, location, collection }) => {
-  const onMatchedRoutes = (matchedRoutes) => {
-    return [
-      ...matchedRoutes,
-      {
-        route: {
-          path: `${match.url}`,
-          breadcrumbName: match.params.collectionId
-        }
-      }
-    ]
-  };
+const CollectionPage = ({ location, collection }) => {
 
   const { title, items, banner } = collection;
 
@@ -28,7 +17,7 @@ const CollectionPage = ({ match, location, collection }) => {
           <img src={banner} alt='title banner' />
           <div className={styles.title}>{title}</div>
         </div>
-        <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes} />
+        <Breadcrumb location={location} />
         <div className={styles.collectionItems}>
           {items.map(item => 
             <ProductItem key={item.id} item={item} />  
