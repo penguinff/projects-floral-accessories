@@ -3,6 +3,7 @@
 
 .orderHistoryItem {
   color: primaryColorDark;
+  fill: primaryColorDark;
   font-size: 1.4rem;
 
   .title {
@@ -12,6 +13,12 @@
     font-weight: 600;
     margin: 1rem 0;
     border-bottom: solid 1px primaryColorLight;
+    transition: all 0.3s;
+
+    &:hover {
+      color: secondaryColorDark;
+      fill: secondaryColorDark;
+    }
 
     .button {
       display: flex;
@@ -20,12 +27,6 @@
       svg {
         width: 3rem;
         height: 3rem;
-        fill: primaryColorDark;
-        transition: all 0.3s;
-
-        &:hover {
-          fill: secondaryColorDark;
-        }
       }
     }
   }
