@@ -1,5 +1,10 @@
 import WishlishActionTypes from './wishlist-types';
 
+export const toggleMessageHidden = isHidden => ({
+  type: WishlishActionTypes.TOGGLE_MESSAGE_HIDDEN,
+  payload: isHidden
+});
+
 export const toggleWishlist = item => ({
   type: WishlishActionTypes.TOGGLE_WISHLIST,
   payload: item

@@ -1,0 +1,35 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+
+.popupMessage {
+  position: absolute;
+  right: 2rem;
+  top: 5rem;
+  width: 14rem;
+  padding: 1rem;
+  border: solid 2px secondaryColor;
+  color: primaryColorDark;
+  background-color: rgb(241, 235, 235);
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  // animation
+  animation-name: appear;
+  animation-duration: 0.5s;
+
+  .link {
+    color: secondaryColorDark;
+    text-decoration: underline;
+    font-size: 1.2rem;
+  }
+}
+
+// animation
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

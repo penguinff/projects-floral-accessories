@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 
-import { addItem } from '../../redux/cart/cart-actions';
+import { addItem, toggleCartHidden } from '../../redux/cart/cart-actions';
 import { removeWishlist } from '../../redux/wishlist/wishlist-actions';
 
 import CustomButton from '../custom-button/CustomButton';
 
 import styles from './wishlist-item.module.scss';
 
-const WishlistItem = ({ wishlistItem, addItemToCart, removeWishlistItem }) => {
+const WishlistItem = ({ wishlistItem, addItemToCart, toggleCartHidden, removeWishlistItem }) => {
   const { name, price, imageUrl } = wishlistItem;
 
   return (
@@ -19,7 +19,10 @@ const WishlistItem = ({ wishlistItem, addItemToCart, removeWishlistItem }) => {
         <h3>{name}</h3>
         <span>NT${price.toLocaleString()}</span>
         <div className={styles.button}>
-          <CustomButton onClick={() => addItemToCart(wishlistItem)}>
+          <CustomButton onClick={() => {
+            addItemToCart(wishlistItem);
+            toggleCartHidden(false);
+          }}>
             新增至購物車
           </CustomButton>
         </div>
@@ -36,7 +39,8 @@ const WishlistItem = ({ wishlistItem, addItemToCart, removeWishlistItem }) => {
 
 const mapDispatchToProps = dispatch => ({
   addItemToCart: item => dispatch(addItem(item)),
-  removeWishlistItem: item => dispatch(removeWishlist(item))
+  removeWishlistItem: item => dispatch(removeWishlist(item)),
+  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden))
 })
 
 export default connect(null, mapDispatchToProps)(WishlistItem);

@@ -3,14 +3,16 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { selectCartHidden } from '../../redux/cart/cart-selectors';
-import { selectCartItems } from '../../redux/cart/cart-selectors';
+import { selectCartHidden, selectCartItems } from '../../redux/cart/cart-selectors';
 import { toggleCartHidden } from '../../redux/cart/cart-actions';
 import { selectCurrentUser } from '../../redux/user/user-selectors';
+import { selectMessageHidden } from '../../redux/wishlist/wishlist-selectors';
+import { toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
 
 import SaleMessage from '../sale-message/SaleMessage';
 import CartIcon from '../cart-icon/cartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
+import PopupMessage from '../popup-message/PopupMessage';
 
 import styles from './header.module.scss';
 
@@ -20,11 +22,16 @@ import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
-const Header = ({ hidden, cartItems, toggleCartHidden, history, currentUser }) => {
+const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser, messageHidden, toggleMessageHidden }) => {
   useEffect(() => {
     let timer = setTimeout(() => toggleCartHidden(true), 4000);
     return () => clearTimeout(timer);
   }, [cartItems, toggleCartHidden]);
+
+  useEffect(() => {
+    let timer = setTimeout(() => toggleMessageHidden(true), 4000);
+    return () => clearTimeout(timer);
+  }, [messageHidden, toggleMessageHidden]);
 
   const redirect = () => {
     currentUser ? history.push('/user-profile') : history.push('/sign-in');
@@ -52,7 +59,7 @@ const Header = ({ hidden, cartItems, toggleCartHidden, history, currentUser }) =
             <Link to='/cart'>
               <CartIcon />
             </Link>
-            { hidden || !cartItems.length ? null : <CartDropdown /> }
+            { cartHidden || !cartItems.length ? null : <CartDropdown /> }
           </div>
         </div>
       </div>
@@ -63,19 +70,22 @@ const Header = ({ hidden, cartItems, toggleCartHidden, history, currentUser }) =
         </Link>
         <div className={styles.categoryItem}>會員專區</div>
         <div className={styles.categoryItem}>潮流話題</div>
+        { messageHidden ? null : <PopupMessage /> }
       </div>
     </div>
   )
 }
 
 const mapStateToProps = createStructuredSelector({
-  hidden: selectCartHidden,
+  cartHidden: selectCartHidden,
   cartItems: selectCartItems,
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  messageHidden: selectMessageHidden
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden))
+  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden)),
+  toggleMessageHidden: isHidden => dispatch(toggleMessageHidden(isHidden))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

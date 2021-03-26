@@ -2,11 +2,17 @@ import WishlistActionTypes from './wishlist-types';
 import { toggleItemtoWishlist, mergeCurrentAndStoredWishlist } from './wishlist.utils';
 
 const INITIAL_STATE = {
+  hidden: true,
   wishlistItems: []
 };
 
 const wishlistReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case WishlistActionTypes.TOGGLE_MESSAGE_HIDDEN:
+      return {
+        ...state,
+        hidden: action.payload
+      };
     case WishlistActionTypes.TOGGLE_WISHLIST:
       return {
         ...state,

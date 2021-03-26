@@ -6,3 +6,8 @@ export const selectWishlistItems = createSelector(
   [selectWishlist],
   (wishlist) => wishlist.wishlistItems
 );
+
+export const selectMessageHidden = createSelector(
+  [selectWishlist],
+  (wishlist) => wishlist.hidden
+);
