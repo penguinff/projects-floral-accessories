@@ -12,6 +12,7 @@
     align-items: center;
     font-weight: 600;
     margin: 1rem 0;
+    border-top: solid 1px primaryColorLight;
     border-bottom: solid 1px primaryColorLight;
     transition: all 0.3s;
 
@@ -32,15 +33,18 @@
   }
 
   .details {
-    border-bottom: solid 1px primaryColorLight;
+    // border-bottom: solid 1px primaryColorLight;
+    font-weight: 600;
+    margin: 0 2rem;
+
     .items {
       font-size: 1.2rem;
+      font-weight: 400;
       margin: 1rem;
     }
 
     .total {
-      font-weight: 600;
-      margin: 1rem;
+      margin: 1rem 0;
     }
   }
 }

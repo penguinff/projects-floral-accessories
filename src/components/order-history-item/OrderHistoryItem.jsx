@@ -22,6 +22,7 @@ const OrderHistoryItem = ({order}) => {
         </div>
       </div>
       <div className={styles.details} hidden={isItemsHidden}>
+        商品：
         <div className={styles.items}>
           {items.map(item => <CartItem cartItem={item}/>)}
         </div>
