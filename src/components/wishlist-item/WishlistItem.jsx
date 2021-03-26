@@ -18,9 +18,11 @@ const WishlistItem = ({ wishlistItem, addItemToCart, removeWishlistItem }) => {
       <div className={styles.itemDetails}>
         <h3>{name}</h3>
         <span>NT${price.toLocaleString()}</span>
-        <CustomButton onClick={() => addItemToCart(wishlistItem)}>
-          新增至購物車
-        </CustomButton>
+        <div className={styles.button}>
+          <CustomButton onClick={() => addItemToCart(wishlistItem)}>
+            新增至購物車
+          </CustomButton>
+        </div>
         <div
           className={styles.removeWishlist} 
           onClick={() => removeWishlistItem(wishlistItem)}

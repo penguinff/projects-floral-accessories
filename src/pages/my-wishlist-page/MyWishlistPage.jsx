@@ -14,7 +14,9 @@ const MyWishlistPage = ({ wishlistItems }) => (
       <div>
         <h2>{wishlistItems.length}件商品</h2>
         <div className={styles.wishlistItems}>
-          {wishlistItems.map(wishlistItem => <WishlistItem wishlistItem={wishlistItem} />)}
+          {wishlistItems.map(wishlistItem => 
+            <WishlistItem key={wishlistItem.id} wishlistItem={wishlistItem} />
+          )}
         </div>
       </div>
       :

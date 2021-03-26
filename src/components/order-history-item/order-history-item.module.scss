@@ -1,0 +1,45 @@
+@value colors: '../../app.module.scss';
+@value primaryColor, primaryColorDark, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+
+.orderHistoryItem {
+  color: primaryColorDark;
+  font-size: 1.4rem;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    margin: 1rem 0;
+    border-bottom: solid 1px primaryColorLight;
+
+    .button {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+        fill: primaryColorDark;
+        transition: all 0.3s;
+
+        &:hover {
+          fill: secondaryColorDark;
+        }
+      }
+    }
+  }
+
+  .details {
+    border-bottom: solid 1px primaryColorLight;
+    .items {
+      font-size: 1.2rem;
+      margin: 1rem;
+    }
+
+    .total {
+      font-weight: 600;
+      margin: 1rem;
+    }
+  }
+}

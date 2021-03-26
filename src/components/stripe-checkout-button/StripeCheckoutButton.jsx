@@ -22,7 +22,7 @@ const StripeCheckoutButton = ({ price, shippingInfo, cartItems, currentUser, cle
     // will link to backend server later
     console.log(`Credit Card Info: ${token}`);
     // upload the order details to firebase after payment successful
-    createOrder(currentUser, cartItems, shippingInfo, orderRefNum);
+    createOrder(currentUser, cartItems, shippingInfo, orderRefNum, price);
     // after successful payment
     alert('Payment Successful');
     clearCart();

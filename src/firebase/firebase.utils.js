@@ -80,7 +80,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 };
 
 // ----- functions related to user orders ----- //
-export const createOrder = async (currentUser, cartItems, shippingInfo, orderRefNum) => {
+export const createOrder = async (currentUser, cartItems, shippingInfo, orderRefNum, price) => {
   const currentUserId = currentUser.id;
   const userRef = firestore.doc(`users/${currentUserId}`);
   const ordersRef = firestore.doc('orders/users-orders');
@@ -89,7 +89,8 @@ export const createOrder = async (currentUser, cartItems, shippingInfo, orderRef
     time: createdAt,
     items: cartItems,
     shippingInfo,
-    orderRefNum
+    orderRefNum,
+    total: price
   }
   try {
     await userRef.set({
