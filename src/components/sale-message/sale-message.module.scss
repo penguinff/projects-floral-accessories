@@ -1,5 +1,5 @@
 @value colors: '../../app.module.scss';
-@value primaryColor, secondaryColorLight from colors;
+@value primaryColor, secondaryColorLight, secondaryColorDark from colors;
 
 .saleMessage {
   background-color: secondaryColorLight;
@@ -17,6 +17,11 @@
       fill: primaryColor;
       width: 2rem;
       height: 2rem;
+      transition: all 0.3s;
+
+      &:hover {
+        fill: secondaryColorDark;
+      }
     }
   }
 }
