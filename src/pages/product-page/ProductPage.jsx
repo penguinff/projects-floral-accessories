@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import Magnifier from 'react-magnifier';
 
 import { selectProduct } from '../../redux/shop/shop-selectors';
 import { selectWishlistItems } from '../../redux/wishlist/wishlist-selectors';
@@ -32,7 +33,7 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
       <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes} />
       <div className={styles.productInfo}>
         <div className={styles.left}>
-          <img src={imageUrl} alt='product image' />
+          <Magnifier src={imageUrl} alt='product image' />
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
