@@ -8,10 +8,6 @@
   font-size: 1.4rem;
   color: primaryColorDark;
 
-  @include respond(phone) {
-    justify-content: center;
-  }
-
   img {
     width: 20rem;
     height: 20rem;
