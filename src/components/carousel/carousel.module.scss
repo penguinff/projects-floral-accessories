@@ -23,6 +23,10 @@
       @include respond(tab-port) {
         height: 35vw;
       }
+
+      @include respond(phone) {
+        height: 55vw;
+      }
     }
   }
 
@@ -67,10 +71,6 @@
     left: 50%;
     bottom: -1.5rem;
     transform: translateX(-50%);
-
-    @include respond(phone) {
-      display: none;
-    }
 
     .carouselDot {
       cursor: pointer;
