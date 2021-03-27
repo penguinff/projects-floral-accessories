@@ -17,6 +17,11 @@
     position: absolute;
     right: 4.5rem;
     top: 9.5rem;
+
+    @include respond(phone) {
+      right: 2rem;
+      top: 9rem;
+    }
   }
 
   .upperPart {
