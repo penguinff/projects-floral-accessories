@@ -16,12 +16,22 @@
     width: 20rem;
     height: 20rem;
     object-fit: cover;
+
+    @include respond(phone) {
+      width: 18rem;
+      height: 18rem;
+    }
   }
 
   .itemDetails {
     margin-left: 4rem;
     display: flex;
     flex-direction: column;
+
+    @include respond(phone) {
+      margin-left: 2rem;
+      margin-top: -1rem;
+    }
 
     .button {
       margin: 4rem 0 3rem;
