@@ -5,6 +5,10 @@
   fill: primaryColorDark;
   font-size: 1.4rem;
 
+  @include respond(phone) {
+    font-size: 1.6rem;
+  }
+
   .title {
     display: flex;
     justify-content: space-between;

@@ -35,7 +35,7 @@
     grid-gap: 2rem;
 
     @include respond(phone) {
-      grid-template-columns: repeat(auto-fit, 13rem);
+      grid-template-columns: repeat(auto-fit, 18rem);
     }
   }
 }
