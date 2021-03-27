@@ -20,7 +20,7 @@
 
     .left {
       @include respond(phone) {
-        margin: 8rem auto 0;
+        margin: 5rem auto 0;
       }
 
       img {
@@ -43,6 +43,10 @@
       flex-direction: column;
       justify-content: space-between;
 
+      @include respond(phone) {
+        width: 80%;
+      }
+
       .title {
         display: flex;
         justify-content: space-between;
@@ -52,7 +56,7 @@
 
         @include respond(phone) {
           position: absolute;
-          top: 2rem;
+          top: 0;
           left: 8vw;
           font-size: 3rem;
         }
@@ -86,6 +90,7 @@
         font-size: 1.4rem;
 
         @include respond(phone) {
+          margin-top: -3rem;
           font-size: 2rem;
         }
       }
@@ -96,7 +101,6 @@
         color: secondaryColorDark;
 
         @include respond(phone) {
-          text-align: center;
           font-size: 2.5rem;
           margin-bottom: 3rem;
         }
@@ -106,15 +110,18 @@
         display: flex;
         flex-wrap: wrap;
 
+        @include respond(phone) {
+          justify-content: space-between;
+        }
+
         button {
           width: 45%;
           max-width: 20rem;
           margin-right: 1rem;
 
           @include respond(phone) {
-            width: 80vw;
-            max-width: 50rem;
-            margin-right: 0;
+            justify-content: space-between;
+            width: 47%;
             margin-bottom: 1rem;
           }
         }

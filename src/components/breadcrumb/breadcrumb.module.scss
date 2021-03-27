@@ -5,7 +5,7 @@
   margin: auto;
 
   @include respond(phone) {
-    display: none;
+    max-width: 100%;
   }
 
   .breadcrumbList {
