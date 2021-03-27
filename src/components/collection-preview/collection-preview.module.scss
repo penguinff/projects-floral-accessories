@@ -45,6 +45,7 @@
   grid-gap: 5rem;
 
   @include respond(tab-port) {
+    grid-template-columns: repeat(auto-fit, 18rem);
     grid-gap: 2rem;
   }
 }

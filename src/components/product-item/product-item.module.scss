@@ -9,7 +9,7 @@
 
   @include respond(tab-port) {
     grid-template-columns: repeat(2, 9rem);
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .image {
@@ -51,8 +51,8 @@
       transition: all 0.3s;
 
       @include respond(tab-port) {
-        width: 2.2rem;
-        height: 2.2rem;
+        width: 2rem;
+        height: 2rem;
       }
 
       &:hover {
