@@ -62,6 +62,10 @@
       font-size: 1.4rem;
       color: primaryColorDark;
       text-align: center;
+
+      @include respond(phone) {
+        font-size: 1.8rem;
+      }
     }
 
     button {

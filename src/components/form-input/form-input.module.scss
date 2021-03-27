@@ -20,6 +20,10 @@
     border-bottom: solid 0.1rem primaryColor;
     margin: 3rem 0;
 
+    @include respond(tab-land) {
+      font-size: 1.8rem;
+    }
+
     &:focus {
       outline: none;
     }

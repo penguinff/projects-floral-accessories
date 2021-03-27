@@ -11,6 +11,10 @@
   grid-template-columns: 0.8fr 1.5fr 0.5fr;
   grid-gap: 1rem;
 
+  @include respond(phone) {
+    font-size: 1.6rem;
+  }
+
   img {
     width: 8rem;
     height: 8rem;
@@ -24,6 +28,10 @@
     .quantity {
       color: primaryColor;
       font-size: 1.2rem;
+
+      @include respond(phone) {
+        font-size: 1.5rem;
+      }
     }
   }
 }

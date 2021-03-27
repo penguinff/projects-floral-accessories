@@ -7,7 +7,7 @@
   font-size: 1.5rem;
   transition: all 0.3s;
 
-  @include respond(phone) {
+  @include respond(tab-port) {
     grid-template-columns: repeat(2, 9rem);
     font-size: 1.8rem;
   }
@@ -20,7 +20,7 @@
     object-fit: cover;
     cursor: pointer;
 
-    @include respond(phone) {
+    @include respond(tab-port) {
       width: 18rem;
       height: 18rem;
     }
@@ -50,7 +50,7 @@
       color: rgb(210, 210, 210);
       transition: all 0.3s;
 
-      @include respond(phone) {
+      @include respond(tab-port) {
         width: 2.2rem;
         height: 2.2rem;
       }
