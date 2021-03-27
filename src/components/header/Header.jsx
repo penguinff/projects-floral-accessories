@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -10,6 +10,7 @@ import { selectMessageHidden } from '../../redux/wishlist/wishlist-selectors';
 import { toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
 
 import SaleMessage from '../sale-message/SaleMessage';
+import SideNav from '../side-nav/SideNav';
 import CartIcon from '../cart-icon/cartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
 import PopupMessage from '../popup-message/PopupMessage';
@@ -23,6 +24,8 @@ import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
 const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser, messageHidden, toggleMessageHidden }) => {
+  const [showSideNav, setShowSideNav] = useState(false);
+
   useEffect(() => {
     let timer = setTimeout(() => toggleCartHidden(true), 4000);
     return () => clearTimeout(timer);
@@ -39,10 +42,13 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
   
   return (
     <div className={styles.header}>
+      <div hidden={!showSideNav}>
+        <SideNav showSideNav={showSideNav} setShowSideNav={setShowSideNav}/>
+      </div>
       <SaleMessage />
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>
-          <SideNavIcon />
+          <SideNavIcon onClick={() => setShowSideNav(!showSideNav)}/>
           <SearchIcon className={styles.searchIcon}/>
         </div>
         <Link to='/'>
@@ -64,14 +70,14 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
         </div>
         { messageHidden ? null : <PopupMessage /> }
       </div>
-      <div className={styles.categoryList}>
+      <nav className={styles.categoryList}>
         <div className={styles.categoryItem}>新品上市</div>
         <Link to='/shop'>
           <div className={styles.categoryItem}>商品分類</div>
         </Link>
         <div className={styles.categoryItem}>會員專區</div>
         <div className={styles.categoryItem}>潮流話題</div>
-      </div>
+      </nav>
     </div>
   )
 }
