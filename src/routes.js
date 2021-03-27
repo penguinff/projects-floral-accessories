@@ -34,7 +34,7 @@ const routes = [
       {
         path: '/shop/bracelets',
         component: CollectionPageContainer,
-        breadcrumbName: '手鏈'
+        breadcrumbName: '手環'
       },
       {
         path: '/shop/rings',
