@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .cartItem {
   width: 100%;

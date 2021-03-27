@@ -1,15 +1,8 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .checkoutPage {
   grid-column: full-start / full-end;
   min-height: 65vh;
-
-  // h1 {
-  //   margin: 5rem 20%;
-  //   font-size: 3rem;
-  //   color: primaryColorDark;
-  // }
 
   .group {
     width: 90%;
@@ -17,6 +10,10 @@
     margin: 3rem auto;
     display: flex;
     justify-content: space-around;
-    // flex-wrap: wrap;
+    flex-wrap: nowrap;
+
+    @include respond(phone) {
+      flex-wrap: wrap-reverse;
+    }
   }
 }

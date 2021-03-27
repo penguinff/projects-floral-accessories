@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .checkoutItem {
   width: 80%;
@@ -7,25 +6,16 @@
   margin: 1rem auto 0;
   padding-bottom: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 0.5fr 1fr 0.5fr;
+  // grid-template-columns: 1fr 1fr 1fr 0.5fr 1fr 0.5fr;
+  grid-template-columns: 1fr 4fr;
   align-items: center;
   border-bottom: solid 1px primaryColorLight;
   text-align: center;
 
-  svg {
-    cursor: pointer;
-    fill: primaryColor;
-    width: 2.5rem;
-    height: 2.5rem;
-
-    &:hover {
-      fill: secondaryColorDark;
-    }
-  }
-
-  span {
-    font-size: 1.4rem;
-    color: primaryColor;
+  @include respond(phone) {
+    margin: 1.5rem auto;
+    padding-bottom: 0.5rem;
+    border-bottom: none;
   }
 
   .image {
@@ -33,13 +23,73 @@
       width: 12rem;
       height: 17rem;
       object-fit: cover;
+
+      @include respond(phone) {
+        width: 15rem;
+        height: 15rem;
+      }
     }
   }
 
-  .quantity {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  .group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr 1fr 0.5fr;
     align-items: center;
+
+    @include respond(phone) {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 3rem;
+    }
+
+    svg {
+      cursor: pointer;
+      fill: primaryColor;
+      width: 2.5rem;
+      height: 2.5rem;
+
+      &:hover {
+        fill: secondaryColorDark;
+      }
+    }
+
+    span {
+      font-size: 1.4rem;
+      color: primaryColor;
+
+      @include respond(phone) {
+        font-size: 2rem;
+      }
+    }
+
+    .name {
+      @include respond(phone) {
+        font-weight: 600;
+        margin-bottom: 5rem;
+      }
+    }
+
+    .price {
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
+    .quantity {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .removeButton {
+      @include respond(phone) {
+        position: absolute;
+        right: 2rem;
+      }
+    }
   }
 }

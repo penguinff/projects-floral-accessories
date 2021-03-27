@@ -1,3 +1,5 @@
+@import '../../config.scss';
+
 .signInSignUpPage {
   grid-column: full-start / full-end;
   min-height: 65vh;
@@ -8,5 +10,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
+    @include respond(tab-port) {
+      width: 90%;
+    }
   }
 }

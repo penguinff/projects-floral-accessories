@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorDark, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .orderHistoryItem {
   color: primaryColorDark;

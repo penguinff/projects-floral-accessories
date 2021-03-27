@@ -1,3 +1,5 @@
+@import '../../config.scss';
+
 .collectionsOverviewPage {
   grid-column: full-start / full-end;
   min-height: 65vh;
@@ -7,5 +9,10 @@
     margin: 5rem auto;
     display: flex;
     flex-direction: column;
+
+    @include respond(tab-port) {
+      width: 90%;
+      margin: 2rem auto 5rem;
+    }
   }
 }

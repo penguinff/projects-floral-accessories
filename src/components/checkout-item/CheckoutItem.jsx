@@ -15,23 +15,25 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItemFromCart }) => {
     <div className={styles.checkoutItem}>
       <div className={styles.image}>
         <img src={imageUrl} alt='item' />
+      </div>
+      <div className={styles.group}>
+        <div className={styles.name}>
+          <span>{name}</span>
         </div>
-      <div className={styles.name}>
-        <span>{name}</span>
-      </div>
-      <div className={styles.price}>
-        <span>NT${price.toLocaleString()}</span>
-      </div>
-      <div className={styles.quantity}>
-        <LeftIcon onClick={() => removeItem(cartItem)} />
-        <div><span>{quantity}</span></div>
-        <RightIcon onClick={() => addItem(cartItem)}/>
-      </div>
-      <div className={styles.total}>
-        <span>NT${(price * quantity).toLocaleString()}</span>
-      </div>
-      <div className={styles.removeButton} onClick={() => clearItemFromCart(cartItem)}>
-        <ClearIcon />
+        <div className={styles.price}>
+          <span>NT${price.toLocaleString()}</span>
+        </div>
+        <div className={styles.quantity}>
+          <LeftIcon onClick={() => removeItem(cartItem)} />
+          <div><span>{quantity}</span></div>
+          <RightIcon onClick={() => addItem(cartItem)}/>
+        </div>
+        <div className={styles.total}>
+          <span>NT${(price * quantity).toLocaleString()}</span>
+        </div>
+        <div className={styles.removeButton} onClick={() => clearItemFromCart(cartItem)}>
+          <ClearIcon />
+        </div>
       </div>
     </div>
   )

@@ -1,3 +1,5 @@
+@import '../../config.scss';
+
 .userProfilePage {
   grid-column: full-start / full-end;
   min-height: 65vh;
@@ -5,5 +7,10 @@
   .components {
     display: grid;
     grid-template-columns: [full-start] repeat(10, [col-start] minmax(min-content, 1fr) [col-end]) [full-end];
+
+    @include respond(phone) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

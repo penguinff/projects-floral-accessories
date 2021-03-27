@@ -1,11 +1,14 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .productPreview {
   width: 80%;
   max-width: 135rem;
   margin: 9rem auto;
   border-bottom: 2px solid primaryColorLight;
+
+  @include respond(tab-port) {
+    margin: 1rem auto;
+  }
 
   .previewTitle {
     font-size: 2.5rem;
@@ -27,7 +30,5 @@
     width: 100%;
     margin-top: 3rem;
     margin-bottom: 2rem;
-    // push the container to middle
-    margin-left: 2.5rem;
   }
 }

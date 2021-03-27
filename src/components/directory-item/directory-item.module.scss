@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .directoryItem {
   display: flex;
@@ -16,6 +15,11 @@
     height: 20rem;
     object-fit: cover;
     border: solid 1px primaryColor;
+
+    @include respond(phone) {
+      width: 13rem;
+      height: 13rem;
+    }
   }
 
   span {

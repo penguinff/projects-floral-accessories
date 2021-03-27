@@ -1,9 +1,12 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .breadcrumb {
   max-width: 80%;
   margin: auto;
+
+  @include respond(phone) {
+    display: none;
+  }
 
   .breadcrumbList {
     font-size: 1.4rem;

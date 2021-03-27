@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .header {
   grid-column: full-start / full-end;
@@ -14,11 +13,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    border-bottom: solid 1px primaryColorLight;
+    position: relative;
 
     .leftOptions {
       width: 8rem;
       display: flex;
       justify-content: space-around;
+
+      @include respond(phone) {
+        justify-content: flex-start;
+      }
+
+      .searchIcon {
+        @include respond(phone) {
+          display: none;
+        }
+      }
     }
 
     .companyLogo {
@@ -32,6 +43,17 @@
       width: 12rem;
       display: flex;
       justify-content: space-around;
+
+      @include respond(phone) {
+        justify-content: flex-end;
+      }
+
+      .contactIcon,
+      .userIcon {
+        @include respond(phone) {
+          display: none;
+        }
+      }
 
       .cartGroup {
         position: relative;
@@ -62,7 +84,11 @@
     align-items: center;
     color: primaryColor;
     font-size: 1.5rem;
-    position: relative;
+    // position: relative;
+
+    @include respond(phone) {
+      display: none;
+    }
 
     a {
       text-decoration: none;

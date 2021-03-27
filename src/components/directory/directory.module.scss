@@ -1,11 +1,15 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .directory {
   width: 80%;
   max-width: 135rem;
-  margin: 9rem auto;
+  margin: 8rem auto;
   border-bottom: 2px solid primaryColorLight;
+
+  @include respond(phone) {
+    width: 90%;
+    margin: 6rem auto;
+  }
 
   .directoryTitle {
     font-size: 2.5rem;
@@ -29,5 +33,9 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 20rem);
     grid-gap: 2rem;
+
+    @include respond(phone) {
+      grid-template-columns: repeat(auto-fit, 13rem);
+    }
   }
 }

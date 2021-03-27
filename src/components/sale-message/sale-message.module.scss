@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, secondaryColorLight, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .saleMessage {
   background-color: secondaryColorLight;
@@ -7,6 +6,10 @@
   text-align: center;
   color: primaryColor;
   font-size: 1.4rem;
+
+  @include respond(phone) {
+    display: none;
+  }
 
   .messageClear {
     float: right;

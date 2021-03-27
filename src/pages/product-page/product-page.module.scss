@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+@import '../../config.scss';
 
 .productPage {
   grid-column: full-start / full-end;
@@ -8,18 +7,32 @@
   .productInfo {
     width: 80%;
     max-width: 100rem;
-    margin: 4rem auto;
+    margin: 6rem auto;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     color: primaryColorDark;
+    position: relative;
+
+    @include respond(phone) {
+      width: 90%;
+    }
 
     .left {
+      @include respond(phone) {
+        margin: 8rem auto 0;
+      }
+
       img {
         width: 30rem;
         height: 30rem;
         object-fit: cover;
         margin: 1rem auto;
+
+        @include respond(phone) {
+          width: 75vw;
+          height: 75vw;
+        }
       }
     }
 
@@ -37,10 +50,23 @@
         font-size: 2.2rem;
         font-weight: 600;
 
+        @include respond(phone) {
+          position: absolute;
+          top: 2rem;
+          left: 8vw;
+          font-size: 3rem;
+        }
+
         svg {
           cursor: pointer;
           fill: rgb(210, 210, 210);
           transition: all 0.3s;
+
+          @include respond(phone) {
+            position: absolute;
+            top: 0.5rem;
+            left: 69vw;
+          }
 
           &:hover {
             fill: secondaryColor;
@@ -58,21 +84,39 @@
 
       .details {
         font-size: 1.4rem;
+
+        @include respond(phone) {
+          font-size: 2rem;
+        }
       }
 
       .price {
         font-size: 2rem;
         font-weight: 600;
         color: secondaryColorDark;
+
+        @include respond(phone) {
+          text-align: center;
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+        }
       }
 
       .buttons {
         display: flex;
+        flex-wrap: wrap;
 
         button {
           width: 45%;
           max-width: 20rem;
           margin-right: 1rem;
+
+          @include respond(phone) {
+            width: 80vw;
+            max-width: 50rem;
+            margin-right: 0;
+            margin-bottom: 1rem;
+          }
         }
       }
     }

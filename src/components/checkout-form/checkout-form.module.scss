@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+@import '../../config.scss';
 
 .checkoutForm {
   min-width: 35rem;
@@ -7,6 +6,10 @@
   font-size: 1.5rem;
   color: primaryColorDark;
   position: relative;
+
+  @include respond(phone) {
+    width: 90%;
+  }
 
   .amend {
     cursor: pointer;
@@ -18,6 +21,10 @@
 
   .upperPart {
     margin: 0 10vw 3rem 0;
+
+    @include respond(phone) {
+      margin: 3rem auto;
+    }
 
     label {
       margin-right: 2rem;

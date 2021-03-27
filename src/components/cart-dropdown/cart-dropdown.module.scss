@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+@import '../../config.scss';
 
 .cartDropdown {
   z-index: 1000;
@@ -17,6 +16,10 @@
   // animation
   animation-name: appear;
   animation-duration: 0.5s;
+
+  @include respond(phone) {
+    display: none;
+  }
 
   .cartItems {
     min-height: 8rem;

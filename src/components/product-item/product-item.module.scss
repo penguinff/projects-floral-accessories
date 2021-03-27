@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .productItem {
   display: grid;
@@ -15,6 +14,10 @@
     grid-column: 1 / -1;
     object-fit: cover;
     cursor: pointer;
+
+    @include respond(phone) {
+      height: 20rem;
+    }
   }
 
   .productName {

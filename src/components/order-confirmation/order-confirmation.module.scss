@@ -1,11 +1,14 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .orderConfirmation {
   .title {
     background-color: primaryColorDark;
     color: white;
     margin-right: 3rem;
+
+    @include respond(phone) {
+      margin-right: 0;
+    }
 
     h2 {
       padding: 0.7rem;

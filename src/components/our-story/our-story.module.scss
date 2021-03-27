@@ -1,18 +1,25 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+@import '../../config.scss';
 
 .ourStory {
   width: 80%;
   max-width: 135rem;
-  margin: 9rem auto;
+  margin: 5rem auto;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
+  @include respond(tab-port) {
+    flex-wrap: wrap;
+  }
 
   .imageContainer {
     min-width: 38rem;
     max-width: 55%;
+    padding: 3rem;
+
+    @include respond(tab-port) {
+      padding: 1rem;
+    }
 
     .image {
       width: 100%;
@@ -29,6 +36,10 @@
     font-size: 1.5rem;
     color: primaryColor;
     align-items: center;
+
+    @include respond(tab-port) {
+      padding: 1rem;
+    }
 
     .title {
       font-size: 2.5rem;

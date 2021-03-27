@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColorDark from colors;
+@import '../../config.scss';
 
 .spinnerOverlay {
   grid-column: full-start / full-end;

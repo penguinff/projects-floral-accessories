@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .carouselContainer {
   width: 80%;
@@ -7,6 +6,10 @@
   margin: auto;
   position: relative;
   margin-bottom: 6rem;
+
+  @include respond(tab-port) {
+    width: 100%;
+  }
 
   .carouselSlide {
     overflow-x: hidden;
@@ -16,10 +19,18 @@
       height: 25vw;
       object-fit: cover;
       opacity: 0.8;
+
+      @include respond(tab-port) {
+        height: 35vw;
+      }
     }
   }
 
   .prevnext {
+    @include respond(tab-port) {
+      display: none;
+    }
+
     .prev,
     .next {
       cursor: pointer;
@@ -56,6 +67,10 @@
     left: 50%;
     bottom: -1.5rem;
     transform: translateX(-50%);
+
+    @include respond(phone) {
+      display: none;
+    }
 
     .carouselDot {
       cursor: pointer;

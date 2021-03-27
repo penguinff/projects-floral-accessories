@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .wishlistItem {
   display: flex;
@@ -8,6 +7,10 @@
   padding: 1rem;
   font-size: 1.4rem;
   color: primaryColorDark;
+
+  @include respond(phone) {
+    justify-content: center;
+  }
 
   img {
     width: 20rem;

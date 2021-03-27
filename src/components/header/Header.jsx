@@ -43,14 +43,14 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>
           <SideNavIcon />
-          <SearchIcon />
+          <SearchIcon className={styles.searchIcon}/>
         </div>
         <Link to='/'>
           <img src={CompanyLogo} className={styles.companyLogo} alt='company logo'/>
         </Link>
         <div className={styles.rightOptions}>
-          <ContactIcon />
-          <UserIcon onClick={redirect} />
+          <ContactIcon className={styles.contactIcon}/>
+          <UserIcon className={styles.userIcon} onClick={redirect} />
           <div 
             className={styles.cartGroup} 
             onMouseEnter={() => toggleCartHidden(false)} 
@@ -62,6 +62,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
             { cartHidden || !cartItems.length ? null : <CartDropdown /> }
           </div>
         </div>
+        { messageHidden ? null : <PopupMessage /> }
       </div>
       <div className={styles.categoryList}>
         <div className={styles.categoryItem}>新品上市</div>
@@ -70,7 +71,6 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
         </Link>
         <div className={styles.categoryItem}>會員專區</div>
         <div className={styles.categoryItem}>潮流話題</div>
-        { messageHidden ? null : <PopupMessage /> }
       </div>
     </div>
   )

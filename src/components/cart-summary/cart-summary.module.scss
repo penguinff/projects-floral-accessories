@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .summaryBox {
   border: solid 2px primaryColor;
@@ -7,6 +6,11 @@
   color: primaryColor;
   font-size: 1.2rem;
   margin-top: 2rem;
+
+  @include respond(phone) {
+    width: 85vw;
+    margin-bottom: 2rem;
+  }
 
   .header {
     background-color: primaryColorDark;

@@ -12,29 +12,25 @@ import styles from './products-preview.module.scss';
 
 // carousel responsive setting
 const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
+  desktop: {
+    breakpoint: { max: 3000, min: 1600 },
     items: 6
   },
-  desktop: {
-    breakpoint: { max: 3000, min: 1400 },
-    items: 5
-  },
   smallDesktop: {
-    breakpoint: { max: 1400, min: 1100 },
-    items: 4
+    breakpoint: { max: 1600, min: 1100 },
+    items: 5
   },
   tablet: {
     breakpoint: { max: 1100, min: 800 },
-    items: 3
+    items: 4
   },
   smallTablet: {
-    breakpoint: { max: 800, min: 464 },
-    items: 2
+    breakpoint: { max: 800, min: 530 },
+    items: 3
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1
+    breakpoint: { max: 530, min: 0 },
+    items: 2
   }
 };
 

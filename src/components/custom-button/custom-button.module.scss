@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark, secondaryColorLight from colors;
+@import '../../config.scss';
 
 .customButton {
   font-family: 'Dosis', sans-serif;
@@ -10,6 +9,10 @@
   padding: 0.5rem;
   cursor: pointer;
   transition: all 0.3s;
+
+  @include respond(phone) {
+    font-size: 2rem;
+  }
 
   &:hover {
     background-color: secondaryColor;

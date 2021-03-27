@@ -1,0 +1,33 @@
+// COLOR VARIABLES
+@value primaryColor: rgb(128, 128, 128);
+@value primaryColorDark: rgb(90, 90, 90);
+@value primaryColorLight: rgb(223, 223, 223);
+@value secondaryColor: rgb(255, 174, 171);
+@value secondaryColorDark: rgb(223, 83, 78);
+@value secondaryColorLight: rgb(241, 229, 229);
+
+// FONT VARIABLES
+
+// MIXINS
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      @content;
+    } //600px / 16 = 37.5
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      @content;
+    } //900px / 16 = 56.25
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      @content;
+    } //1200px / 16 = 75
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 125em) {
+      @content;
+    } //2000px / 16 = 125
+  }
+}

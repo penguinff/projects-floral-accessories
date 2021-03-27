@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .signIn {
   min-width: 35rem;
@@ -7,6 +6,10 @@
   margin: 3rem 5vw;
   font-size: 1.5rem;
   color: primaryColorDark;
+
+  @include respond(tab-land) {
+    margin: 3rem auto;
+  }
 
   .clickSignIn {
     margin-bottom: 3rem;

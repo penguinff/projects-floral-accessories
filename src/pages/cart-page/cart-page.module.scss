@@ -1,14 +1,17 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, primaryColorDark, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .cartPage {
   grid-column: full-start / full-end;
   min-height: 65vh;
+  font-size: 1.5rem;
 
   h1 {
     margin: 5rem 20%;
-    font-size: 3rem;
     color: primaryColorDark;
+
+    @include respond(phone) {
+      margin: 3rem 10%;
+    }
   }
 
   .withCartItems {
@@ -21,11 +24,19 @@
       text-align: center;
       border-bottom: solid 2px primaryColorLight;
 
+      @include respond(phone) {
+        margin: 2rem auto 0;
+      }
+
       span {
         font-size: 1.5rem;
         font-weight: 600;
         color: primaryColor;
         margin: 0.5rem;
+
+        @include respond(phone) {
+          display: none;
+        }
       }
     }
 
@@ -43,24 +54,45 @@
       grid-template-columns: 2fr 1fr 0.5fr 1fr 0.5fr;
       position: relative;
 
+      @include respond(phone) {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+      }
+
       span {
         font-size: 1.5rem;
         font-weight: 600;
         color: primaryColor;
         margin: 1rem;
         text-align: center;
+
+        @include respond(phone) {
+          font-size: 2rem;
+        }
       }
 
       .note {
         grid-column: 3 / 4;
+
+        @include respond(phone) {
+          grid-column: 2 / 3;
+        }
       }
 
       .total {
         grid-column: 4 / 5;
+
+        @include respond(phone) {
+          grid-column: 3 / 4;
+        }
       }
 
       .button {
         grid-column: 3 / 5;
+
+        @include respond(phone) {
+          grid-column: 1 / 5;
+        }
+
         button {
           width: 100%;
         }
@@ -75,6 +107,10 @@
           right: 0;
           width: 55%;
           border-top: solid 1px primaryColorLight;
+
+          @include respond(phone) {
+            width: 100%;
+          }
         }
       }
     }

@@ -1,5 +1,4 @@
-@value colors: '../../app.module.scss';
-@value primaryColor, primaryColorLight, secondaryColor, secondaryColorDark from colors;
+@import '../../config.scss';
 
 .titleGroup {
   max-width: 100rem;
@@ -44,4 +43,8 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 20rem);
   grid-gap: 5rem;
+
+  @include respond(tab-port) {
+    grid-gap: 2rem;
+  }
 }
