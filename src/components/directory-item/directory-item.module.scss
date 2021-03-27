@@ -28,5 +28,9 @@
     color: primaryColor;
     text-align: center;
     text-transform: uppercase;
+
+    @include respond(phone) {
+      font-size: 1.8rem;
+    }
   }
 }

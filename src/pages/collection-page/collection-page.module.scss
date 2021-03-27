@@ -43,6 +43,7 @@
 
       @include respond(tab-port) {
         width: 90%;
+        grid-template-columns: repeat(auto-fit, 18rem);
         grid-gap: 2rem;
         margin: 5rem auto;
       }

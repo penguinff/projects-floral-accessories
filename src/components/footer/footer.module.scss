@@ -7,6 +7,10 @@
   font-size: 1.4rem;
   padding: 5rem 0;
 
+  @include respond(phone) {
+    font-size: 1.8rem;
+  }
+
   .lists {
     max-width: 100rem;
     width: 80%;
