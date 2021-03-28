@@ -14,6 +14,7 @@ import { storeUserCartAndWishlist } from './firebase/firebase.utils';
 import Spinner from './components/spinner/Spinner';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 import styles from './app.module.scss';
 
 const Homepage = lazy(() => import('./pages/homepage/Homepage'));
@@ -47,20 +48,22 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
     <div className={styles.app}>
       <Header />
       <Switch>
-        <Suspense fallback={<Spinner />}>
-          <Route exact path='/' component={Homepage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/cart' component={CartPage} />
-          <Route 
-            exact
-            path='/sign-in'
-            render={() => 
-              currentUser ? <Redirect to='/user-profile' /> : <SignInSignUpPage />
-            }
-          />
-          <Route path='/user-profile' component={UserProfilePage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route exact path='/' component={Homepage} />
+            <Route path='/shop' component={ShopPage} />
+            <Route exact path='/cart' component={CartPage} />
+            <Route 
+              exact
+              path='/sign-in'
+              render={() => 
+                currentUser ? <Redirect to='/user-profile' /> : <SignInSignUpPage />
+              }
+            />
+            <Route path='/user-profile' component={UserProfilePage} />
+            <Route exact path='/checkout' component={CheckoutPage} />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
       <Footer />
     </div>

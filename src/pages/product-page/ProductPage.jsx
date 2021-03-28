@@ -8,12 +8,14 @@ import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishli
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CustomButton from '../../components/custom-button/CustomButton';
+import ErrorMessage from '../../components/error-message/ErrorMessage';
 
 import styles from './product-page.module.scss';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
 
 const ProductPage = ({ match, location, history, product, wishlistItems, addItem, toggleCartHidden, toggleWishlist, toggleMessageHidden }) => {
+  if (!product) return (<ErrorMessage message='此頁面不存在' />);
   const { details, id, imageUrl, name, price } = product;
   const existingWishlistItem = wishlistItems.find(wishlistItem => wishlistItem.id === id);
   const onMatchedRoutes = (matchedRoutes) => {
