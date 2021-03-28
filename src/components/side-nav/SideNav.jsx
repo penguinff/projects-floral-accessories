@@ -8,37 +8,47 @@ import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-down-icon.svg';
 import { ReactComponent as ArrowUpIcon } from '../../assets/arrow-up-icon.svg';
 
-
 const SideNav = ({ showSideNav, setShowSideNav }) => {
   const [showCategory, setShowCategory] = useState(false);
 
+  const toggleSideNav = () => setShowSideNav(!showSideNav);
+  const toggleCategory = () => setShowCategory(!showCategory);
+
   return (
-    <nav className={styles.sideNav} hidden={!showSideNav}>
-      <div className={styles.upper}>
-        <div onClick={() => setShowSideNav(!showSideNav)}><ClearIcon />目錄</div>
-        <Link><UserIcon />我的賬戶</Link>
+    <nav className={`${styles.sideNav} ${showSideNav && styles.sideNavActive}`}>
+      <div className={styles.content}>
+        <ul className={styles.upper} onClick={toggleSideNav}>
+          <Link><li><ClearIcon/>目錄</li></Link>
+          <Link to='/user-profile'><li><UserIcon />我的賬戶</li></Link>
+        </ul>
+        <ul className={styles.middle}>
+          <Link onClick={toggleSideNav}><li>新品上市</li></Link>
+          <li onClick={toggleCategory} className={styles.title}>
+            <Link to='/shop' onClick={toggleSideNav}>商品分類</Link>
+            <span>
+              {showCategory ? <ArrowUpIcon /> : <ArrowDownIcon />}
+            </span>
+          </li>
+          <ul 
+            className={styles.category}
+            hidden={!showCategory} onClick={() => {toggleSideNav(); toggleCategory()}}
+          >
+            <Link to='/shop/earrings'><li>耳環</li></Link>
+            <Link to='/shop/necklaces'><li>項鏈</li></Link>
+            <Link to='/shop/bracelets'><li>手環</li></Link>
+            <Link to='/shop/rings'><li>戒指</li></Link>
+            <Link to='/shop/hairpins'><li>髮夾</li></Link>
+            <Link to='/shop/hats'><li>帽子</li></Link>
+          </ul>
+          <Link onClick={toggleSideNav}><li>會員專區</li></Link>
+          <Link onClick={toggleSideNav}><li>潮流話題</li></Link>
+        </ul>
+        <ul className={styles.lower}onClick={toggleSideNav}>
+          <Link onClick={toggleSideNav}><li>關於Floral Accessories</li></Link>
+          <Link><li>聯絡我們</li></Link>
+        </ul>
       </div>
-      <div className={styles.middle}>
-        <Link>新品上市</Link>
-        <div>
-          <Link>商品分類<ArrowDownIcon /><ArrowUpIcon /></Link>
-          <div>
-            <div>商品分類<Link>檢視全部</Link></div>
-            <Link>耳環</Link>
-            <Link>項鏈</Link>
-            <Link>手環</Link>
-            <Link>戒指</Link>
-            <Link>髮夾</Link>
-            <Link>帽子</Link>
-          </div>
-        </div>
-        <Link>會員專區</Link>
-        <Link>潮流話題</Link>
-      </div>
-      <div className={styles.lower}>
-        <Link>關於Floral Accessories</Link>
-        <Link>聯絡我們</Link>
-      </div>
+      <div className={styles.background} onClick={toggleSideNav}></div>
     </nav>
   )
 };

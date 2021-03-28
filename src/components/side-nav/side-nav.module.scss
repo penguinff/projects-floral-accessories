@@ -1,6 +1,128 @@
+@import '../../config.scss';
+
+@value sideNavWidth: 40rem;
+
 .sideNav {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -40rem;
   z-index: 1002;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: all 0.5s;
+  font-size: 1.8rem;
+
+  .content {
+    width: sideNavWidth;
+    height: 100vh;
+    background-color: rgb(241, 235, 235);
+    // background-color: secondaryColorLight;
+    color: primaryColorDark;
+
+    svg {
+      width: 3rem;
+      height: 3rem;
+      fill: white;
+      cursor: pointer;
+
+      &:hover {
+        fill: secondaryColorDark;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: primaryColor;
+
+      &:hover {
+        color: secondaryColorDark;
+      }
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    .upper,
+    .middle,
+    .lower {
+      padding: 2.5rem 5rem;
+    }
+
+    .middle,
+    .lower {
+      li {
+        padding: 1rem 0;
+        border-bottom: solid 1px rgb(202, 202, 202);
+      }
+    }
+
+    .upper {
+      margin: 0;
+      background-color: rgb(223, 164, 164);
+      // font-size: 2rem;
+      font-weight: 600;
+      color: white;
+
+      li {
+        padding: 1rem 0;
+        display: flex;
+        align-items: center;
+
+        &:hover svg {
+          fill: secondaryColorDark;
+        }
+      }
+
+      a {
+        color: white;
+
+        &:hover {
+          color: secondaryColorDark;
+        }
+      }
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      svg {
+        fill: primaryColor;
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .title {
+        display: flex;
+        justify-content: space-between;
+
+        &:hover a,
+        &:hover svg {
+          color: secondaryColorDark;
+          fill: secondaryColorDark;
+        }
+      }
+
+      .category {
+        font-size: 1.6rem;
+
+        li {
+          border-bottom: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.sideNavActive {
+  left: 0;
+  transition: all 0.5s;
+
+  .background {
+    width: calc(100vw + sideNavWidth);
+    height: 100vh;
+  }
 }
