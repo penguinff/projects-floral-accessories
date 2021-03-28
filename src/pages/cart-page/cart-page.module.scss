@@ -56,6 +56,7 @@
 
       @include respond(phone) {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        border-top: solid 2px primaryColorLight;
       }
 
       span {

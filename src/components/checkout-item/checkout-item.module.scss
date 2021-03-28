@@ -6,15 +6,14 @@
   margin: 1rem auto 0;
   padding-bottom: 1rem;
   display: grid;
-  // grid-template-columns: 1fr 1fr 1fr 0.5fr 1fr 0.5fr;
   grid-template-columns: 1fr 4fr;
   align-items: center;
   border-bottom: solid 1px primaryColorLight;
   text-align: center;
 
   @include respond(phone) {
-    margin: 1.5rem auto;
-    padding-bottom: 0.5rem;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
     border-bottom: none;
   }
 
