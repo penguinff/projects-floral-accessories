@@ -23,7 +23,7 @@ const CartPage = lazy(() => import('./pages/cart-page/CartPage'));
 const CheckoutPage = lazy(() => import('./pages/checkout-page/CheckoutPage'));
 const SignInSignUpPage = lazy(() => import('./pages/signin-signup-page/SignInSignUpPage'));
 const UserProfilePage = lazy(() => import('./pages/user-profile-page/UserProfilePage'));
-
+const UnderConstructionPage = lazy(() => import('./pages/under-construction-page/UnderConstructionPage'));
 
 const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, wishlistItems }) => {
   useEffect(() => {
@@ -62,6 +62,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
             />
             <Route path='/user-profile' component={UserProfilePage} />
             <Route exact path='/checkout' component={CheckoutPage} />
+            <Route exact path='/under-construction' component={UnderConstructionPage} />
           </Suspense>
         </ErrorBoundary>
       </Switch>

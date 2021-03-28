@@ -2,6 +2,7 @@
 
 .spinnerOverlay {
   grid-column: full-start / full-end;
+  min-height: 65vh;
   height: 100%;
   width: 100%;
   display: flex;

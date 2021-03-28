@@ -22,7 +22,7 @@ const SideNav = ({ showSideNav, setShowSideNav }) => {
           <Link to='/user-profile'><li><UserIcon />我的賬戶</li></Link>
         </ul>
         <ul className={styles.middle}>
-          <Link onClick={toggleSideNav}><li>新品上市</li></Link>
+          <Link to='/under-construction' onClick={toggleSideNav}><li>新品上市</li></Link>
           <li onClick={toggleCategory} className={styles.title}>
             <Link to='/shop' onClick={toggleSideNav}>商品分類</Link>
             <span>
@@ -40,12 +40,12 @@ const SideNav = ({ showSideNav, setShowSideNav }) => {
             <Link to='/shop/hairpins'><li>髮夾</li></Link>
             <Link to='/shop/hats'><li>帽子</li></Link>
           </ul>
-          <Link onClick={toggleSideNav}><li>會員專區</li></Link>
-          <Link onClick={toggleSideNav}><li>潮流話題</li></Link>
+          <Link to='/under-construction' onClick={toggleSideNav}><li>會員專區</li></Link>
+          <Link to='/under-construction' onClick={toggleSideNav}><li>潮流話題</li></Link>
         </ul>
         <ul className={styles.lower}onClick={toggleSideNav}>
-          <Link onClick={toggleSideNav}><li>關於Floral Accessories</li></Link>
-          <Link><li>聯絡我們</li></Link>
+          <Link to='/under-construction' onClick={toggleSideNav}><li>關於Floral Accessories</li></Link>
+          <Link to='/under-construction'><li>聯絡我們</li></Link>
         </ul>
       </div>
       <div className={styles.background} onClick={toggleSideNav}></div>

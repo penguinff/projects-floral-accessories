@@ -5,10 +5,11 @@ import "react-multi-carousel/lib/styles.css";
 
 import { selectCollectionsForPreview } from '../../redux/shop/shop-selectors';
 
-import Spinner from '../spinner/Spinner';
 import ProductItem from '../product-item/ProductItem';
 
 import styles from './products-preview.module.scss';
+
+import { ReactComponent as BubbleSpinner } from '../../assets/bubble-spinner.svg';
 
 // carousel responsive setting
 const responsive = {
@@ -54,7 +55,7 @@ const ProductsPreview = ({ collections }) => {
             <ProductItem item={item} key={item.id}/>
           ))}
         </Carousel>
-        : <Spinner />
+        : <BubbleSpinner />
       }
     </div>
   )

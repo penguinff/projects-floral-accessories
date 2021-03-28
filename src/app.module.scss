@@ -28,4 +28,5 @@ body {
   display: grid;
   grid-template-columns: [full-start] repeat(10, [col-start] minmax(min-content, 1fr) [col-end]) [full-end];
   overflow-x: hidden;
+  // min-height: 65vh;
 }
