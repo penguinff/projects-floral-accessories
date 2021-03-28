@@ -56,4 +56,20 @@
     display: flex;
     justify-content: center;
   }
+
+  .footnote {
+    display: flex;
+    justify-content: center;
+
+    span {
+      margin: 1.5rem;
+      letter-spacing: 1px;
+      color: secondaryColorDark;
+
+      a {
+        color: secondaryColorDark;
+        text-decoration: none;
+      }
+    }
+  }
 }

@@ -43,6 +43,10 @@ const Footer = () => (
 
     </div>
     <span className={styles.copyright}>Copyright © 2021 by Floral Accessories</span>
+    <div className={styles.footnote}>
+      <span>練習作品 | 作者：Chirstine Fong | <a href='https://github.com/penguinff' target='_blank' rel='noreferrer noopener'>Github</a></span>
+      <span>圖片來源：<a href='https://unsplash.com/' target='_blank' rel='noreferrer noopener'>https://unsplash.com/</a></span>
+      </div>
   </div>
 );
 
