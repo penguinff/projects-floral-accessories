@@ -19,7 +19,7 @@
     .leftOptions {
       width: 8rem;
       display: flex;
-      justify-content: space-around;
+      // justify-content: space-around;
 
       @include respond(phone) {
         justify-content: flex-start;

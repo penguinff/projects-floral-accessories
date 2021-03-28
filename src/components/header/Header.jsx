@@ -19,7 +19,7 @@ import styles from './header.module.scss';
 
 import CompanyLogo from '../../assets/logo_transparent_cut.png';
 import { ReactComponent as SideNavIcon } from '../../assets/sidenav-icon.svg';
-import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
+// import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
@@ -49,7 +49,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>
           <SideNavIcon onClick={() => setShowSideNav(!showSideNav)}/>
-          <SearchIcon className={styles.searchIcon}/>
+          {/*<SearchIcon className={styles.searchIcon}/> */}
         </div>
         <Link to='/'>
           <img src={CompanyLogo} className={styles.companyLogo} alt='company logo'/>
