@@ -10,7 +10,11 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
   transition: all 0.5s;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+
+  @include respond(tab-port) {
+    font-size: 1.8rem;
+  }
 
   .content {
     width: sideNavWidth;
@@ -60,7 +64,6 @@
     .upper {
       margin: 0;
       background-color: rgb(223, 164, 164);
-      // font-size: 2rem;
       font-weight: 600;
       color: white;
 

@@ -84,10 +84,12 @@
     align-items: center;
     color: primaryColor;
     font-size: 1.5rem;
-    // position: relative;
 
     @include respond(phone) {
       display: none;
+    }
+    @include respond(tab-port) {
+      font-size: 1.8rem;
     }
 
     a {
