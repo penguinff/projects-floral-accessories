@@ -96,9 +96,13 @@ https://floral-accessories.herokuapp.com/
 ### 用戶註冊、登入
 
 - 用戶可使用電子信箱註冊和登入，或利用 Google/Facebook 第三方登入
-- 用戶登入後，購物車、願望清單和訂單記錄會儲存到 Firestore，方便用戶在不同裝置登入瀏覽
 
   ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/signin_signup_page.PNG)
+
+- 用戶登入後，購物車、願望清單和訂單記錄會儲存到 Firestore，方便用戶在不同裝置登入瀏覽
+
+  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/wishlist.PNG)
+  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/order-history.PNG)
 
 ### 側邊跳出選單
 
