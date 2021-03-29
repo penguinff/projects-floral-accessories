@@ -7,7 +7,7 @@ import { ReactComponent as LineIcon } from '../../assets/line-icon.svg';
 
 
 const Footer = () => (
-  <div className={styles.footer}>
+  <footer className={styles.footer}>
     <div className={styles.lists}>
 
       <ul className={styles.list}>
@@ -47,7 +47,7 @@ const Footer = () => (
       <span>練習作品 | 作者：Chirstine Fong | <a href='https://github.com/penguinff' target='_blank' rel='noreferrer noopener'>Github</a></span>
       <span>圖片來源：<a href='https://unsplash.com/' target='_blank' rel='noreferrer noopener'>https://unsplash.com/</a></span>
       </div>
-  </div>
+  </footer>
 );
 
 export default Footer;

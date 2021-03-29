@@ -76,7 +76,7 @@ const CheckoutForm = () => {
             name='phone'
             value={phone}
             onChange={handleChange}
-            pattern='[0-9]{10}'
+            // pattern='[0-9]{10}'
             label='手機號碼'
             required
           />
