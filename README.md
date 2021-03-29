@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Floral Accessories 日韓飾品電商
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+//主頁圖片
 
-## Available Scripts
+## 網頁Demo
 
-In the project directory, you can run:
+https://floral-accessories.herokuapp.com/
 
-### `npm start`
+## 簡介
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+此網頁為前端練習作品，主要功能為:
+* 前端：
+  * 商品展示
+  * 購物車功能
+  * 願望清單功能
+  * 用戶註冊和登入
+  * 檢視我的賬戶
+  * 商品下單、結賬
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* 連結到Firebase後端服務：
+  * 利用Authentication管理新用戶註冊和用戶登入
+  * 利用Firestore儲存商品資訊、用戶資料和訂單記錄
+  * 管理員可以可以輕鬆新增/刪除/修改上架商品，檢視用戶訂單
+  * 把用戶購物車内商品、願望清單儲存到雲端，方便用戶在任何裝置上管理
 
-### `npm test`
+### 主要練習
+* React
+* React Router
+* Redux
+* Redux-Saga
+* 串接Firebase
+* 串接Stripe金流支付API (後段架構還沒完成)
+* 手刻CSS (利用CSS modules & Sass)
+* Responsive Web Design (此網頁可以在任何裝置上瀏覽)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 網頁内容介紹
+### 促銷廣告Carousel
+* 可加入網站促銷活動宣傳圖片，每8秒跳轉一張，用戶也可自行跳轉到感興趣的内容
+* // Carousel 圖片
 
-### `npm run build`
+### 最新商品
+* 自動抓取Firestore各項飾品最新上架的兩樣商品，總共12項最新商品
+* // New Arrival 圖片
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 麵包屑導覽列
+* 讓用戶得知目前位置
+* 透過麵包屑的連結，回到主分類頁，提高網頁易用性
+* 提升SEO
+* // Breadcrumb 圖片
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 商品預覽
+* 讓用戶先預覽每項飾品的部分商品，吸引用戶瀏覽分類頁
+* // Shoppage 圖片
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 商品詳細内容
+* 單一商品詳細介紹
+* 商品圖片可放大檢視
+* 如有需要，下方可以加入更多圖片
+* // ProductPage 圖片
 
-### `npm run eject`
+### 我的願望清單
+* 用戶可加入商品至願望清單，留待日後購買
+* // product item 圖片
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 購物車
+* 電腦版商品加入購物車後，右上方的購物車列表會跳出提示用戶
+* 在購物車頁面中可以調整商品數量/刪除商品
+* // CartPage & CartDropdown 圖片
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 結賬資訊
+* 有訂單摘要讓用戶清楚自己將要下單的商品數量、金額和運費
+* 輸入收貨人資料後可確認内容是否正確，如需修改可按編輯回到上一頁
+* // Checkout page 圖片
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 用戶註冊、登入
+* 用戶可使用電子信箱註冊和登入，或利用Google/Facebook第三方登入
+* 用戶登入後，購物車、願望清單和訂單記錄會儲存到Firestore，方便用戶在不同裝置登入瀏覽
+* // UserProfile Page圖片
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 側邊跳出選單
+* 側邊選單特別適用於手機瀏覽
+* // SideNav 圖片
 
-## Learn More
+### RWD 響應式網頁設計
+* 此網頁有特別對應不同解析度做出頁面調整
+* 用戶可在任何裝置上瀏覽，從桌面電腦到手機都會有最佳使用者體驗
+* // 手機截圖
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 使用外掛程式模組
+* react-transition-group (React過場動畫)
+* react-multi-carousel (可滑動的slideshow)
+* react-magnifier (商品圖片放大鏡功能)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 製作時間
+* 約15個工作天
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 圖片來源
+* Unsplash <https://unsplash.com/>
