@@ -53,7 +53,7 @@ https://floral-accessories.herokuapp.com/
 - 讓用戶得知目前位置
 - 透過麵包屑的連結，回到主分類頁，提高網頁易用性
 - 提升 SEO
-  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/breadcrubm.PNG)
+  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/breadcrumb.PNG)
 
 ### 商品預覽
 
@@ -70,7 +70,7 @@ https://floral-accessories.herokuapp.com/
 ### 我的願望清單
 
 - 用戶可加入商品至願望清單，留待日後購買
-  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/add_wishlist.PNG)
+  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/add_wishlist.png)
 
 ### 購物車
 
@@ -94,13 +94,13 @@ https://floral-accessories.herokuapp.com/
 ### 側邊跳出選單
 
 - 側邊選單特別適用於手機瀏覽
-  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/m_sidenav.jpeg)
+  <img src='https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/m_sidenav.jpeg' width='375px'/>
 
 ### RWD 響應式網頁設計
 
 - 此網頁有特別對應不同解析度做出頁面調整
 - 用戶可在任何裝置上瀏覽，從桌面電腦到手機都會有最佳使用者體驗
-  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/m_homepage.jpeg)
+  <img src='https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/m_homepage.jpeg' width='375px'/>
 
 ## 使用外掛程式模組
 
