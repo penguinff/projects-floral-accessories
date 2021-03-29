@@ -41,7 +41,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
   }
   
   return (
-    <header className={styles.header}>
+    <div className={styles.header}>
       <div>
         <SideNav showSideNav={showSideNav} setShowSideNav={setShowSideNav}/>
       </div>
@@ -78,7 +78,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
         <Link to='/under-construction'><span>會員專區</span></Link>
         <Link to='/under-construction'><span>潮流話題</span></Link>
       </nav>
-    </header>
+    </div>
   )
 }
 
