@@ -1,6 +1,6 @@
 # Floral Accessories 日韓飾品電商
 
-![image](https://github.com/penguinff/readme_pictures/blob/fb113c00c3bbf6a0b6be5a284630e4cb00eefa58/floral-accessories/homepage3.gif)
+![image](https://github.com/penguinff/readme_pictures/blob/fb113c00c3bbf6a0b6be5a284630e4cb00eefa58/floral-accessories/homepage4.gif)
 
 ## 網頁 Demo
 
