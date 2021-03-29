@@ -42,7 +42,7 @@ const SignUp = ({ signUpStart, location, history }) => {
   return (
     <div className={styles.signUp}>
       <h2>立即註冊</h2>
-      <span>立即註冊即可獲得官網會員獨家首購禮</span>
+      <span>立即註冊即可獲得官網會員獨家優惠</span>
       <form className={styles.signUpForm} onSubmit={handleSubmit}>
         <FormInput 
           type='text'
