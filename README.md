@@ -8,7 +8,9 @@ https://floral-accessories.herokuapp.com/
 
 ## 簡介
 
-此網頁為前端練習作品，主要功能為:
+此網頁為前端練習作品
+
+### 網頁主要功能
 
 - 前端：
 
