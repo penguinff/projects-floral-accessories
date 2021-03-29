@@ -102,7 +102,7 @@ https://floral-accessories.herokuapp.com/
 - 用戶登入後，購物車、願望清單和訂單記錄會儲存到 Firestore，方便用戶在不同裝置登入瀏覽
 
   ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/wishlist.PNG)
-  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/order-history.PNG)
+  ![image](https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/order_history.PNG)
 
 ### 側邊跳出選單
 
