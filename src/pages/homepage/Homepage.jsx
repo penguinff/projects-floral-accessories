@@ -5,12 +5,12 @@ import OurStory from '../../components/our-story/OurStory';
 import Directory from '../../components/directory/Directory';
 
 const Homepage = () => (
-  <div className={styles.homepage}>
+  <section className={styles.homepage}>
     <Carousel />
     <ProductsPreview />
     <OurStory />
     <Directory />
-  </div>
+  </section>
 );
 
 export default Homepage;

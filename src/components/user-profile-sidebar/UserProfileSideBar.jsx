@@ -14,7 +14,7 @@ import styles from './user-profile-sidebar.module.scss';
 
 const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUserSession }) => {
   return (
-    <div className={styles.userProfileSideBar}>
+    <nav className={styles.userProfileSideBar}>
       {currentUser ? 
         <div className={styles.signedIn}>
           <div className={styles.userInfo}>
@@ -43,7 +43,7 @@ const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUs
           <CustomButton onClick={() => history.push('/sign-in')}>登入</CustomButton>
         </div>
       }
-    </div>
+    </nav>
   )
 }
 

@@ -6,13 +6,13 @@ import SignUp from '../../components/sign-up/SignUp';
 import styles from './signin-signup-page.module.scss';
 
 const SignInSignUpPage = ({ location }) => (
-  <div className={styles.signInSignUpPage}>
+  <section className={styles.signInSignUpPage}>
     <Breadcrumb location={location} />
     <div className={styles.signInSignUpGroup}>
       <SignIn />
       <SignUp />
     </div>
-  </div>
+  </section>
 );
 
 export default withRouter(SignInSignUpPage);

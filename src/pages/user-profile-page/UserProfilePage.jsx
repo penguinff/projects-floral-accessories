@@ -9,7 +9,7 @@ import MyOrderHistoryPage from '../../pages/my-order-history-page/MyOrderHistory
 import styles from './user-profile-page.module.scss';
 
 const UserProfilePage = ({ match, location }) => (
-  <div className={styles.userProfilePage}>
+  <section className={styles.userProfilePage}>
     <Breadcrumb location={location} />
     <div className={styles.components}>
       <UserProfileSidebar />
@@ -18,7 +18,7 @@ const UserProfilePage = ({ match, location }) => (
         <Route exact path={`${match.path}/my-order-history`} component={MyOrderHistoryPage} />
       </Switch>
     </div>
-  </div>
+  </section>
 )
 
 export default UserProfilePage;

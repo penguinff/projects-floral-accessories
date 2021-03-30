@@ -42,9 +42,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
   
   return (
     <header className={styles.header}>
-      <div>
-        <SideNav showSideNav={showSideNav} setShowSideNav={setShowSideNav}/>
-      </div>
+      <SideNav showSideNav={showSideNav} setShowSideNav={setShowSideNav}/>
       <SaleMessage />
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>

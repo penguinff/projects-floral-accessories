@@ -35,13 +35,13 @@ const CheckoutPage = ({ match, location }) => {
   };
   
   return (
-    <div className={styles.checkoutPage}>
+    <section className={styles.checkoutPage}>
       <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes}/>
       <div className={styles.group}>
         <CheckoutForm />
         <CartSummary />
       </div>
-    </div>
+    </section>
   )
 };
 

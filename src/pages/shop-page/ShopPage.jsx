@@ -9,13 +9,13 @@ const CollectionPageContainer = lazy(() => import('../collection-page/Collection
 const ProductPageContainer = lazy(() => import('../product-page/ProductPageContainer'));
 
 const ShopPage = ({ match }) => (
-  <div className={styles.shopPage}>
+  <section className={styles.shopPage}>
     <Suspense fallback={<Spinner />}>
       <Route exact path={`${match.path}`} component={CollectionsOverviewPageContainer} />
       <Route exact path={`${match.path}/:collectionId`} component={CollectionPageContainer} />
       <Route exact path={`${match.path}/:collectionId/:productId`} component={ProductPageContainer} />
     </Suspense>
-  </div>
+  </section>
 );
 
 export default ShopPage;
