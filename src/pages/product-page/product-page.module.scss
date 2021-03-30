@@ -161,11 +161,20 @@
       width: 90%;
       margin: 5rem auto;
 
-      img {
+      .images {
         width: 70vw;
         max-width: 90rem;
-        height: 50vh;
-        object-fit: cover;
+        margin: auto;
+
+        img {
+          width: 100%;
+          height: 70vw;
+          object-fit: cover;
+
+          @include respond(phone) {
+            height: 50vh;
+          }
+        }
       }
     }
   }
