@@ -26,4 +26,11 @@
       }
     }
   }
+
+  .errorMessage {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: solid 2px secondaryColor;
+    color: secondaryColorDark;
+  }
 }

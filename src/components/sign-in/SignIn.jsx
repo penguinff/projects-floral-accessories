@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
+import { selectCurrentUser, selectUserError } from '../../redux/user/user-selectors';
 import { googleSignInStart, facebookSignInStart, emailSignInStart } from '../../redux/user/user-actions';
 
 import { ReactComponent as GoogleIcon } from '../../assets/google-color-icon.svg';
@@ -12,7 +14,7 @@ import { ReactComponent as FacebookIcon } from '../../assets/facebook-color-icon
 
 import styles from './sign-in.module.scss';
 
-const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, location, history }) => {
+const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, location, history, currentUser, userError }) => {
   const [userCredentials, setUserCredentials] = useState({
     email: '', 
     password: '' 
@@ -22,7 +24,7 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, loca
   
   // redirect after signin
   const redirect = () => {
-    location.state ? history.push(location.state.from) : history.push('/user-profile');
+    currentUser && (location.state ? history.push(location.state.from) : history.push('/user-profile'));
   }
 
   const handleChange = event => {
@@ -63,11 +65,19 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, loca
             label='密碼'
             required />
           <CustomButton type='submit'>登入</CustomButton>
+          { userError && 
+            <div className={styles.errorMessage}>{userError.message}</div>
+          }
         </form>
       </div>
     </div>
   );
 };
+
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  userError: selectUserError
+})
 
 const mapDispatchToProps = dispatch => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
@@ -75,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
   emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(SignIn));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
