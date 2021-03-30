@@ -31,7 +31,7 @@ const CheckoutForm = () => {
   return (
     <div className={styles.checkoutForm}>
       <h1>結賬</h1>
-      <div className={styles.amend} hidden={!isSubmitted} onClick={() => setIsSubmitted(!isSubmitted)}>
+      <div className={styles.edit} hidden={!isSubmitted} onClick={() => setIsSubmitted(!isSubmitted)}>
         <span>編輯</span>
       </div>
 

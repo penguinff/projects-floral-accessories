@@ -11,16 +11,16 @@
     width: 90%;
   }
 
-  .amend {
+  .edit {
     cursor: pointer;
     color: secondaryColor;
     position: absolute;
     right: 4.5rem;
-    top: 9.5rem;
+    top: 8rem;
 
     @include respond(phone) {
       right: 1rem;
-      top: 8rem;
+      top: 7rem;
     }
   }
 
