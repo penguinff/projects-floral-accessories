@@ -34,17 +34,15 @@
       }
     }
 
-    a {
+    a,
+    li {
       text-decoration: none;
       color: primaryColor;
+      list-style-type: none;
 
       &:hover {
         color: secondaryColorDark;
       }
-    }
-
-    li {
-      list-style-type: none;
     }
 
     .upper,
@@ -71,17 +69,15 @@
         padding: 1rem 0;
         display: flex;
         align-items: center;
-
-        &:hover svg {
-          fill: secondaryColorDark;
-        }
-      }
-
-      a {
         color: white;
+        cursor: pointer;
 
         &:hover {
           color: secondaryColorDark;
+        }
+
+        &:hover svg {
+          fill: secondaryColorDark;
         }
       }
     }

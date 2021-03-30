@@ -18,7 +18,7 @@ const SideNav = ({ showSideNav, setShowSideNav }) => {
     <nav className={`${styles.sideNav} ${showSideNav && styles.sideNavActive}`}>
       <div className={styles.content}>
         <ul className={styles.upper} onClick={toggleSideNav}>
-          <Link><li><ClearIcon/>目錄</li></Link>
+          <li><ClearIcon/>目錄</li>
           <Link to='/user-profile'><li><UserIcon />我的賬戶</li></Link>
         </ul>
         <ul className={styles.middle}>
