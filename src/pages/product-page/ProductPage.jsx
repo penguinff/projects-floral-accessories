@@ -35,7 +35,7 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
       <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes} />
       <div className={styles.productInfo}>
         <div className={styles.left}>
-          <Magnifier src={imageUrl} alt='product image' />
+          <Magnifier src={imageUrl} alt='product' />
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
@@ -81,7 +81,7 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
         </div>
         <div className={styles.details}>
           <div className={styles.images}>
-            <img src={imageUrl} alt='product image' />
+            <img src={imageUrl} alt='product' />
           </div>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
