@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/functions';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAuNGF50NlpDpUh6iDalQoeMP2sYxYoYdo",
@@ -16,6 +17,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const functions = firebase.functions();
 
 // ----- functions related to users ----- //
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -123,5 +125,8 @@ export const storeUserCartAndWishlist = async (currentUser, cartItems, wishlistI
     console.log('error saving user cart and wishlist', error);
   };
 };
+
+// ----- functions related to Stripe ----- //
+export const createStripeCheckout = functions.httpsCallable('createStripeCheckout');
 
 export default firebase;
