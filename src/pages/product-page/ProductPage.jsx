@@ -51,7 +51,7 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
           <div className={styles.details}>
             <h4>商品特色：</h4>
             <ul>
-              {details.map(detail => <li>{detail}</li>)}
+              {details.map((detail, index) => <li key={index}>{detail}</li>)}
             </ul>
           </div>
           <div className={styles.price}>
