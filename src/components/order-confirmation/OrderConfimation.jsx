@@ -3,8 +3,6 @@ import { createStructuredSelector } from 'reselect';
 
 import { selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
 
-import StripeCheckoutButton from '../stripe-checkout-button/StripeCheckoutButton';
-import StripeCheckoutForm from '../stripe-checkout-form/StripeCheckoutForm';
 import StripeCheckoutElement from '../stripe-checkout-element/StripeCheckoutElement';
 
 import styles from './order-confirmation.module.scss'
@@ -42,9 +40,7 @@ const OrderConfirmation = ({ shippingInfo, cartTotal, shippingFee }) => {
           <br/>
           <span>Card No.: 4242 4242 4242 4242 - Exp: 01/22 - CVV: 123</span>
         </p>
-        <StripeCheckoutButton price={totalToPay} shippingInfo={shippingInfo} />
-        <StripeCheckoutForm />
-        <StripeCheckoutElement />
+        <StripeCheckoutElement price={totalToPay} shippingInfo={shippingInfo} />
       </div>
     </div>
   )

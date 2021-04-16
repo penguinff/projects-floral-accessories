@@ -1,9 +1,10 @@
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-import { createOrder } from '../../firebase/firebase.utils';
+import { createPaymentIntent, createOrder } from '../../firebase/firebase.utils';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { selectCartItems } from '../../redux/cart/cart-selectors';
@@ -11,17 +12,31 @@ import { clearCart } from '../../redux/cart/cart-actions';
 
 import CustomButton from '../custom-button/CustomButton';
 
+import styles from './stripe-checkout-element.module.scss';
+
 const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clearCart, history }) => {
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState('');
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
   const elements = useElements();
+
+  const priceForStripe = price * 100;
+
+  useEffect(() => {
+    createPaymentIntent(priceForStripe)
+      .then(response => {
+        setClientSecret(response.data.clientSecret);
+      })
+  }, [])
 
   const cardElementOpts = {
     iconStyle: 'solid',
     hidePostalCode: true,
   };
-
-  const priceForStripe = price * 100;
-
+  
   const onSuccessfulPayment = () => {
     // info that send to backend
     console.log(priceForStripe);
@@ -35,49 +50,39 @@ const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clear
     history.push('/user-profile');
   }
 
+  const handleChange = async (event) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message: '');
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    if (!stripe || !elements) {
-      return;
-    }
-
-    const cardElement = elements.getElement(CardElement);
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: cardElement
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements.getElement(CardElement)
+      }
     });
-
-    if (error) {
-      console.log('[error]', error);
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
     } else {
-      console.log('[PaymentMethod]', paymentMethod);
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
       onSuccessfulPayment();
     }
   };
 
-  const stripeCartItems = cartItems.map(item => {
-    return {
-      quantity: item.quantity,
-      price_data: {
-        currency: "twd",
-        unit_amount: item.price * 100,
-        product_data: {
-          name: item.name,
-        },
-      },
-    }
-  })
-
-  console.log(stripeCartItems)
-
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement options={cardElementOpts} />
-      <CustomButton type='submit' disabled={!stripe}>
-        立即付款
+      <CardElement options={cardElementOpts} onChange={handleChange} />
+      <CustomButton type='submit' disabled={processing || disabled || succeeded}>
+        <span>
+          {processing ? <div className={styles.spinner}></div> : '立即付款'}
+        </span>
       </CustomButton>
+      {error && <div>{error}</div>}
     </form>
   );
 };
