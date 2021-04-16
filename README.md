@@ -26,6 +26,7 @@ https://floral-accessories.herokuapp.com/
   - 利用 Firestore 儲存商品資訊、用戶資料和訂單記錄
   - 管理員可以可以輕鬆新增/刪除/修改上架商品，檢視用戶訂單
   - 把用戶購物車内商品、願望清單儲存到雲端，方便用戶在任何裝置上管理
+  - 利用 Cloud Functions 建置雲端後端，以串接 Stripe 金流支付 API
 
 ### 主要練習
 
@@ -34,7 +35,7 @@ https://floral-accessories.herokuapp.com/
 - Redux
 - Redux-Saga
 - 串接 Firebase
-- 串接 Stripe 金流支付 API (後段架構還沒完成)
+- 串接 Stripe 金流支付 API
 - 手刻 CSS (利用 CSS modules & Sass)
 - Responsive Web Design (此網頁可以在任何裝置上瀏覽)
 
