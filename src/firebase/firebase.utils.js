@@ -83,7 +83,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 
 // ----- functions related to user orders ----- //
 export const createOrder = async (currentUser, cartItems, shippingInfo, orderRefNum, price) => {
-  const currentUserId = currentUser.id;
+  const currentUserId = currentUser ? currentUser.id : 'visitor';
   const userRef = firestore.doc(`users/${currentUserId}`);
   const ordersRef = firestore.doc('orders/users-orders');
   const createdAt = new Date();
@@ -95,11 +95,13 @@ export const createOrder = async (currentUser, cartItems, shippingInfo, orderRef
     total: price
   }
   try {
-    await userRef.set({
-      orders: {
-        [orderRefNum]: orderDetails
-      }
-    }, {merge: true});
+    if (currentUser) {
+      await userRef.set({
+        orders: {
+          [orderRefNum]: orderDetails
+        }
+      }, {merge: true});
+    }
     await ordersRef.update({
       [orderRefNum]: {
         userId: currentUserId,
