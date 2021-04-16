@@ -4,7 +4,7 @@ import 'firebase/auth';
 import 'firebase/functions';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAuNGF50NlpDpUh6iDalQoeMP2sYxYoYdo",
+  apiKey: "AIzaSyCCBKlJDpkKwSx50JQ8uJhw1f_xzvTHTXY",
   authDomain: "floral-accessories.firebaseapp.com",
   projectId: "floral-accessories",
   storageBucket: "floral-accessories.appspot.com",

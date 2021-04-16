@@ -76,13 +76,13 @@ const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clear
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement options={cardElementOpts} onChange={handleChange} />
+      <CardElement className={styles.cardElement} options={cardElementOpts} onChange={handleChange} />
       <CustomButton type='submit' disabled={processing || disabled || succeeded}>
         <span>
           {processing ? <div className={styles.spinner}></div> : '立即付款'}
         </span>
       </CustomButton>
-      {error && <div>{error}</div>}
+      {error && <div className={styles.errorMessage}>{error}</div>}
     </form>
   );
 };
