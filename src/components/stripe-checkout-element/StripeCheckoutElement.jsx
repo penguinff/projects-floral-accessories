@@ -30,7 +30,7 @@ const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clear
       .then(response => {
         setClientSecret(response.data.clientSecret);
       })
-  }, [])
+  }, [priceForStripe])
 
   const cardElementOpts = {
     iconStyle: 'solid',
