@@ -38,8 +38,6 @@ const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clear
   };
   
   const onSuccessfulPayment = () => {
-    // info that send to backend
-    console.log(priceForStripe);
     // create a random order reference number
     const orderRefNum = Math.floor(100000 + Math.random() * 900000);
     // upload the order details to firebase after payment successful
