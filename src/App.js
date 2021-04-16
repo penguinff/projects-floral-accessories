@@ -2,6 +2,8 @@ import { useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
 import { selectCurrentUser } from './redux/user/user-selectors';
 import { selectCartItems } from './redux/cart/cart-selectors';
@@ -25,6 +27,8 @@ const SignInSignUpPage = lazy(() => import('./pages/signin-signup-page/SignInSig
 const UserProfilePage = lazy(() => import('./pages/user-profile-page/UserProfilePage'));
 const UnderConstructionPage = lazy(() => import('./pages/under-construction-page/UnderConstructionPage'));
 
+const stripePromise = loadStripe('pk_test_51Gs8LHGm0HT5YB3DuO8XmMMNiQ9oOeulR6UruC3pru13wZDM3NkdsuCGM8S6Q2SEIJ6x8PPhTqHXeggdpGONZQic00soELdq0K');
+
 const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, wishlistItems }) => {
   useEffect(() => {
     checkUserSession();
@@ -47,25 +51,27 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
   return (
     <div className={styles.app}>
       <Header />
-      <Switch>
-        <ErrorBoundary>
-          <Suspense fallback={<Spinner />}>
-            <Route exact path='/' component={Homepage} />
-            <Route path='/shop' component={ShopPage} />
-            <Route exact path='/cart' component={CartPage} />
-            <Route 
-              exact
-              path='/sign-in'
-              render={() => 
-                currentUser ? <Redirect to='/user-profile' /> : <SignInSignUpPage />
-              }
-            />
-            <Route path='/user-profile' component={UserProfilePage} />
-            <Route exact path='/checkout' component={CheckoutPage} />
-            <Route exact path='/under-construction' component={UnderConstructionPage} />
-          </Suspense>
-        </ErrorBoundary>
-      </Switch>
+      <Elements stripe={stripePromise}>
+        <Switch>
+          <ErrorBoundary>
+            <Suspense fallback={<Spinner />}>
+              <Route exact path='/' component={Homepage} />
+              <Route path='/shop' component={ShopPage} />
+              <Route exact path='/cart' component={CartPage} />
+              <Route 
+                exact
+                path='/sign-in'
+                render={() => 
+                  currentUser ? <Redirect to='/user-profile' /> : <SignInSignUpPage />
+                }
+              />
+              <Route path='/user-profile' component={UserProfilePage} />
+              <Route exact path='/checkout' component={CheckoutPage} />
+              <Route exact path='/under-construction' component={UnderConstructionPage} />
+            </Suspense>
+          </ErrorBoundary>
+        </Switch>
+      </Elements>
       <Footer />
     </div>
   );

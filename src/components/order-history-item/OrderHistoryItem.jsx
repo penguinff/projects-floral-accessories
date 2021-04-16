@@ -24,7 +24,7 @@ const OrderHistoryItem = ({order}) => {
       <div className={styles.details} hidden={isItemsHidden}>
         商品：
         <div className={styles.items}>
-          {items.map(item => <CartItem cartItem={item}/>)}
+          {items.map(item => <CartItem key={item.id} cartItem={item}/>)}
         </div>
         <div className={styles.total}>
           訂單總金額： NT${total.toLocaleString()}

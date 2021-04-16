@@ -16,7 +16,7 @@ const MyOrderHistoryPage = ({ currentUser }) => (
         <div className={styles.orderList}>
           {Object.keys(currentUser.orders).map(key => {
             const order = currentUser.orders[key];
-            return <OrderHistoryItem order={order} />;
+            return <OrderHistoryItem key={key} order={order} />;
           }
           )}
         </div>

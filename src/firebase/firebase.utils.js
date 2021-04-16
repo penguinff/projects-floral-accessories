@@ -1,9 +1,10 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/functions';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAuNGF50NlpDpUh6iDalQoeMP2sYxYoYdo",
+  apiKey: "AIzaSyCCBKlJDpkKwSx50JQ8uJhw1f_xzvTHTXY",
   authDomain: "floral-accessories.firebaseapp.com",
   projectId: "floral-accessories",
   storageBucket: "floral-accessories.appspot.com",
@@ -16,6 +17,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const functions = firebase.functions();
 
 // ----- functions related to users ----- //
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -81,7 +83,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 
 // ----- functions related to user orders ----- //
 export const createOrder = async (currentUser, cartItems, shippingInfo, orderRefNum, price) => {
-  const currentUserId = currentUser.id;
+  const currentUserId = currentUser ? currentUser.id : 'visitor';
   const userRef = firestore.doc(`users/${currentUserId}`);
   const ordersRef = firestore.doc('orders/users-orders');
   const createdAt = new Date();
@@ -93,11 +95,13 @@ export const createOrder = async (currentUser, cartItems, shippingInfo, orderRef
     total: price
   }
   try {
-    await userRef.set({
-      orders: {
-        [orderRefNum]: orderDetails
-      }
-    }, {merge: true});
+    if (currentUser) {
+      await userRef.set({
+        orders: {
+          [orderRefNum]: orderDetails
+        }
+      }, {merge: true});
+    }
     await ordersRef.update({
       [orderRefNum]: {
         userId: currentUserId,
@@ -123,5 +127,11 @@ export const storeUserCartAndWishlist = async (currentUser, cartItems, wishlistI
     console.log('error saving user cart and wishlist', error);
   };
 };
+
+// ----- functions related to Stripe ----- //
+// for stripe-checkout-form
+export const createStripeCheckout = functions.httpsCallable('createStripeCheckout');
+// for stripe-checkout-element
+export const createPaymentIntent = functions.httpsCallable('createPaymentIntent');
 
 export default firebase;
