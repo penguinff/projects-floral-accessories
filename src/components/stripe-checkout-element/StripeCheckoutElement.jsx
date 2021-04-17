@@ -14,7 +14,7 @@ import CustomButton from '../custom-button/CustomButton';
 
 import styles from './stripe-checkout-element.module.scss';
 
-const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clearCart, history }) => {
+const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, clearCart, history }) => {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
@@ -29,7 +29,10 @@ const StripeCheckoutForm = ({ price, shippingInfo, cartItems, currentUser, clear
     createPaymentIntent(priceForStripe)
       .then(response => {
         setClientSecret(response.data.clientSecret);
-      })
+      });
+    return () => {
+      setClientSecret('');
+    }
   }, [priceForStripe])
 
   const cardElementOpts = {
@@ -94,4 +97,4 @@ const mapDispatchToProps = dispatch => ({
   clearCart: () => dispatch(clearCart())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(StripeCheckoutForm));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(StripeCheckoutElement));
