@@ -129,8 +129,6 @@ export const storeUserCartAndWishlist = async (currentUser, cartItems, wishlistI
 };
 
 // ----- functions related to Stripe ----- //
-// for stripe-checkout-form
-export const createStripeCheckout = functions.httpsCallable('createStripeCheckout');
 // for stripe-checkout-element
 export const createPaymentIntent = functions.httpsCallable('createPaymentIntent');
 
