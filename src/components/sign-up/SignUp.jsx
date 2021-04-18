@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { createStructuredSelector } from 'reselect';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
+import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { signUpStart } from '../../redux/user/user-actions';
 
 import styles from './sign-up.module.scss';
 
-const SignUp = ({ signUpStart, location, history }) => {
+const SignUp = ({ signUpStart, location, history, currentUser }) => {
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
@@ -21,7 +23,7 @@ const SignUp = ({ signUpStart, location, history }) => {
 
   // redirect after signup
   const redirect = () => {
-    location.state ? history.push(location.state.from) : history.push('/user-profile');
+    currentUser && (location.state ? history.push(location.state.from) : history.push('/user-profile'));
   }
 
   const handleChange = event => {
@@ -82,8 +84,12 @@ const SignUp = ({ signUpStart, location, history }) => {
   );
 }
 
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+})
+
 const mapDispatchToProps = dispatch => ({
   signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
 })
 
-export default connect(null, mapDispatchToProps)(withRouter(SignUp));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp));
