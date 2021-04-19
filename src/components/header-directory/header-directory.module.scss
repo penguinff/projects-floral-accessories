@@ -1,0 +1,62 @@
+@import '../../config.scss';
+
+.headerDirectory {
+  width: 30rem;
+  padding: 1.5rem 1rem 1rem 1rem;
+  background-color: white;
+  position: absolute;
+  top: 2.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  // animation
+  animation-name: appear;
+  animation-duration: 0.5s;
+
+  @include respond(phone) {
+    display: none;
+  }
+
+  .directoryItem {
+    width: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 8rem;
+      height: 8rem;
+      object-fit: cover;
+      border: solid 1px primaryColorLight;
+      opacity: 0.9;
+      transition: all 0.3s;
+      filter: brightness(0.9);
+    }
+
+    span {
+      font-size: 1.4rem;
+      color: primaryColorDark;
+      transition: all 0.3s;
+    }
+
+    &:hover span {
+      color: secondaryColor;
+    }
+
+    &:hover img {
+      opacity: 1;
+      filter: brightness(1);
+    }
+  }
+}
+
+// animation
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

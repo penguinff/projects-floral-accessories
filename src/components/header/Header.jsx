@@ -14,6 +14,7 @@ import SideNav from '../side-nav/SideNav';
 import CartIcon from '../cart-icon/cartIcon';
 import CartDropdown from '../cart-dropdown/CartDropdown';
 import PopupMessage from '../popup-message/PopupMessage';
+import HeaderDirectory from '../header-directory/HeaderDirectory';
 
 import styles from './header.module.scss';
 
@@ -25,6 +26,7 @@ import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
 const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser, messageHidden, toggleMessageHidden }) => {
   const [showSideNav, setShowSideNav] = useState(false);
+  const [showDirectory, setShowDirectory] = useState(false);
 
   useEffect(() => {
     let timer = setTimeout(() => toggleCartHidden(true), 4000);
@@ -72,7 +74,14 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
       </div>
       <nav className={styles.categoryList}>
         <Link to='/under-construction'><span>新品上市</span></Link>
-        <Link to='/shop'><span>商品分類</span></Link>
+        <div 
+          className={styles.directory}
+          onMouseEnter={() => setShowDirectory(true)}
+          onMouseLeave={() => setShowDirectory(false)}
+        >
+          <Link to='/shop'><span>商品分類</span></Link>
+          { showDirectory ? <HeaderDirectory setShowDirectory={setShowDirectory} /> : null }
+        </div>
         <Link to='/under-construction'><span>會員專區</span></Link>
         <Link to='/under-construction'><span>潮流話題</span></Link>
       </nav>
