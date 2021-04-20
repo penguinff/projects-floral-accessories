@@ -9,13 +9,17 @@
 
   .total {
     font-size: 1.4rem;
-    color: primaryColorDark;
+    color: primaryColor;
+
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
   }
 
   select {
     padding: 0.5rem;
     font-size: 1.4rem;
-    color: primaryColorDark;
+    color: primaryColor;
     border: solid 1px primaryColorLight;
 
     &:focus {
