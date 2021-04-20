@@ -73,7 +73,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
         { messageHidden ? null : <PopupMessage /> }
       </div>
       <nav className={styles.categoryList}>
-        <Link to='/under-construction'><span>新品上市</span></Link>
+        <Link to='/shop/new-arrival'><span>新品上市</span></Link>
         <div 
           className={styles.directory}
           onMouseEnter={() => setShowDirectory(true)}
