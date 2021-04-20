@@ -5,7 +5,6 @@
   height: 8rem;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
-  color: primaryColorDark;
   background-color: rgba(255, 255, 255, 0.4);
   display: grid;
   grid-template-columns: 0.8fr 1.5fr 0.5fr;
@@ -26,7 +25,6 @@
     margin-right: 0.5rem;
 
     .quantity {
-      color: primaryColor;
       font-size: 1.2rem;
 
       @include respond(phone) {

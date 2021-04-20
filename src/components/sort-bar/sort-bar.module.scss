@@ -9,7 +9,6 @@
 
   .total {
     font-size: 1.4rem;
-    color: primaryColor;
 
     @include respond(phone) {
       font-size: 1.6rem;

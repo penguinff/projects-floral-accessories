@@ -3,7 +3,6 @@
 @mixin shrinkLabel {
   top: -1.4rem;
   font-size: 1.2rem;
-  color: primaryColor;
 }
 
 .formInputGroup {
@@ -34,7 +33,6 @@
   }
 
   .formInputLabel {
-    color: primaryColor;
     font-size: 1.5rem;
     position: absolute;
     pointer-events: none;
