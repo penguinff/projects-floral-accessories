@@ -22,6 +22,11 @@ const routes = [
     breadcrumbName: '商品',
     routes: [
       {
+        path: '/shop/new-arrival',
+        component: CollectionPageContainer,
+        breadcrumbName: '新品上市'
+      },
+      {
         path: '/shop/earrings',
         component: CollectionPageContainer,
         breadcrumbName: '耳環'
