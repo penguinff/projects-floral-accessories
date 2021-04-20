@@ -21,7 +21,7 @@ const CollectionPage = ({ location, collection }) => {
       case 'descending':
         return b.price - a.price;
       default:
-        return;
+        return collection;
     }
   })
 
