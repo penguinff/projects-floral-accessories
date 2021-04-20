@@ -11,7 +11,7 @@ const HeaderDirectory = ({ history, setShowDirectory }) => (
         className={styles.directoryItem} 
         key={item.id}
         onClick={() => {
-          history.push(`/shop/${encodeURI(item.title.toLowerCase())}`);
+          history.push(`/shop/${item.routeName}`);
           setShowDirectory(false);
         }}
       >
