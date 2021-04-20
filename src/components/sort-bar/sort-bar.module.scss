@@ -1,0 +1,32 @@
+@import '../../config.scss';
+
+.sortBar {
+  width: 70%;
+  margin: 3rem auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .total {
+    font-size: 1.4rem;
+    color: primaryColorDark;
+  }
+
+  select {
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    color: primaryColorDark;
+    border: solid 1px primaryColorLight;
+
+    &:focus {
+      outline: none;
+    }
+
+    option {
+      &:checked {
+        background-color: secondaryColorLight;
+        color: secondaryColorDark;
+      }
+    }
+  }
+}
