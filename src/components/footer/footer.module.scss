@@ -4,7 +4,7 @@
   grid-column: full-start / full-end;
   background-color: secondaryColorLight;
   font-size: 1.4rem;
-  padding: 5rem 0;
+  padding: 3rem 0;
 
   @include respond(phone) {
     font-size: 1.8rem;

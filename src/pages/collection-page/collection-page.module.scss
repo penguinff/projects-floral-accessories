@@ -2,7 +2,6 @@
 
 .collectionPage {
   grid-column: full-start / full-end;
-  min-height: 65vh;
 
   .collectionPageGroup {
     .collectionBanner {
@@ -33,7 +32,7 @@
     }
 
     .collectionItems {
-      width: 80%;
+      width: 70%;
       margin: 5rem auto 8rem;
       display: grid;
       justify-content: center;
