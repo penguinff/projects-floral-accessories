@@ -22,6 +22,10 @@
     color: primaryColor;
     border: solid 1px primaryColorLight;
 
+    @include respond(phone) {
+      font-size: 1.6rem;
+    }
+
     &:focus {
       outline: none;
     }
