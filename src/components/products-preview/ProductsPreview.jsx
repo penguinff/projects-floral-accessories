@@ -3,7 +3,7 @@ import { createStructuredSelector } from 'reselect';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import { selectCollectionsForPreview } from '../../redux/shop/shop-selectors';
+import { selectNewArrival } from '../../redux/shop/shop-selectors';
 
 import ProductItem from '../product-item/ProductItem';
 
@@ -31,38 +31,28 @@ const responsive = {
   }
 };
 
-const ProductsPreview = ({ collections }) => {
-  // create New Arrival Array from shop collections
-  let newArrivalArray = [];
-  collections.forEach(collection => {
-    let numberOfItems = collection.items.length;
-    let newItems = collection.items.filter((item, index) => index > numberOfItems - 3);
-    newItems.map(newItem => newArrivalArray.push(newItem));
-  });
-
-  return (
-    <div className={styles.productPreview}>
-      <div className={styles.previewTitle}>
-        <span>New Arrival</span>
-      </div>
-      {newArrivalArray.length ?
-        <Carousel 
-          removeArrowOnDeviceType={'mobile'}
-          responsive={responsive} 
-          className={styles.previewContainer}
-        >
-          {newArrivalArray.map((item, index) => (
-            <ProductItem item={item} key={item.id}/>
-          ))}
-        </Carousel>
-        : <BubbleSpinner />
-      }
+const ProductsPreview = ({ newArrivalArray }) => (
+  <div className={styles.productPreview}>
+    <div className={styles.previewTitle}>
+      <span>New Arrival</span>
     </div>
-  )
-};
+    {newArrivalArray.length ?
+      <Carousel 
+        removeArrowOnDeviceType={'mobile'}
+        responsive={responsive} 
+        className={styles.previewContainer}
+      >
+        {newArrivalArray.map((item, index) => (
+          <ProductItem item={item} key={item.id}/>
+        ))}
+      </Carousel>
+      : <BubbleSpinner />
+    }
+  </div>
+)
 
 const mapStateToProps = createStructuredSelector({
-  collections: selectCollectionsForPreview
+  newArrivalArray: selectNewArrival
 });
 
 export default connect(mapStateToProps)(ProductsPreview);
