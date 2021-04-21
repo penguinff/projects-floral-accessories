@@ -13,7 +13,7 @@ const OurStory = () => (
     <div className={styles.wordContainer}>
       <div className={styles.title}>Our Story</div>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <Link to='under-construction'><button>Learn More</button></Link>
+      <Link to='about-us'><button>Learn More</button></Link>
     </div>
   </div>
 );
