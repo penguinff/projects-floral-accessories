@@ -1,3 +1,5 @@
+import ScrollToTopButton from '../scroll-to-top-button/ScrollToTopButton';
+
 import styles from './footer.module.scss';
 
 import { ReactComponent as FacebookIcon } from '../../assets/facebook-icon.svg';
@@ -8,6 +10,7 @@ import { ReactComponent as LineIcon } from '../../assets/line-icon.svg';
 
 const Footer = () => (
   <footer className={styles.footer}>
+    <ScrollToTopButton />
     <div className={styles.lists}>
 
       <ul className={styles.list}>
