@@ -27,7 +27,13 @@
           display: flex;
           align-items: center;
           margin: 1rem;
-          min-width: 15rem;
+          min-width: 16rem;
+
+          svg {
+            width: 4rem;
+            height: 4rem;
+            margin: 2rem;
+          }
 
           h2,
           span {
@@ -60,12 +66,6 @@
           color: secondaryColor;
         }
       }
-    }
-
-    svg {
-      width: 4rem;
-      height: 4rem;
-      margin: 2rem;
     }
   }
 }
