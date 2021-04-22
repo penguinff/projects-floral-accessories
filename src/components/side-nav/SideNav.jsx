@@ -44,7 +44,7 @@ const SideNav = ({ showSideNav, setShowSideNav }) => {
           <Link to='/under-construction' onClick={toggleSideNav}><li>潮流話題</li></Link>
         </ul>
         <ul className={styles.lower}onClick={toggleSideNav}>
-          <Link to='/about-us' onClick={toggleSideNav}><li>關於Floral Accessories</li></Link>
+          <Link to='/about-us' onClick={toggleSideNav}><li>關於 Floral Accessories</li></Link>
           <Link to='/contact-us'><li>聯絡我們</li></Link>
         </ul>
       </div>

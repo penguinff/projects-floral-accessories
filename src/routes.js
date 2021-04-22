@@ -100,7 +100,7 @@ const routes = [
     path: '/about-us',
     component: AboutUsPage,
     exact: true,
-    breadcrumbName: '關於我們'
+    breadcrumbName: '關於 Floral Accessories'
   },
   {
     path: '/contact-us',
