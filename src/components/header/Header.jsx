@@ -55,7 +55,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
           <img src={CompanyLogo} className={styles.companyLogo} alt='company logo'/>
         </Link>
         <div className={styles.rightOptions}>
-          <Link to='/under-construction'>
+          <Link to='/contact-us'>
             <ContactIcon className={styles.contactIcon}/>
           </Link>
           <UserIcon className={styles.userIcon} onClick={redirect} />

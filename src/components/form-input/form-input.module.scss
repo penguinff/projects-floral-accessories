@@ -32,6 +32,11 @@
     }
   }
 
+  .textArea {
+    height: 10rem;
+    resize: none;
+  }
+
   .formInputLabel {
     font-size: 1.5rem;
     position: absolute;

@@ -7,6 +7,8 @@ import UserProfilePage from './pages/user-profile-page/UserProfilePage';
 import MyWishlistPage from './pages/my-wishlist-page/MyWishlistPage';
 import MyOrderHistoryPage from './pages/my-order-history-page/MyOrderHistoryPage';
 import CollectionPageContainer from './pages/collection-page/CollectionPageContainer';
+import AboutUsPage from './pages/about-us-page/AboutUsPage';
+import ContactUsPage from './pages/contact-us-page/ContactUsPage';
 
 const routes = [
   {
@@ -93,6 +95,18 @@ const routes = [
         breadcrumbName: '訂單記錄'
       }
     ]
+  },
+  {
+    path: '/about-us',
+    component: AboutUsPage,
+    exact: true,
+    breadcrumbName: '關於我們'
+  },
+  {
+    path: '/contact-us',
+    component: ContactUsPage,
+    exact: true,
+    breadcrumbName: '聯絡我們'
   },
 ];
 

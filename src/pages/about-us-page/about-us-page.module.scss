@@ -1,12 +1,46 @@
+@import '../../config.scss';
+
 .aboutUsPage {
   grid-column: full-start / full-end;
   min-height: 65vh;
 
-  .banner {
-    img {
-      width: 100%;
-      height: 20vw;
-      object-fit: cover;
+  .containers {
+    width: 80%;
+    margin: 5rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .container {
+      width: 40rem;
+      height: 60rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin: 3rem;
+
+      img {
+        width: 40rem;
+        height: 40rem;
+        object-fit: cover;
+        box-shadow: 2.5rem 2.5rem secondaryBackgroundLight;
+      }
+
+      &:nth-of-type(2) {
+        flex-direction: column-reverse;
+
+        @include respond(tab-land) {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
+  span {
+    font-size: 1.5rem;
+
+    @include respond(tab-land) {
+      font-size: 1.8rem;
     }
   }
 }

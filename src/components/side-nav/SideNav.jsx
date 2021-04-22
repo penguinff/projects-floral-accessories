@@ -45,7 +45,7 @@ const SideNav = ({ showSideNav, setShowSideNav }) => {
         </ul>
         <ul className={styles.lower}onClick={toggleSideNav}>
           <Link to='/about-us' onClick={toggleSideNav}><li>關於Floral Accessories</li></Link>
-          <Link to='/under-construction'><li>聯絡我們</li></Link>
+          <Link to='/contact-us'><li>聯絡我們</li></Link>
         </ul>
       </div>
       <div className={styles.background} onClick={toggleSideNav}></div>
