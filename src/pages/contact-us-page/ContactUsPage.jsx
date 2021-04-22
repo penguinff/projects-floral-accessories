@@ -50,21 +50,21 @@ const ContactUsPage = ({ location }) => {
           <div className={styles.infoCards}>
             <div className={styles.infoCard}>
               <AddressIcon />
-              <div className={styles.info}>
+              <div>
                 <h2>實體店地址</h2>
                 <span><a href='https://goo.gl/maps/byBcss7v5p7G3H8u8' target='_blank' rel='noreferrer'>台北市信義區信義路五段7號</a></span>
               </div>
             </div>
             <div className={styles.infoCard}>
               <PhoneIcon />
-              <div className={styles.info}>
+              <div>
                 <h2>客服專綫</h2>
                 <span><a href='tel:0960888333'>0960-888-333</a></span>
               </div>
             </div>
             <div className={styles.infoCard}>
               <EmailIcon />
-              <div className={styles.info}>
+              <div>
                 <h2>客服信箱</h2>
                 <span><a href='mailto:enquiry@floral-accessories.com'>enquiry@floral-accessories.com</a></span>
               </div>
