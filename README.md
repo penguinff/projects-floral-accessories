@@ -128,7 +128,7 @@ https://floral-accessories.herokuapp.com/
 
 ## 製作時間
 
-- 約 15 個工作天
+- 約 20 個工作天
 
 ## 圖片來源
 
