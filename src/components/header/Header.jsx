@@ -48,7 +48,7 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
       <SaleMessage />
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>
-          <SideNavIcon onClick={() => setShowSideNav(!showSideNav)}/>
+          <SideNavIcon className={styles.sideNavIcon} onClick={() => setShowSideNav(!showSideNav)}/>
           <Search />
         </div>
         <Link to='/'>

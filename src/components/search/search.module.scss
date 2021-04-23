@@ -4,6 +4,8 @@
   position: relative;
 
   .searchIcon {
+    padding: 0.5rem;
+
     svg {
       fill: secondaryColor;
       cursor: pointer;
@@ -18,6 +20,7 @@
   }
 
   .searchContainer {
+    display: none;
     position: absolute;
     top: 0.5rem;
     left: 4rem;
@@ -40,9 +43,9 @@
         border-bottom: solid 0.5px primaryColorLight;
 
         @include respond(phone) {
-          font-size: 1.8rem;
+          font-size: 2rem;
           width: 100vw;
-          padding: 1rem 5rem;
+          padding: 2rem 6rem;
           border-top: solid 0.5px primaryColorLight;
         }
 
@@ -51,6 +54,7 @@
         }
       }
     }
+
     .background {
       display: none;
 
@@ -61,5 +65,9 @@
         background-color: rgba(0, 0, 0, 0.3);
       }
     }
+  }
+
+  &:focus-within .searchContainer {
+    display: block;
   }
 }

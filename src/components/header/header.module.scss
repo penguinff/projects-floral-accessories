@@ -18,27 +18,15 @@
     position: relative;
 
     .leftOptions {
-      width: 8rem;
+      width: 12rem;
       display: flex;
-      // justify-content: space-around;
 
-      svg {
+      .sideNavIcon {
         padding: 0.5rem;
-      }
-
-      @include respond(phone) {
-        justify-content: flex-start;
-      }
-
-      .searchIcon {
-        @include respond(phone) {
-          display: none;
-        }
       }
     }
 
     .companyLogo {
-      margin-left: 10%;
       width: 18rem;
       height: auto;
       cursor: pointer;
@@ -47,15 +35,12 @@
     .rightOptions {
       width: 12rem;
       display: flex;
-      justify-content: space-around;
-
-      @include respond(phone) {
-        justify-content: flex-end;
-      }
+      justify-content: space-between;
 
       .contactIcon,
       .userIcon {
         padding: 0.5rem;
+
         @include respond(phone) {
           display: none;
         }
@@ -76,6 +61,11 @@
 
       &:hover {
         fill: secondaryColorDark;
+      }
+
+      @include respond(phone) {
+        width: 4rem;
+        height: 4rem;
       }
     }
   }

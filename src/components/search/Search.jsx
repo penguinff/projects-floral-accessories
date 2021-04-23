@@ -23,7 +23,7 @@ const Search = ({ history }) => {
   }
 
   return (
-    <div className={styles.search}>
+    <div className={styles.search} tabIndex='0'>
       <SearchIcon 
         className={styles.searchIcon} 
         onClick={() => setShowSearchInput(!showSearchInput)} 
