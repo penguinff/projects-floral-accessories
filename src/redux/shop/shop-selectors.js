@@ -13,6 +13,16 @@ export const selectCollectionsForPreview = createSelector(
     collections ? Object.keys(collections).map(key => collections[key]) : []
 );
 
+export const selectAllProductsArray = createSelector(
+  [selectCollectionsForPreview],
+  previewCollections => 
+    previewCollections ? 
+      previewCollections.map(previewCollection => 
+        previewCollection.items
+      ).flat()
+    : null
+);
+
 export const selectNewArrival = createSelector(
   [selectCollectionsForPreview],
   previewCollections => 
@@ -20,7 +30,7 @@ export const selectNewArrival = createSelector(
       previewCollections.map(previewCollection => 
         previewCollection.items.filter((item, index) => index > previewCollection.items.length - 3)
       ).flat()
-    : null
+    : []
 )
 
 export const selectCollection = collectionUrlParam => createSelector(

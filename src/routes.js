@@ -9,6 +9,7 @@ import MyOrderHistoryPage from './pages/my-order-history-page/MyOrderHistoryPage
 import CollectionPageContainer from './pages/collection-page/CollectionPageContainer';
 import AboutUsPage from './pages/about-us-page/AboutUsPage';
 import ContactUsPage from './pages/contact-us-page/ContactUsPage';
+import SearchResultPageContainer from './pages/search-result-page/SearchResultPageContainer';
 
 const routes = [
   {
@@ -107,6 +108,12 @@ const routes = [
     component: ContactUsPage,
     exact: true,
     breadcrumbName: '聯絡我們'
+  },
+  {
+    path: '/search-result',
+    component: SearchResultPageContainer,
+    exact: true,
+    breadcrumbName: '搜尋結果'
   },
 ];
 

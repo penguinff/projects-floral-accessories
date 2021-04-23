@@ -1,0 +1,28 @@
+@import '../../config.scss';
+
+.searchResultPage {
+  grid-column: full-start / full-end;
+  min-height: 65vh;
+
+  .searchResult {
+    width: 70%;
+    margin: 5rem auto 3rem;
+    color: primaryColorDark;
+  }
+
+  .collectionItems {
+    width: 70%;
+    margin: 5rem auto 8rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 20rem);
+    grid-gap: 5rem;
+
+    @include respond(tab-port) {
+      width: 90%;
+      grid-template-columns: repeat(auto-fit, 18rem);
+      grid-gap: 2rem;
+      margin: 5rem auto;
+    }
+  }
+}
