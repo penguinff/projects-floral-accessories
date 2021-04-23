@@ -43,7 +43,11 @@
   grid-gap: 5rem;
 
   @include respond(tab-port) {
-    grid-template-columns: repeat(auto-fit, 18rem);
     grid-gap: 2rem;
+  }
+
+  @include respond(phone) {
+    grid-template-columns: repeat(auto-fit, 22rem);
+    grid-gap: 3rem;
   }
 }
