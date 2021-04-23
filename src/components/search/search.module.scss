@@ -70,4 +70,8 @@
   &:focus-within .searchContainer {
     display: block;
   }
+
+  &:focus {
+    outline: 0;
+  }
 }
