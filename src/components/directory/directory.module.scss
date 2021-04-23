@@ -32,9 +32,5 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 20rem);
     grid-gap: 2rem;
-
-    @include respond(phone) {
-      grid-template-columns: repeat(auto-fit, 18rem);
-    }
   }
 }
