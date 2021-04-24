@@ -18,7 +18,7 @@ const OrderHistoryItem = ({order}) => {
         <span>訂單日期：{date}</span>
         <span>訂單編號：{orderRefNum}</span>
         <div className={styles.button}>
-          <span>{isItemsHidden ? <ArrowDownIcon /> : <ArrowUpIcon />}</span><span>訂單詳情</span>
+          <span>{isItemsHidden ? <ArrowDownIcon /> : <ArrowUpIcon />}</span>
         </div>
       </div>
       <div className={styles.details} hidden={isItemsHidden}>
