@@ -72,19 +72,19 @@
 
   .categoryList {
     margin: auto;
-    padding: 5px;
+    padding: 0.5rem;
     border-bottom: solid 1px primaryColorLight;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+
+    @include respond(tab-port) {
+      font-size: 1.8rem;
+    }
 
     @include respond(phone) {
       display: none;
-    }
-    @include respond(tab-port) {
-      font-size: 1.8rem;
     }
 
     a {

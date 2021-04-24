@@ -37,8 +37,6 @@
   }
 
   span {
-    font-size: 1.5rem;
-
     @include respond(tab-land) {
       font-size: 1.8rem;
     }

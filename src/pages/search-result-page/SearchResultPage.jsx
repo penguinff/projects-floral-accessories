@@ -34,10 +34,10 @@ const SearchResultPage = ({ location, allProductsArray }) => {
       <div className={styles.searchResult}>
         {location.state.data ? 
           (filteredArray.length ?
-            <h1>{`搜尋關於 "${location.state.data}" 的結果`}</h1>
+            <h2>{`搜尋關於 "${location.state.data}" 的結果`}</h2>
             :
-            <h1>{`查無相關 "${location.state.data}" 的結果`}</h1>)
-          : <h1>全部商品</h1>
+            <h2>{`查無相關 "${location.state.data}" 的結果`}</h2>)
+          : <h2>全部商品</h2>
         }
       </div>
       {filteredArray.length ? 

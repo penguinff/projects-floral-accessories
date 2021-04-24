@@ -3,7 +3,6 @@
 .checkoutForm {
   min-width: 35rem;
   width: 100%;
-  font-size: 1.5rem;
   color: primaryColorDark;
   position: relative;
 
@@ -16,11 +15,11 @@
     color: secondaryColor;
     position: absolute;
     right: 4.5rem;
-    top: 8rem;
+    top: 8.5rem;
 
     @include respond(phone) {
       right: 1rem;
-      top: 7rem;
+      top: 10rem;
     }
   }
 

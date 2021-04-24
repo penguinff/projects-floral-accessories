@@ -5,11 +5,6 @@
   border-top: solid 1px primaryColorLight;
   border-bottom: solid 1px primaryColorLight;
   padding: 1rem;
-  font-size: 1.4rem;
-
-  @include respond(phone) {
-    font-size: 1.6rem;
-  }
 
   img {
     width: 20rem;

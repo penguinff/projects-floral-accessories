@@ -55,8 +55,6 @@
     }
 
     span {
-      font-size: 1.4rem;
-
       @include respond(phone) {
         font-size: 2rem;
       }

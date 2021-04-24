@@ -3,13 +3,13 @@
 .summaryBox {
   border: solid 2px primaryColor;
   width: 30rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-top: 2rem;
 
   @include respond(phone) {
     width: 85vw;
     margin-bottom: 2rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .header {

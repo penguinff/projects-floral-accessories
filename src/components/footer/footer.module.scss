@@ -3,41 +3,38 @@
 .footer {
   grid-column: full-start / full-end;
   background-color: secondaryColorLight;
-  font-size: 1.4rem;
   padding: 3rem 0;
 
-  @include respond(phone) {
-    font-size: 1.8rem;
-  }
-
   .lists {
-    max-width: 100rem;
+    max-width: 120rem;
     width: 80%;
     margin: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 
     @include respond(phone) {
       width: 90%;
-      justify-content: center;
-      margin-left: -1%;
     }
   }
 
-  li {
-    list-style-type: none;
-    line-height: 2.5rem;
-    text-align: center;
+  ul {
+    padding: 0;
 
-    svg {
-      width: 3rem;
-      height: 3rem;
-      cursor: pointer;
-      transition: all 0.3s;
+    li {
+      list-style-type: none;
+      line-height: 2.5rem;
+      text-align: center;
 
-      &:hover {
-        color: secondaryColor;
+      svg {
+        width: 3rem;
+        height: 3rem;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover {
+          color: secondaryColor;
+        }
       }
     }
   }

@@ -39,7 +39,7 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
-            <span>{name}</span>
+            <h2>{name}</h2>
             <FavoriteIcon 
               className={existingWishlistItem && styles.onWishlist}
               onClick={() => {
@@ -49,14 +49,14 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
             />
           </div>
           <div className={styles.details}>
-            <h4>商品特色：</h4>
+            <h3>商品特色：</h3>
             <ul>
               {details.map((detail, index) => <li key={index}>{detail}</li>)}
             </ul>
           </div>
-          <div className={styles.price}>
+          <h2 className={styles.price}>
             NT${price.toLocaleString()}
-          </div>
+          </h2>
           <div className={styles.buttons}>
             <CustomButton onClick={() => {
               addItem(product);

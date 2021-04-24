@@ -2,13 +2,17 @@
 
 .customButton {
   font-family: 'Dosis', Microsoft JhengHei, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   background-color: secondaryColorLight;
   border: solid 1px secondaryColor;
   outline: none;
   padding: 0.5rem;
   cursor: pointer;
   transition: all 0.3s;
+
+  @include respond(tab-port) {
+    font-size: 1.8rem;
+  }
 
   @include respond(phone) {
     font-size: 2rem;

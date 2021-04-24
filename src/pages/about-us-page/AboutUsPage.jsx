@@ -21,8 +21,8 @@ const AboutUsPage = ({ location }) => (
   <section className={styles.aboutUsPage}>
     <Breadcrumb location={location}/>
     <div className={styles.containers}>
-      {data.map(item => 
-        <div className={styles.container}>
+      {data.map((item, index) => 
+        <div key={index} className={styles.container}>
           <img src={item.imageUrl} alt='about us'/>
           <span>{item.text}</span>
         </div>
