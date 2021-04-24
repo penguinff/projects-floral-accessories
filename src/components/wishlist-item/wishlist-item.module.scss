@@ -23,16 +23,15 @@
     flex-direction: column;
 
     @include respond(phone) {
-      margin-left: 2rem;
       margin-top: -1rem;
     }
 
     .button {
-      margin: 4rem 0 3rem;
+      margin: 3rem 0;
       width: 20rem;
 
       @include respond(phone) {
-        margin: 2rem 0;
+        margin: 1.5rem 0;
       }
     }
 
