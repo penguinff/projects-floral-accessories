@@ -4,13 +4,11 @@
   grid-column: full-start / full-end;
   min-height: 65vh;
 
-  h1 {
-    margin: 5rem 20%;
+  h2 {
+    width: 80%;
+    max-width: 120rem;
+    margin: 5rem auto;
     color: primaryColorDark;
-
-    @include respond(phone) {
-      margin: 3rem 10%;
-    }
   }
 
   .withCartItems {
@@ -118,7 +116,7 @@
     margin: 5rem auto;
     text-align: center;
 
-    h2 {
+    h3 {
       margin: 3rem;
     }
   }

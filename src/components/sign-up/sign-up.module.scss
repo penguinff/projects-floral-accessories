@@ -2,10 +2,6 @@
 
 .signUp {
   width: 40rem;
-  margin: 3rem 5vw;
+  margin: 3rem auto;
   color: primaryColorDark;
-
-  @include respond(tab-land) {
-    margin: 3rem auto;
-  }
 }

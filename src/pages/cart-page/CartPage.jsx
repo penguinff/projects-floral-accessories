@@ -20,7 +20,7 @@ const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, curren
   return (
     <section className={styles.cartPage}>
       <Breadcrumb location={location}/>
-      <h1>我的購物車</h1>
+      <h2>我的購物車</h2>
       {cartItems.length ? 
         <div className={styles.withCartItems}>
           <div className={styles.cartHeader}>
@@ -53,7 +53,7 @@ const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, curren
         </div>
         :
         <div className={styles.withoutCartItems}>
-          <h2>目前您的購物車沒有商品，請點選前往購物，開始選購商品</h2>
+          <h3>目前您的購物車沒有商品，請點選前往購物，開始選購商品</h3>
           <Link to='/shop'><CustomButton>開始購物</CustomButton></Link>
         </div>
       }

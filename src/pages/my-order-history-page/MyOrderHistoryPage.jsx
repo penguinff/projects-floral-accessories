@@ -9,10 +9,10 @@ import styles from './my-order-history-page.module.scss';
 
 const MyOrderHistoryPage = ({ currentUser }) => (
    <div className={styles.myOrderHistoryPage}>
-    <h1>我的訂單記錄</h1>
+    <h2>我的訂單記錄</h2>
     {currentUser && Object.keys(currentUser.orders).length ? 
       <div>
-        <h2>{Object.keys(currentUser.orders).length}項訂單</h2>
+        <h3>{Object.keys(currentUser.orders).length}項訂單</h3>
         <div className={styles.orderList}>
           {Object.keys(currentUser.orders).map(key => {
             const order = currentUser.orders[key];
@@ -22,7 +22,7 @@ const MyOrderHistoryPage = ({ currentUser }) => (
         </div>
       </div>
       :
-      <h2>你尚未有任何訂單記錄</h2>
+      <h3>你尚未有任何訂單記錄</h3>
     }
   </div>
 );

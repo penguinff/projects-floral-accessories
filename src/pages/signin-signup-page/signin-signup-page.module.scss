@@ -6,9 +6,10 @@
 
   .signInSignUpGroup {
     width: 80%;
-    margin: auto;
+    max-width: 120rem;
+    margin: 2rem auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
   }
 }
