@@ -118,10 +118,8 @@
     width: 80%;
     max-width: 100rem;
     margin: auto;
-    font-size: 1.4rem;
 
     @include respond(phone) {
-      margin-top: -3rem;
       font-size: 2rem;
     }
 
