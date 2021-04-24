@@ -15,7 +15,7 @@
       width: 40rem;
       margin: 3rem;
 
-      h1 {
+      h2 {
         color: primaryColorDark;
       }
 
@@ -55,7 +55,7 @@
       .socialMedia {
         cursor: pointer;
         transition: all 0.3s;
-        width: 16rem;
+        min-width: 17rem;
 
         &:hover {
           color: secondaryColor;
