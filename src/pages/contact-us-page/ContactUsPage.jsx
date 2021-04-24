@@ -46,26 +46,26 @@ const ContactUsPage = ({ location }) => {
 
       <div className={styles.containers}>
         <div className={styles.container}>
-          <h1>聯絡我們</h1>
+          <h2>聯絡我們</h2>
           <div className={styles.infoCards}>
             <div className={styles.infoCard}>
               <AddressIcon />
               <div>
-                <h2>實體店地址</h2>
+                <h3>實體店地址</h3>
                 <span><a href='https://goo.gl/maps/byBcss7v5p7G3H8u8' target='_blank' rel='noreferrer'>台北市信義區信義路五段7號</a></span>
               </div>
             </div>
             <div className={styles.infoCard}>
               <PhoneIcon />
               <div>
-                <h2>客服專綫</h2>
+                <h3>客服專綫</h3>
                 <span><a href='tel:0960888333'>0960-888-333</a></span>
               </div>
             </div>
             <div className={styles.infoCard}>
               <EmailIcon />
               <div>
-                <h2>客服信箱</h2>
+                <h3>客服信箱</h3>
                 <span><a href='mailto:enquiry@floral-accessories.com'>enquiry@floral-accessories.com</a></span>
               </div>
             </div>
@@ -73,7 +73,7 @@ const ContactUsPage = ({ location }) => {
         </div>
 
         <div className={styles.container}>
-          <h1>我們希望聽到您的意見</h1>
+          <h2>我們希望聽到您的意見</h2>
           <form onSubmit={handleSubmit}>
             <FormInput 
               name='displayName'
@@ -102,23 +102,23 @@ const ContactUsPage = ({ location }) => {
         </div>
 
         <div className={styles.container}>
-          <h1>追蹤我們</h1>
+          <h2>追蹤我們</h2>
           <div className={styles.infoCards}>
             <div className={`${styles.infoCard} ${styles.socialMedia}`}>
               <FacebookIcon />
-              <h2>Facebook</h2>
+              <h3>Facebook</h3>
             </div>
             <div className={`${styles.infoCard} ${styles.socialMedia}`}>
               <InstagramIcon />
-              <h2>Instagram</h2>
+              <h3>Instagram</h3>
             </div>
             <div className={`${styles.infoCard} ${styles.socialMedia}`}>
               <YoutubeIcon />
-              <h2>YouTube</h2>
+              <h3>YouTube</h3>
             </div>
             <div className={`${styles.infoCard} ${styles.socialMedia}`}>
               <LineIcon />
-              <h2>Line</h2>
+              <h3>Line</h3>
             </div>
           </div>
         </div>

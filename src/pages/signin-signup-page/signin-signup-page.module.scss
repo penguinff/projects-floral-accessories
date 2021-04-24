@@ -10,9 +10,5 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-    @include respond(tab-port) {
-      width: 90%;
-    }
   }
 }

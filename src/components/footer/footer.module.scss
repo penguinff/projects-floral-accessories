@@ -35,6 +35,15 @@
         &:hover {
           color: secondaryColor;
         }
+
+        @include respond(phone) {
+          width: 4rem;
+          height: 4rem;
+        }
+      }
+
+      @include respond(phone) {
+        margin: 1rem;
       }
     }
   }
