@@ -5,6 +5,7 @@
   grid-template-columns: repeat(2, 10rem);
   grid-row-gap: 0.5rem;
   transition: all 0.3s;
+  align-items: center;
 
   @include respond(tab-port) {
     grid-template-columns: repeat(2, 10rem);
@@ -49,16 +50,23 @@
 
     svg {
       cursor: pointer;
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 2rem;
+      height: 2rem;
       margin: 0 0.5rem;
       fill: rgb(210, 210, 210);
       color: rgb(210, 210, 210);
       transition: all 0.3s;
 
       @include respond(tab-port) {
-        width: 2rem;
-        height: 2rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        margin: 0 0.6rem;
+      }
+
+      @include respond(phone) {
+        width: 2.4rem;
+        height: 2.4rem;
+        margin: 0 0.7rem;
       }
 
       &:hover {
