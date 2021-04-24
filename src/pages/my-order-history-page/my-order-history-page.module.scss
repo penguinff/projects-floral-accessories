@@ -5,8 +5,4 @@
   grid-row: 1 / -1;
   margin: 5rem;
   color: primaryColorDark;
-
-  @include respond(phone) {
-    margin: 2rem 5rem;
-  }
 }
