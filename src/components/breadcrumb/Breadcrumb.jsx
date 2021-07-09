@@ -6,15 +6,6 @@ import styles from './breadcrumb.module.scss';
 
 const Breadcrumb = ({ location, onMatchedRoutes }) => {
   let matchedRoutes = matchRoutes(routes, location.pathname);
-  matchedRoutes = [
-    {
-      route: {
-        path: '/',
-        breadcrumbName: '首頁'
-      }
-    },
-    ...matchedRoutes
-  ];
 
   if (typeof onMatchedRoutes === 'function') {
     matchedRoutes = onMatchedRoutes(matchedRoutes);
