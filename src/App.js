@@ -45,7 +45,7 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
     storeUserCartAndWishlist(currentUser, cartItems, wishlistItems);
   }, [currentUser, cartItems, wishlistItems]);
 
-  // make pages always scroll to top after loaded
+  // make pages always scroll to top after loaded a new url
   const { pathname } = useLocation();
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
