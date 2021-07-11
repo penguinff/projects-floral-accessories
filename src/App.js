@@ -1,7 +1,6 @@
 import { useEffect, useLayoutEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
@@ -32,16 +31,21 @@ const UnderConstructionPage = lazy(() => import('./pages/under-construction-page
 
 const stripePromise = loadStripe('pk_test_51Gs8LHGm0HT5YB3DuO8XmMMNiQ9oOeulR6UruC3pru13wZDM3NkdsuCGM8S6Q2SEIJ6x8PPhTqHXeggdpGONZQic00soELdq0K');
 
-const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, wishlistItems }) => {
+const App = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const cartItems = useSelector(selectCartItems);
+  const wishlistItems = useSelector(selectWishlistItems);
+
   // check User Session after first render
   useEffect(() => {
-    checkUserSession();
-  }, [checkUserSession]);
+    dispatch(checkUserSession());
+  }, [dispatch]);
 
   // fetch product info after first render
   useEffect(() => {
-    fetchCollectionsStart();
-  }, [fetchCollectionsStart]);
+    dispatch(fetchCollectionsStart());
+  }, [dispatch]);
 
   // update logged in user cart & wishlist to firebase after first render & certain states change
   useEffect(() => {
@@ -58,8 +62,8 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
     <div className={styles.app}>
       <Header />
       <Elements stripe={stripePromise}>
-        <Switch>
-          <ErrorBoundary>
+        <ErrorBoundary>
+          <Switch>
             <Suspense fallback={<Spinner />}>
               <Route exact path='/' component={Homepage} />
               <Route path='/shop' component={ShopPage} />
@@ -78,23 +82,12 @@ const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, 
               <Route exact path='/search-result' component={SearchResultPageContainer} />
               <Route exact path='/under-construction' component={UnderConstructionPage} />
             </Suspense>
-          </ErrorBoundary>
-        </Switch>
+          </Switch>
+        </ErrorBoundary>
       </Elements>
       <Footer />
     </div>
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  cartItems: selectCartItems,
-  wishlistItems: selectWishlistItems
-});
-
-const mapDispatchToProps = dispatch => ({
-  checkUserSession: () => dispatch(checkUserSession()),
-  fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
