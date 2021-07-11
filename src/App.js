@@ -33,19 +33,22 @@ const UnderConstructionPage = lazy(() => import('./pages/under-construction-page
 const stripePromise = loadStripe('pk_test_51Gs8LHGm0HT5YB3DuO8XmMMNiQ9oOeulR6UruC3pru13wZDM3NkdsuCGM8S6Q2SEIJ6x8PPhTqHXeggdpGONZQic00soELdq0K');
 
 const App = ({ checkUserSession, fetchCollectionsStart, currentUser, cartItems, wishlistItems }) => {
+  // check User Session after first render
   useEffect(() => {
     checkUserSession();
   }, [checkUserSession]);
 
+  // fetch product info after first render
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
 
+  // update logged in user cart & wishlist to firebase after first render & certain states change
   useEffect(() => {
     storeUserCartAndWishlist(currentUser, cartItems, wishlistItems);
   }, [currentUser, cartItems, wishlistItems]);
 
-  // make pages always scroll to top after loaded a new url
+  // make pages always scroll to top after loaded a new url (pathname)
   const { pathname } = useLocation();
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
