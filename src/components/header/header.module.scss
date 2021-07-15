@@ -20,10 +20,7 @@
     .leftOptions {
       width: 12rem;
       display: flex;
-
-      .sideNavIcon {
-        padding: 0.5rem;
-      }
+      justify-content: space-evenly;
     }
 
     .companyLogo {
@@ -39,8 +36,6 @@
 
       .contactIcon,
       .userIcon {
-        padding: 0.5rem;
-
         @include respond(phone) {
           display: none;
         }
@@ -48,7 +43,6 @@
 
       .cartGroup {
         position: relative;
-        padding: 0.5rem;
       }
     }
 

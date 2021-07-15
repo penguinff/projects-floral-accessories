@@ -3,6 +3,8 @@
 
 html {
   box-sizing: border-box;
+
+  // set root font size for rem ratio
   font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
 
   @include respond(tab-land) {
@@ -17,6 +19,12 @@ html {
   @include respond(big-desktop) {
     font-size: 75%; // 1rem = 12px, 12px/16px = 75%
   }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
