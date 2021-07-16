@@ -9,7 +9,7 @@
   background-color: white;
 
   .mainHeader {
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -24,7 +24,7 @@
       justify-content: space-between;
 
       @include respond(phone) {
-        padding-right: 2rem;
+        padding-right: 1.5rem;
       }
     }
 
@@ -54,8 +54,9 @@
     svg {
       fill: secondaryColor;
       cursor: pointer;
-      width: 3rem;
-      height: 3rem;
+      width: 4rem;
+      height: 4rem;
+      padding: 0.5rem;
       transition: all 0.3s;
 
       &:hover {
@@ -63,8 +64,8 @@
       }
 
       @include respond(phone) {
-        width: 4rem;
-        height: 4rem;
+        width: 5rem;
+        height: 5rem;
       }
     }
   }
