@@ -32,6 +32,7 @@ const UnderConstructionPage = lazy(() => import('./pages/under-construction-page
 const stripePromise = loadStripe('pk_test_51Gs8LHGm0HT5YB3DuO8XmMMNiQ9oOeulR6UruC3pru13wZDM3NkdsuCGM8S6Q2SEIJ6x8PPhTqHXeggdpGONZQic00soELdq0K');
 
 const App = () => {
+  // react-redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const cartItems = useSelector(selectCartItems);

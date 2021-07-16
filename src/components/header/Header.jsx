@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { selectCartHidden, selectCartItems } from '../../redux/cart/cart-selectors';
-import { toggleCartHidden } from '../../redux/cart/cart-actions';
 import { selectCurrentUser } from '../../redux/user/user-selectors';
+import { selectCartHidden, selectCartItemsCount } from '../../redux/cart/cart-selectors';
 import { selectMessageHidden } from '../../redux/wishlist/wishlist-selectors';
+import { toggleCartHidden } from '../../redux/cart/cart-actions';
 import { toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
 
 import SaleMessage from '../sale-message/SaleMessage';
@@ -24,28 +23,43 @@ import { ReactComponent as SideNavIcon } from '../../assets/sidenav-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
-const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser, messageHidden, toggleMessageHidden }) => {
+const Header = ({ history }) => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const cartItemsCount = useSelector(selectCartItemsCount);
+  const cartHidden = useSelector(selectCartHidden);
+  const messageHidden = useSelector(selectMessageHidden);
+  
+  // local state for displaying sidenav & directory
   const [showSideNav, setShowSideNav] = useState(false);
   const [showDirectory, setShowDirectory] = useState(false);
 
+  // set timer to hide cart after 4 seconds
   useEffect(() => {
-    let timer = setTimeout(() => toggleCartHidden(true), 4000);
-    return () => clearTimeout(timer);
-  }, [cartItems, toggleCartHidden]);
+    let timer = setTimeout(() => dispatch(toggleCartHidden(true)), 4000);
+    return () => clearTimeout(timer); // to clear the previous effect before executing the next effect (if user click multiple times)
+  }, [cartItemsCount, dispatch]);
 
+  // set timer to hide popup message after 4 seconds
   useEffect(() => {
-    let timer = setTimeout(() => toggleMessageHidden(true), 4000);
-    return () => clearTimeout(timer);
-  }, [messageHidden, toggleMessageHidden]);
+    let timer = setTimeout(() => dispatch(toggleMessageHidden(true)), 4000);
+    return () => clearTimeout(timer); // to clear the previous effect before executing the next effect (if user click multiple times)
+  }, [messageHidden, dispatch]);
 
+  // if user is signed in, redirect sign in page to user profile page
   const redirect = () => {
     currentUser ? history.push('/user-profile') : history.push('/sign-in');
   }
   
   return (
     <header className={styles.header}>
+
       <SideNav showSideNav={showSideNav} setShowSideNav={setShowSideNav}/>
+      { messageHidden ? null : <PopupMessage /> }
+      
       <SaleMessage />
+
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>
           <SideNavIcon className={styles.sideNavIcon} onClick={() => setShowSideNav(!showSideNav)}/>
@@ -61,17 +75,17 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
           <UserIcon className={styles.userIcon} onClick={redirect} />
           <div 
             className={styles.cartGroup} 
-            onMouseEnter={() => toggleCartHidden(false)} 
-            onMouseLeave={() => toggleCartHidden(true)}
+            onMouseEnter={() => dispatch(toggleCartHidden(false))} 
+            onMouseLeave={() => dispatch(toggleCartHidden(true))}
           >
             <Link to='/cart'>
               <CartIcon />
             </Link>
-            { cartHidden || !cartItems.length ? null : <CartDropdown /> }
+            { cartHidden || cartItemsCount === 0 ? null : <CartDropdown /> }
           </div>
         </div>
-        { messageHidden ? null : <PopupMessage /> }
       </div>
+
       <nav className={styles.categoryList}>
         <Link to='/shop/new-arrival'><span>新品上市</span></Link>
         <div 
@@ -85,20 +99,9 @@ const Header = ({ cartHidden, cartItems, toggleCartHidden, history, currentUser,
         <Link to='/under-construction'><span>會員專區</span></Link>
         <Link to='/under-construction'><span>潮流話題</span></Link>
       </nav>
+
     </header>
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  cartHidden: selectCartHidden,
-  cartItems: selectCartItems,
-  currentUser: selectCurrentUser,
-  messageHidden: selectMessageHidden
-});
-
-const mapDispatchToProps = dispatch => ({
-  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden)),
-  toggleMessageHidden: isHidden => dispatch(toggleMessageHidden(isHidden))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));
+export default withRouter(Header);
