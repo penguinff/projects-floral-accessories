@@ -6,7 +6,7 @@ const CartItem = ({ cartItem }) => {
     <div className={styles.cartItem}>
       <div className={styles.image}>
         <img src={imageUrl} alt='item' />
-        </div>
+      </div>
       <div className={styles.name}>
         <span>{name}</span>
       </div>
