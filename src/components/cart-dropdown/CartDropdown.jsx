@@ -1,5 +1,4 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { selectCartItems } from '../../redux/cart/cart-selectors';
@@ -12,28 +11,26 @@ import CustomButton from '../custom-button/CustomButton';
 
 import styles from './cart-dropdown.module.scss';
 
-const CartDropdown = ({ cartItems, cartItemsCount, cartTotal, toggleCartHidden }) => (
-  <div className={styles.cartDropdown}>
-    <span>產品（{cartItemsCount}）</span>
-    <div className={styles.cartItems}>
-      {cartItems.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}
+const CartDropdown = () => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const cartItemsCount = useSelector(selectCartItemsCount);
+  const cartTotal = useSelector(selectCartTotal);
+
+  return (
+    <div className={styles.cartDropdown}>
+      <span>產品（{cartItemsCount}）</span>
+      <div className={styles.cartItems}>
+        {cartItems.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}
+      </div>
+      <div className={styles.total}>
+        <span>全部</span>
+        <span>NT${cartTotal.toLocaleString()}</span>
+      </div>
+      <Link to='/cart'><CustomButton onClick={() => dispatch(toggleCartHidden(true))}>查看購物車</CustomButton></Link>
     </div>
-    <div className={styles.total}>
-      <span>全部</span>
-      <span>NT${cartTotal.toLocaleString()}</span>
-    </div>
-    <Link to='/cart'><CustomButton onClick={() => toggleCartHidden(true)}>查看購物車</CustomButton></Link>
-  </div>
-);
+  )
+};
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  cartItemsCount: selectCartItemsCount,
-  cartTotal: selectCartTotal
-});
-
-const mapDispatchToProps = dispatch => ({
-  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown);
+export default CartDropdown;
