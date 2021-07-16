@@ -1,11 +1,10 @@
 @import '../../config.scss';
 
 .cartDropdown {
-  z-index: 1000;
   position: absolute;
   right: 0;
-  top: 4rem;
-  width: 30rem;
+  top: 3.3rem;
+  width: 34rem;
   max-height: 65vh;
   padding: 2rem;
   background-color: secondaryBackgroundLight;
@@ -39,15 +38,5 @@
 
   button {
     float: right;
-  }
-}
-
-// animation
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

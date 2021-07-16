@@ -31,8 +31,13 @@
       object-fit: cover;
       border: solid 1px primaryColorLight;
       opacity: 0.9;
-      transition: all 0.3s;
       filter: brightness(0.9);
+      transition: all 0.3s;
+    }
+
+    &:hover img {
+      opacity: 1;
+      filter: brightness(1);
     }
 
     span {
@@ -43,20 +48,5 @@
     &:hover span {
       color: secondaryColor;
     }
-
-    &:hover img {
-      opacity: 1;
-      filter: brightness(1);
-    }
-  }
-}
-
-// animation
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

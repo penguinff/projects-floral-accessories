@@ -16,10 +16,10 @@
   .imageContainer {
     min-width: 38rem;
     max-width: 55%;
-    padding: 3rem;
+    margin: 3rem;
 
     @include respond(tab-port) {
-      padding: 1rem;
+      margin: 1rem;
     }
 
     .image {
@@ -34,11 +34,11 @@
   .wordContainer {
     min-width: 38rem;
     max-width: 30%;
-    padding: 3rem;
+    margin: 3rem;
     align-items: center;
 
     @include respond(tab-port) {
-      padding: 1rem;
+      margin: 1rem;
       font-size: 1.8rem;
     }
 

@@ -31,3 +31,13 @@
     } //2000px / 16px = 125
   }
 }
+
+// ANIMATION
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

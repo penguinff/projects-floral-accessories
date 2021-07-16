@@ -2,25 +2,30 @@
 
 .header {
   grid-column: full-start / full-end;
+  width: 100%;
   position: sticky;
   top: 0;
   z-index: 1001;
   background-color: white;
 
   .mainHeader {
-    width: 100%;
-    padding: 1rem 0;
+    padding: 1rem;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-around;
+    align-items: center;
     border-bottom: solid 1px primaryColorLight;
     position: relative;
 
     .leftOptions {
       width: 12rem;
+      padding-right: 4rem;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
+
+      @include respond(phone) {
+        padding-right: 2rem;
+      }
     }
 
     .companyLogo {
@@ -65,7 +70,6 @@
   }
 
   .categoryList {
-    margin: auto;
     padding: 0.5rem;
     border-bottom: solid 1px primaryColorLight;
     display: flex;
