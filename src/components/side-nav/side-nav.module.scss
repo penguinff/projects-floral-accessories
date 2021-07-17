@@ -6,10 +6,10 @@
   position: fixed;
   top: 0;
   left: calc(-1 * sideNavWidth);
-  z-index: 1002;
-  display: flex;
-  background-color: rgba(0, 0, 0, 0.3);
   transition: all 0.5s;
+  z-index: 1002;
+  height: 100vh;
+  display: flex;
 
   @include respond(tab-port) {
     font-size: 1.8rem;
@@ -17,23 +17,12 @@
 
   .content {
     width: sideNavWidth;
-    height: 100vh;
     background-color: secondaryBackgroundLight;
-
-    svg {
-      width: 3rem;
-      height: 3rem;
-      fill: white;
-      cursor: pointer;
-      transition: all 0.3s;
-
-      &:hover {
-        fill: secondaryColorDark;
-      }
-    }
 
     li {
       list-style-type: none;
+      padding: 1rem 0;
+      cursor: pointer;
       transition: all 0.3s;
 
       &:hover {
@@ -41,71 +30,66 @@
       }
     }
 
-    .upper,
-    .middle,
-    .lower {
-      padding: 2.5rem 5rem;
-    }
-
-    .middle,
-    .lower {
-      li {
-        padding: 1rem 0;
-        border-bottom: solid 1px rgb(202, 202, 202);
-      }
-    }
-
     .upper {
       margin: 0;
+      padding: 2.5rem 5rem;
       background-color: secondaryBackgroundDark;
       font-weight: 600;
-      color: white;
 
       li {
-        padding: 1rem 0;
         display: flex;
         align-items: center;
         color: white;
-        cursor: pointer;
-        transition: all 0.3s;
 
         &:hover {
           color: secondaryColorDark;
         }
 
+        svg {
+          width: 3rem;
+          height: 3rem;
+          fill: white;
+          transition: all 0.3s;
+        }
+
         &:hover svg {
           fill: secondaryColorDark;
         }
       }
     }
 
-    .middle {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .middle,
+    .lower {
+      margin: 5rem;
+      padding-left: 0;
 
-      svg {
-        fill: primaryColor;
-        width: 2rem;
-        height: 2rem;
+      li {
+        border-bottom: solid 1px rgb(202, 202, 202);
       }
+    }
 
+    .middle {
       .title {
         display: flex;
         justify-content: space-between;
-        transition: all 0.3s;
+
+        svg {
+          width: 2rem;
+          height: 2rem;
+          fill: primaryColor;
+        }
 
         &:hover a,
         &:hover svg {
           color: secondaryColorDark;
           fill: secondaryColorDark;
+          transition: all 0.3s;
         }
       }
 
       .category {
         li {
           border-bottom: none;
-          margin: 0;
         }
       }
     }
@@ -114,10 +98,9 @@
 
 .sideNavActive {
   left: 0;
-  transition: all 0.5s;
 
   .background {
-    width: calc(100vw + sideNavWidth);
-    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.3);
   }
 }
