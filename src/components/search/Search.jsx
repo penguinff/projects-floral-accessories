@@ -6,29 +6,32 @@ import styles from './search.module.scss';
 import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 
 const Search = ({ history }) => {
-  const [searchText, setSearchText] = useState('');
+  // local state
   const [showSearchInput, setShowSearchInput] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
+  // set toggle function
+  const toggleSearchInput = () => setShowSearchInput(showSearchInput => !showSearchInput);
+
+  // functions for the input
   const handleChange = (event) => {
     setSearchText(event.target.value);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setShowSearchInput(!showSearchInput);
+    toggleSearchInput();
     history.push({
       pathname: '/search-result',
-      state: { data: searchText }
+      state: { searchText } // pass the search text to search result page
     })
   }
 
   return (
-    <div className={styles.search} tabIndex='0'>
-      <SearchIcon 
-        className={styles.searchIcon} 
-        onClick={() => setShowSearchInput(!showSearchInput)} 
-      />
-      {showSearchInput ? 
+    <div className={styles.search}>
+      <SearchIcon className={styles.searchIcon} onClick={toggleSearchInput} />
+      
+      {showSearchInput &&
         <div className={styles.searchContainer}>
           <form className={styles.searchForm} onSubmit={handleSubmit}>
             <input 
@@ -36,12 +39,11 @@ const Search = ({ history }) => {
               onChange={handleChange}
               value={searchText}
               placeholder='搜尋商品'
-              autoFocus 
+              autoFocus
+              onBlur={toggleSearchInput}
             />
           </form>
-          <div className={styles.background} onClick={() => setShowSearchInput(!showSearchInput)}></div>
         </div>
-      : null
       }
     </div>
   )

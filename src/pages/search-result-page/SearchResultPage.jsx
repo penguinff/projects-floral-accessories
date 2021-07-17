@@ -14,7 +14,7 @@ const SearchResultPage = ({ location, allProductsArray }) => {
   const [productOrder, setProductOrder] = useState(null);
 
   const filteredArray = allProductsArray.filter(product => 
-    product.name.includes(location.state.data)
+    product.name.includes(location.state.searchText)
   )
 
   const sortedItems = [...filteredArray].sort((a, b) => {
@@ -32,11 +32,11 @@ const SearchResultPage = ({ location, allProductsArray }) => {
     <div className={styles.searchResultPage}>
       <Breadcrumb location={location} />
       <div className={styles.searchResult}>
-        {location.state.data ? 
+        {location.state.searchText ? 
           (filteredArray.length ?
-            <h2>{`搜尋關於 "${location.state.data}" 的結果`}</h2>
+            <h2>{`搜尋關於 "${location.state.searchText}" 的結果`}</h2>
             :
-            <h2>{`查無相關 "${location.state.data}" 的結果`}</h2>)
+            <h2>{`查無相關 "${location.state.searchText}" 的結果`}</h2>)
           : <h2>全部商品</h2>
         }
       </div>

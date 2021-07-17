@@ -3,22 +3,7 @@
 .search {
   position: relative;
 
-  .searchIcon {
-    svg {
-      fill: secondaryColor;
-      cursor: pointer;
-      width: 3rem;
-      height: 3rem;
-      transition: all 0.3s;
-
-      &:hover {
-        fill: secondaryColorDark;
-      }
-    }
-  }
-
   .searchContainer {
-    display: none;
     position: absolute;
     top: 0.5rem;
     left: 4rem;
@@ -27,22 +12,24 @@
       position: fixed;
       top: 8.7rem;
       left: -1vw;
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 102vw;
+      height: 100vh;
     }
 
     .searchForm {
       .searchInput {
         width: 12rem;
-        color: primaryColor;
         font-size: 1.5rem;
         font-family: 'Dosis', sans-serif;
+        color: primaryColor;
         padding: 0.3rem;
-        display: block;
         border: none;
         border-bottom: solid 0.5px primaryColorLight;
 
         @include respond(phone) {
           font-size: 2rem;
-          width: 100vw;
+          width: 102vw;
           padding: 2rem 6rem;
           border-top: solid 0.5px primaryColorLight;
         }
@@ -52,24 +39,5 @@
         }
       }
     }
-
-    .background {
-      display: none;
-
-      @include respond(phone) {
-        display: block;
-        width: 101vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.3);
-      }
-    }
-  }
-
-  &:focus-within .searchContainer {
-    display: block;
-  }
-
-  &:focus {
-    outline: 0;
   }
 }
