@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 
 import { selectAllProductsArray } from '../../redux/shop/shop-selectors';
 
@@ -10,13 +9,19 @@ import ProductItem from '../../components/product-item/ProductItem';
 
 import styles from './search-result-page.module.scss';
 
-const SearchResultPage = ({ location, allProductsArray }) => {
+const SearchResultPage = ({ location }) => {
+  // react-redux hook
+  const allProductsArray = useSelector(selectAllProductsArray);
+
+  // local state for sort order
   const [productOrder, setProductOrder] = useState(null);
 
+  // filter the allProductArray with the search text the user input
   const filteredArray = allProductsArray.filter(product => 
     product.name.includes(location.state.searchText)
   )
 
+  // sort the filtered array
   const sortedItems = [...filteredArray].sort((a, b) => {
     switch (productOrder) {
       case 'ascending':
@@ -31,20 +36,23 @@ const SearchResultPage = ({ location, allProductsArray }) => {
   return (
     <div className={styles.searchResultPage}>
       <Breadcrumb location={location} />
+
       <div className={styles.searchResult}>
         {location.state.searchText ? 
           (filteredArray.length ?
             <h2>{`搜尋關於 "${location.state.searchText}" 的結果`}</h2>
             :
-            <h2>{`查無相關 "${location.state.searchText}" 的結果`}</h2>)
-          : <h2>全部商品</h2>
+            <h2>{`查無相關 "${location.state.searchText}" 的結果`}</h2>
+          )
+          : 
+          <h2>全部商品</h2>
         }
       </div>
-      {filteredArray.length ? 
+
+      {filteredArray.length > 0 && 
         <SortBar total={filteredArray.length} setProductOrder={setProductOrder} />
-      :
-        null
       }
+
       <div className={styles.collectionItems}>
         {sortedItems.map(item => 
           <ProductItem key={item.id} item={item} />  
@@ -54,8 +62,4 @@ const SearchResultPage = ({ location, allProductsArray }) => {
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  allProductsArray: selectAllProductsArray
-})
-
-export default connect(mapStateToProps)(SearchResultPage);
+export default SearchResultPage;

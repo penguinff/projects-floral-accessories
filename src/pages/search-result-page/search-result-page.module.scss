@@ -28,8 +28,6 @@
 
     @include respond(tab-port) {
       width: 90%;
-      grid-template-columns: repeat(auto-fit, 20rem);
-      margin: 5rem auto;
     }
 
     @include respond(phone) {
