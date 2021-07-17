@@ -5,7 +5,7 @@
 .sideNav {
   position: fixed;
   top: 0;
-  left: -40rem;
+  left: calc(-1 * sideNavWidth);
   z-index: 1002;
   display: flex;
   background-color: rgba(0, 0, 0, 0.3);
@@ -32,10 +32,7 @@
       }
     }
 
-    a,
     li {
-      text-decoration: none;
-      color: primaryColor;
       list-style-type: none;
       transition: all 0.3s;
 
