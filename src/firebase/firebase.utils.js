@@ -65,6 +65,7 @@ export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
 
 // ----- functions related to collections ----- //
 export const convertCollectionsSnapshotToMap = (collections) => {
+  // transform collections into an array
   const transformedCollections = collections.docs.map(doc => {
     const { title, items, banner } = doc.data();
     return {
@@ -75,6 +76,7 @@ export const convertCollectionsSnapshotToMap = (collections) => {
       banner
     };
   });
+  // convert the transformed collections array into an object
   return transformedCollections.reduce((accumulator, collection) => {
     accumulator[collection.title.toLowerCase()] = collection;
     return accumulator;

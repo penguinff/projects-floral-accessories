@@ -8,9 +8,9 @@ import cartReducer from './cart/cart-reducer';
 import wishlistReducer from './wishlist/wishlist-reducer';
 
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['cart', 'wishlist']
+  key: 'root', // the key used for key/value storage in localStorage
+  storage, // use localStorage
+  whitelist: ['cart', 'wishlist'] // only cart and wishlist will be persisted
 };
 
 const rootReducer = combineReducers({
