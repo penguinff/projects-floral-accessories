@@ -2,9 +2,13 @@
 
 .summaryBox {
   border: solid 2px primaryColor;
-  width: 30rem;
+  width: 34rem;
   font-size: 1.3rem;
   margin-top: 2rem;
+
+  @include respond(tab-port) {
+    font-size: 1.5rem;
+  }
 
   @include respond(phone) {
     width: 85vw;
