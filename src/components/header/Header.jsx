@@ -62,7 +62,7 @@ const Header = ({ history }) => {
 
       <div className={styles.mainHeader}>
         <div className={styles.leftOptions}>
-          <SideNavIcon className={styles.sideNavIcon} onClick={() => setShowSideNav(!showSideNav)}/>
+          <SideNavIcon className={styles.sideNavIcon} onClick={() => setShowSideNav(showSideNav => !showSideNav)}/>
           <Search />
         </div>
         <Link to='/'>
