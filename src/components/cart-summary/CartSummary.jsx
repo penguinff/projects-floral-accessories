@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 
 import { selectCartItems, selectCartItemsCount, selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
 
@@ -12,13 +11,20 @@ import { ReactComponent as ArrowDownIcon } from '../../assets/arrow-down-icon.sv
 import { ReactComponent as ArrowUpIcon } from '../../assets/arrow-up-icon.svg';
 
 
-const CartSummary = ({ cartItems, cartItemsCount, cartTotal, shippingFee }) => {
+const CartSummary = () => {
+  // react-redux hooks
+  const cartItems = useSelector(selectCartItems);
+  const cartItemsCount = useSelector(selectCartItemsCount);
+  const cartTotal = useSelector(selectCartTotal);
+  const shippingFee = useSelector(selectShippingFee);
+
+  // local state for displaying cart items
   const [isItemsHidden, setIsItemsHidden] = useState(true);
 
   return (
     <div className={styles.cartSummary}>
       <div className={styles.summaryBox}>
-        <div className={styles.header} onClick={() => setIsItemsHidden(!isItemsHidden)}>
+        <div className={styles.header} onClick={() => setIsItemsHidden(isItemsHidden => !isItemsHidden)}>
           <h3>我的購物車（{cartItemsCount}）</h3>
           { isItemsHidden ? <ArrowDownIcon /> : <ArrowUpIcon /> }
         </div>
@@ -37,11 +43,4 @@ const CartSummary = ({ cartItems, cartItemsCount, cartTotal, shippingFee }) => {
   
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  cartItemsCount: selectCartItemsCount,
-  cartTotal: selectCartTotal,
-  shippingFee: selectShippingFee
-})
-
-export default connect(mapStateToProps)(CartSummary);
+export default CartSummary;
