@@ -22,7 +22,7 @@
       margin: 1rem;
     }
 
-    .image {
+    img {
       width: 100%;
       max-height: 45rem;
       object-fit: cover;
@@ -35,7 +35,6 @@
     min-width: 38rem;
     max-width: 30%;
     margin: 3rem;
-    align-items: center;
 
     @include respond(tab-port) {
       margin: 1rem;
