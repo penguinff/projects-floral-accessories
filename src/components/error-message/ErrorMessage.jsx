@@ -1,4 +1,4 @@
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import CustomButton from '../custom-button/CustomButton';
 
@@ -16,4 +16,4 @@ const ErrorMessage = ({ message }) => (
   </div>
 );
 
-export default withRouter(ErrorMessage);
+export default ErrorMessage;
