@@ -7,7 +7,7 @@ const DirectoryItem = ({ item, history }) => (
     className={styles.directoryItem}
     onClick={() => history.push(`/shop/${item.routeName}`)}
   >
-    <img src={item.imageUrl} alt='directory' className={styles.image}/>
+    <img src={item.imageUrl} alt='directory' />
     <span>{item.title}</span>
   </div>
 );
