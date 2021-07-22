@@ -12,7 +12,7 @@ const Directory = () => (
     </div>
 
     <div className={styles.directoryContainer}>
-      {directoryData.items.map((item, index) => (
+      {directoryData.items.map(item => (
         <DirectoryItem item={item} key={item.id} />
       ))}
     </div>

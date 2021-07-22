@@ -12,13 +12,14 @@
   }
 
   .directoryTitle {
+    margin: 2rem 0;
     font-size: 2.5rem;
     text-transform: uppercase;
-    // make word in the middle of the line
     text-align: center;
+
+    // make word in the middle of the line
     border-bottom: 2px solid primaryColorLight;
     line-height: 0.1rem;
-    margin: 1rem 0 2rem;
 
     span {
       background-color: white;
@@ -29,8 +30,8 @@
   .directoryContainer {
     margin: 3rem 0 2rem;
     display: grid;
-    justify-content: center;
     grid-template-columns: repeat(auto-fit, 20rem);
     grid-gap: 2rem;
+    justify-content: center;
   }
 }
