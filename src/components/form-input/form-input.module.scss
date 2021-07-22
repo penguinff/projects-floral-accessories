@@ -42,9 +42,9 @@
   }
 
   .formInputLabel {
+    pointer-events: none;
     font-size: 1.5rem;
     position: absolute;
-    pointer-events: none;
     left: 0.5rem;
     top: 1rem;
     transition: all 0.3s ease;
@@ -56,9 +56,9 @@
     @include respond(phone) {
       font-size: 1.8rem;
     }
+  }
 
-    &.shrink {
-      @include shrinkLabel();
-    }
+  .shrink {
+    @include shrinkLabel();
   }
 }

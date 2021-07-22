@@ -1,15 +1,16 @@
 import styles from './form-input.module.scss';
 
-const FormInput = ({ handleChange, label, textArea, ...otherProps }) => (
+const FormInput = ({ label, textArea, ...otherProps }) => (
   <div className={styles.formInputGroup}>
     {textArea ? 
-      <textarea className={`${styles.formInput} ${styles.textArea}`} onChange={handleChange} {...otherProps} />
+      <textarea className={`${styles.formInput} ${styles.textArea}`} {...otherProps} />
     :
-      <input className={styles.formInput} onChange={handleChange} {...otherProps} />
+      <input className={styles.formInput} {...otherProps} />
     }
+    
     {label ? (
       <label
-        className={`${otherProps.value.length ? styles.shrink : ''} ${styles.formInputLabel}`} 
+        className={`${styles.formInputLabel} ${otherProps.value.length ? styles.shrink : ''}`} 
       >
         {label}
       </label>
