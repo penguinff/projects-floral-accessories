@@ -22,8 +22,9 @@ export const functions = firebase.functions();
 // ----- functions related to users ----- //
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
-  const snapShot = await userRef.get();
+  const userRef = firestore.doc(`users/${userAuth.uid}`); // always get back doc ref even not exist
+  const snapShot = await userRef.get(); // snapshot can tell us if the doc really exist
+  // if this user not exist, create new user in firestore
   if (!snapShot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
@@ -41,6 +42,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       console.log('error creating user', error.message);
     }
   }
+  // return the userRef of the newly created user / existing user
   return userRef;
 }
 
@@ -53,15 +55,13 @@ export const getCurrentUser = () => {
   });
 };
 
-// Google Signin
+// For Google Signin
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
-// Facebook Signin
+// For Facebook Signin
 export const facebookProvider = new firebase.auth.FacebookAuthProvider();
 facebookProvider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
 
 // ----- functions related to collections ----- //
 export const convertCollectionsSnapshotToMap = (collections) => {
