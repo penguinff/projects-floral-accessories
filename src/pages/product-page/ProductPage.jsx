@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Magnifier from 'react-magnifier';
 
 import { selectProduct } from '../../redux/shop/shop-selectors';
@@ -14,8 +14,14 @@ import styles from './product-page.module.scss';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
 
-const ProductPage = ({ match, location, history, product, wishlistItems, addItem, toggleCartHidden, toggleWishlist, toggleMessageHidden }) => {
+const ProductPage = ({ match, location, history }) => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const product = useSelector(selectProduct(match.params.collectionId, match.params.productId));
+  const wishlistItems = useSelector(selectWishlistItems);
+
   if (!product) return (<ErrorMessage message='此頁面不存在' />);
+
   const { details, id, imageUrl, name, price } = product;
   const existingWishlistItem = wishlistItems.find(wishlistItem => wishlistItem.id === id);
   const onMatchedRoutes = (matchedRoutes) => {
@@ -43,8 +49,8 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
             <FavoriteIcon 
               className={existingWishlistItem && styles.onWishlist}
               onClick={() => {
-                toggleWishlist(product);
-                !existingWishlistItem && toggleMessageHidden(false);
+                dispatch(toggleWishlist(product));
+                !existingWishlistItem && dispatch(toggleMessageHidden(false));
               }}
             />
           </div>
@@ -59,14 +65,14 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
           </h2>
           <div className={styles.buttons}>
             <CustomButton onClick={() => {
-              addItem(product);
-              toggleCartHidden(false);
+              dispatch(addItem(product));
+              dispatch(toggleCartHidden(false));
             }}>
               新增至購物車
             </CustomButton>
             <CustomButton
               onClick={() => {
-                addItem(product);
+                dispatch(addItem(product));
                 history.push('/checkout');
               }}
             >
@@ -90,16 +96,4 @@ const ProductPage = ({ match, location, history, product, wishlistItems, addItem
   )
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  product: selectProduct(ownProps.match.params.collectionId, ownProps.match.params.productId)(state),
-  wishlistItems: selectWishlistItems(state)
-})
-
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item)),
-  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden)),
-  toggleWishlist: item => dispatch(toggleWishlist(item)),
-  toggleMessageHidden: isHidden => dispatch(toggleMessageHidden(isHidden))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);
+export default ProductPage;

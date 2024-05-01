@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -11,7 +10,11 @@ import { signUpStart } from '../../redux/user/user-actions';
 
 import styles from './sign-up.module.scss';
 
-const SignUp = ({ signUpStart, location, history, currentUser }) => {
+const SignUp = ({ location, history }) => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  
   const [userCredentials, setUserCredentials] = useState({
     displayName: '',
     email: '',
@@ -37,7 +40,7 @@ const SignUp = ({ signUpStart, location, history, currentUser }) => {
       alert('password not match');
       return;
     }
-    signUpStart({ displayName, email, password });
+    dispatch(signUpStart({ displayName, email, password }));
     redirect();
   }
 
@@ -84,12 +87,4 @@ const SignUp = ({ signUpStart, location, history, currentUser }) => {
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-})
-
-const mapDispatchToProps = dispatch => ({
-  signUpStart: userCredentials => dispatch(signUpStart(userCredentials))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignUp));
+export default withRouter(SignUp);

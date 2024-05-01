@@ -1,5 +1,4 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { selectCartItems, selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
@@ -11,11 +10,17 @@ import CustomButton from '../../components/custom-button/CustomButton';
 
 import styles from './cart-page.module.scss';
 
-const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, currentUser }) => {
+const CartPage = ({ location, history }) => {
   // if user not signed in, redirect to signin page and pass current path to location.state
   const redirect = () => {
     currentUser ? history.push('/checkout') : history.push({pathname: '/sign-in', state: {from: '/cart'}});
   };
+
+  // react-redux hooks
+  const cartItems = useSelector(selectCartItems);
+  const cartTotal = useSelector(selectCartTotal);
+  const shippingFee = useSelector(selectShippingFee);
+  const currentUser = useSelector(selectCurrentUser);
 
   return (
     <section className={styles.cartPage}>
@@ -61,11 +66,4 @@ const CartPage = ({ location, history, cartItems, cartTotal, shippingFee, curren
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  cartTotal: selectCartTotal,
-  shippingFee: selectShippingFee,
-  currentUser: selectCurrentUser
-});
-
-export default connect(mapStateToProps)(CartPage);
+export default CartPage;

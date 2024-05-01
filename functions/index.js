@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const functions = require("firebase-functions");
 
 // for stripe-checkout-element

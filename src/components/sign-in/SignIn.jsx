@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -14,7 +13,13 @@ import { ReactComponent as FacebookIcon } from '../../assets/facebook-color-icon
 
 import styles from './sign-in.module.scss';
 
-const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, location, history, currentUser, userError }) => {
+// TODO: SignIn error -> firebase API problem?
+const SignIn = ({ location, history }) => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  const userError = useSelector(selectUserError);
+  
   const [userCredentials, setUserCredentials] = useState({
     email: '', 
     password: '' 
@@ -34,7 +39,7 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, loca
 
   const handleSubmit = async event => {
     event.preventDefault();
-    emailSignInStart(email, password);
+    dispatch(emailSignInStart({ email, password }));
     redirect();
   }
 
@@ -42,8 +47,8 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, loca
     <div className={styles.signIn}>
       <div className={styles.clickSignIn}>
         <h2>一鍵登入</h2>
-        <GoogleIcon onClick={googleSignInStart} />
-        <FacebookIcon onClick={facebookSignInStart} />
+        <GoogleIcon onClick={() => dispatch(googleSignInStart())} />
+        <FacebookIcon onClick={() => dispatch(facebookSignInStart())} />
       </div>
 
       <div className={styles.typeSignIn}>
@@ -74,15 +79,4 @@ const SignIn = ({ googleSignInStart, facebookSignInStart, emailSignInStart, loca
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  userError: selectUserError
-})
-
-const mapDispatchToProps = dispatch => ({
-  googleSignInStart: () => dispatch(googleSignInStart()),
-  facebookSignInStart: () => dispatch(facebookSignInStart()),
-  emailSignInStart: (email, password) => dispatch(emailSignInStart({ email, password }))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));
+export default withRouter(SignIn);

@@ -1,6 +1,5 @@
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { signOutStart, checkUserSession } from '../../redux/user/user-actions';
@@ -12,7 +11,11 @@ import GuestLogo from '../../assets/guest.png';
 
 import styles from './user-profile-sidebar.module.scss';
 
-const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUserSession }) => {
+const UserProfileSidebar = ({ match, history }) => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  
   return (
     <nav className={styles.userProfileSideBar}>
       {currentUser ? 
@@ -25,12 +28,12 @@ const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUs
             <li>我的賬戶</li>
             <li onClick={() => {
                 history.push(`${match.path}/my-order-history`);
-                checkUserSession();
+                dispatch(checkUserSession());
             }}>
               訂單記錄
             </li>
             <li onClick={() => history.push(`${match.path}/my-wishlist`)}>願望清單</li>
-            <li onClick={signOutStart}>登出</li>
+            <li onClick={() => dispatch(signOutStart())}>登出</li>
           </div>
         </div>
         :
@@ -47,13 +50,4 @@ const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUs
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-})
-
-const mapDispatchToProps = dispatch => ({
-  signOutStart: () => dispatch(signOutStart()),
-  checkUserSession: () => dispatch(checkUserSession())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserProfileSidebar));
+export default withRouter(UserProfileSidebar);

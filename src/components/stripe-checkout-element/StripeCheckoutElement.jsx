@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
@@ -14,7 +13,13 @@ import CustomButton from '../custom-button/CustomButton';
 
 import styles from './stripe-checkout-element.module.scss';
 
-const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, clearCart, history }) => {
+//TODO: problem with this component!!
+const StripeCheckoutElement = ({ price, shippingInfo, history }) => {
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const currentUser = useSelector(selectCurrentUser);
+  
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
@@ -47,7 +52,7 @@ const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, cl
     createOrder(currentUser, cartItems, shippingInfo, orderRefNum, price);
     // after successful payment
     alert('Payment Successful');
-    clearCart();
+    dispatch(clearCart());
     history.push('/user-profile');
   }
 
@@ -88,13 +93,4 @@ const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, cl
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  currentUser: selectCurrentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-  clearCart: () => dispatch(clearCart())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(StripeCheckoutElement));
+export default withRouter(StripeCheckoutElement);

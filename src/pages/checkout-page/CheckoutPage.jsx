@@ -1,8 +1,4 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { withRouter } from 'react-router-dom';
-
-import { selectCartItemsCount, selectCartItems, selectCartTotal } from '../../redux/cart/cart-selectors';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CheckoutForm from '../../components/checkout-form/CheckoutForm';
@@ -45,10 +41,4 @@ const CheckoutPage = ({ match, location }) => {
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  itemsCount: selectCartItemsCount,
-  cartItems: selectCartItems,
-  total: selectCartTotal
-});
-
-export default connect(mapStateToProps)(withRouter(CheckoutPage));
+export default withRouter(CheckoutPage);

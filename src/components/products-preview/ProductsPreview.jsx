@@ -1,5 +1,4 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -31,28 +30,29 @@ const responsive = {
   }
 };
 
-const ProductsPreview = ({ newArrivalArray }) => (
-  <div className={styles.productPreview}>
-    <div className={styles.previewTitle}>
-      <span>New Arrival</span>
+const ProductsPreview = () => {
+  // react-redux hooks
+  const newArrivalArray = useSelector(selectNewArrival);
+
+  return (
+    <div className={styles.productPreview}>
+      <div className={styles.previewTitle}>
+        <span>New Arrival</span>
+      </div>
+      {newArrivalArray.length ?
+        <Carousel 
+          removeArrowOnDeviceType={'mobile'}
+          responsive={responsive} 
+          className={styles.previewContainer}
+        >
+          {newArrivalArray.map((item, index) => (
+            <ProductItem item={item} key={item.id}/>
+          ))}
+        </Carousel>
+        : <BubbleSpinner />
+      }
     </div>
-    {newArrivalArray.length ?
-      <Carousel 
-        removeArrowOnDeviceType={'mobile'}
-        responsive={responsive} 
-        className={styles.previewContainer}
-      >
-        {newArrivalArray.map((item, index) => (
-          <ProductItem item={item} key={item.id}/>
-        ))}
-      </Carousel>
-      : <BubbleSpinner />
-    }
-  </div>
-)
+  )
+}
 
-const mapStateToProps = createStructuredSelector({
-  newArrivalArray: selectNewArrival
-});
-
-export default connect(mapStateToProps)(ProductsPreview);
+export default ProductsPreview;

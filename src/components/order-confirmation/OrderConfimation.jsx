@@ -1,5 +1,4 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 
 import { selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
 
@@ -7,7 +6,11 @@ import StripeCheckoutElement from '../stripe-checkout-element/StripeCheckoutElem
 
 import styles from './order-confirmation.module.scss'
 
-const OrderConfirmation = ({ shippingInfo, cartTotal, shippingFee }) => {
+const OrderConfirmation = ({ shippingInfo }) => {
+  // react-redux hooks
+  const cartTotal = useSelector(selectCartTotal);
+  const shippingFee = useSelector(selectShippingFee);
+  
   const { title, name, email, phone, address } = shippingInfo;
   const totalToPay = cartTotal + shippingFee;
 
@@ -40,15 +43,11 @@ const OrderConfirmation = ({ shippingInfo, cartTotal, shippingFee }) => {
           <br/>
           <span>Card No.: 4242 4242 4242 4242 - Exp: 01/22 - CVV: 123</span>
         </p>
-        <StripeCheckoutElement price={totalToPay} shippingInfo={shippingInfo} />
+        {/* TODO: error with StripeCheckoutElement -> comment out first */}
+        {/* <StripeCheckoutElement price={totalToPay} shippingInfo={shippingInfo} /> */}
       </div>
     </div>
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartTotal: selectCartTotal,
-  shippingFee: selectShippingFee
-});
-
-export default connect(mapStateToProps)(OrderConfirmation);
+export default OrderConfirmation;

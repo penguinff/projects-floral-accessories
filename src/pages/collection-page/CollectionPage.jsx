@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { selectNewArrival, selectCollection } from '../../redux/shop/shop-selectors';
 
@@ -9,8 +9,12 @@ import ProductItem from '../../components/product-item/ProductItem';
 import ErrorMessage from '../../components/error-message/ErrorMessage';
 import styles from './collection-page.module.scss';
 
-const CollectionPage = ({ match, location, collection }) => {
+const CollectionPage = ({ match, location }) => {
   const [productOrder, setProductOrder] = useState(null);
+
+  // react-redux hooks
+  const collection = useSelector(match.params.collectionId === 'new-arrival' ? selectNewArrival : selectCollection(match.params.collectionId));
+
   if (!collection) return (<ErrorMessage message='此頁面不存在' />);
 
   let collectionData = {};
@@ -57,11 +61,4 @@ const CollectionPage = ({ match, location, collection }) => {
   )
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: ownProps.match.params.collectionId === 'new-arrival' ? 
-    selectNewArrival(state)
-  : 
-    selectCollection(ownProps.match.params.collectionId)(state)
-});
-
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;
