@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -10,7 +10,11 @@ import { signUpStart } from '../../redux/user/user-slice';
 
 import styles from './sign-up.module.scss';
 
-const SignUp = ({ location, history }) => {
+// TODO: Redirect to /cart not working!!
+const SignUp = () => {
+  const history = useHistory();
+  const { state } = useLocation();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
@@ -26,7 +30,7 @@ const SignUp = ({ location, history }) => {
 
   // redirect after signup
   const redirect = () => {
-    currentUser && (location.state ? history.push(location.state.from) : history.push('/user-profile'));
+    currentUser && (state ? history.push(state.from) : history.push('/user-profile'));
   }
 
   const handleChange = event => {
@@ -87,4 +91,4 @@ const SignUp = ({ location, history }) => {
   );
 }
 
-export default withRouter(SignUp);
+export default SignUp;

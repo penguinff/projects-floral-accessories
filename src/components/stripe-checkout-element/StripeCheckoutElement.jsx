@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import { createPaymentIntent, createOrder } from '../../firebase/firebase.utils';
@@ -14,7 +14,9 @@ import CustomButton from '../custom-button/CustomButton';
 import styles from './stripe-checkout-element.module.scss';
 
 //TODO: problem with this component!!
-const StripeCheckoutElement = ({ price, shippingInfo, history }) => {
+const StripeCheckoutElement = ({ price, shippingInfo }) => {
+  const history = useHistory();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
@@ -93,4 +95,4 @@ const StripeCheckoutElement = ({ price, shippingInfo, history }) => {
   );
 };
 
-export default withRouter(StripeCheckoutElement);
+export default StripeCheckoutElement;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import { selectNewArrival, selectCollection } from '../../redux/shop/shop-selectors';
 
@@ -9,16 +10,18 @@ import ProductItem from '../../components/product-item/ProductItem';
 import ErrorMessage from '../../components/error-message/ErrorMessage';
 import styles from './collection-page.module.scss';
 
-const CollectionPage = ({ match, location }) => {
+const CollectionPage = () => {
+  const { collectionId } = useParams();
+
   const [productOrder, setProductOrder] = useState(null);
 
   // react-redux hooks
-  const collection = useSelector(match.params.collectionId === 'new-arrival' ? selectNewArrival : selectCollection(match.params.collectionId));
+  const collection = useSelector(collectionId === 'new-arrival' ? selectNewArrival : selectCollection(collectionId));
 
   if (!collection) return (<ErrorMessage message='此頁面不存在' />);
 
   let collectionData = {};
-  if (match.params.collectionId === 'new-arrival') {
+  if (collectionId === 'new-arrival') {
     // create a new-arrival object
     collectionData = {
       title: 'New Arrival',
@@ -49,7 +52,7 @@ const CollectionPage = ({ match, location }) => {
           <img src={banner} alt='title banner' />
           <div className={styles.title}>{title}</div>
         </div>
-        <Breadcrumb location={location} />
+        <Breadcrumb />
         <SortBar total={items.length} setProductOrder={setProductOrder} />
         <div className={styles.collectionItems}>
           {sortedItems.map(item => 

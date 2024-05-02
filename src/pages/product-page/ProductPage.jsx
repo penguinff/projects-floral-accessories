@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams, useHistory, useRouteMatch } from 'react-router-dom';
 import Magnifier from 'react-magnifier';
 
 import { selectProduct } from '../../redux/shop/shop-selectors';
@@ -14,10 +15,14 @@ import styles from './product-page.module.scss';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
 
-const ProductPage = ({ match, location, history }) => {
+const ProductPage = () => {
+  const history = useHistory();
+  const { url } = useRouteMatch();
+  const { collectionId, productId } = useParams();
+
   // react-redux hooks
   const dispatch = useDispatch();
-  const product = useSelector(selectProduct(match.params.collectionId, match.params.productId));
+  const product = useSelector(selectProduct(collectionId, productId));
   const wishlistItems = useSelector(selectWishlistItems);
 
   if (!product) return (<ErrorMessage message='此頁面不存在' />);
@@ -29,7 +34,7 @@ const ProductPage = ({ match, location, history }) => {
       ...matchedRoutes,
       {
         route: {
-          path: `${match.url}`,
+          path: `${url}`,
           breadcrumbName: name
         }
       }
@@ -38,7 +43,7 @@ const ProductPage = ({ match, location, history }) => {
 
   return (
     <div className={styles.productPage}>
-      <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes} />
+      <Breadcrumb onMatchedRoutes={onMatchedRoutes} />
       <div className={styles.productInfo}>
         <div className={styles.left}>
           <Magnifier src={imageUrl} alt='product' />

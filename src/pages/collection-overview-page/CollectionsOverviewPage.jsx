@@ -6,13 +6,13 @@ import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CollectionPreview from '../../components/collection-preview/CollectionPreview';
 import styles from './collections-overview-page.module.scss';
 
-const CollectionsOverviewPage = ({ location }) => {
+const CollectionsOverviewPage = () => {
   // react-redux hooks
   const collections = useSelector(selectCollectionsForPreview);
 
   return (
     <div className={styles.collectionsOverviewPage}>
-      <Breadcrumb location={location} />
+      <Breadcrumb />
       <div className={styles.previews}>
         {collections.map(({ id, ...otherCollectionProps }) => 
           <CollectionPreview key={id} {...otherCollectionProps} />)}

@@ -1,4 +1,4 @@
-import { withRouter } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
@@ -11,7 +11,10 @@ import GuestLogo from '../../assets/guest.png';
 
 import styles from './user-profile-sidebar.module.scss';
 
-const UserProfileSidebar = ({ match, history }) => {
+const UserProfileSidebar = () => {
+  const history = useHistory();
+  const { path } = useRouteMatch();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
@@ -27,12 +30,12 @@ const UserProfileSidebar = ({ match, history }) => {
           <div className={styles.list}>
             <li>我的賬戶</li>
             <li onClick={() => {
-                history.push(`${match.path}/my-order-history`);
+                history.push(`${path}/my-order-history`);
                 dispatch(checkUserSession());
             }}>
               訂單記錄
             </li>
-            <li onClick={() => history.push(`${match.path}/my-wishlist`)}>願望清單</li>
+            <li onClick={() => history.push(`${path}/my-wishlist`)}>願望清單</li>
             <li onClick={() => dispatch(signOutStart())}>登出</li>
           </div>
         </div>
@@ -50,4 +53,4 @@ const UserProfileSidebar = ({ match, history }) => {
   )
 }
 
-export default withRouter(UserProfileSidebar);
+export default UserProfileSidebar;

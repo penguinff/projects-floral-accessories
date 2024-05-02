@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
@@ -23,7 +23,9 @@ import { ReactComponent as SideNavIcon } from '../../assets/sidenav-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
 
-const Header = ({ history }) => {
+const Header = () => {
+  const history = useHistory();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
@@ -104,4 +106,4 @@ const Header = ({ history }) => {
   )
 }
 
-export default withRouter(Header);
+export default Header;

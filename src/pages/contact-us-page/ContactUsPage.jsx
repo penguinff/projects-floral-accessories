@@ -14,7 +14,7 @@ import { ReactComponent as InstagramIcon } from '../../assets/instagram-icon.svg
 import { ReactComponent as YoutubeIcon } from '../../assets/youtube-icon.svg';
 import { ReactComponent as LineIcon } from '../../assets/line-icon.svg';
 
-const ContactUsPage = ({ location }) => {
+const ContactUsPage = () => {
   const [contactInfo, setContactInfo] = useState({
     displayName: '',
     email: '',
@@ -42,7 +42,7 @@ const ContactUsPage = ({ location }) => {
 
   return (
     <section className={styles.contactUsPage}>
-      <Breadcrumb location={location}/>
+      <Breadcrumb />
 
       <div className={styles.containers}>
         <div className={styles.container}>

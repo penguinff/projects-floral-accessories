@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { addItem } from '../../redux/cart/cart-slice';
 import { toggleCartHidden } from '../../redux/cart/cart-slice';
@@ -11,7 +11,9 @@ import styles from './product-item.module.scss';
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
 import { ReactComponent as AddCartIcon } from '../../assets/addcart-icon.svg';
 
-const ProductItem = ({ history, item }) => {
+const ProductItem = ({ item }) => {
+  const history = useHistory();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const wishlistItems = useSelector(selectWishlistItems);
@@ -44,4 +46,4 @@ const ProductItem = ({ history, item }) => {
   )
 };
 
-export default withRouter(ProductItem);
+export default ProductItem;

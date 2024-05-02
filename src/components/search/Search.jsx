@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import styles from './search.module.scss';
 
 import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
 
-const Search = ({ history }) => {
+const Search = () => {
+  const history = useHistory();
+
   // local state
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -49,4 +51,4 @@ const Search = ({ history }) => {
   )
 };
 
-export default withRouter(Search);
+export default Search;

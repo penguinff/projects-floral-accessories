@@ -1,4 +1,4 @@
-import { withRouter } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CheckoutForm from '../../components/checkout-form/CheckoutForm';
@@ -6,7 +6,9 @@ import CartSummary from '../../components/cart-summary/CartSummary';
 
 import styles from './checkout-page.module.scss';
 
-const CheckoutPage = ({ match, location }) => {
+const CheckoutPage = () => {
+  const { path } = useRouteMatch();
+
   const onMatchedRoutes = () => {
     return [
       {
@@ -23,7 +25,7 @@ const CheckoutPage = ({ match, location }) => {
       },
       {
         route: {
-          path: `${match.path}`,
+          path: `${path}`,
           breadcrumbName: '結賬'
         }
       },
@@ -32,7 +34,7 @@ const CheckoutPage = ({ match, location }) => {
   
   return (
     <section className={styles.checkoutPage}>
-      <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes}/>
+      <Breadcrumb onMatchedRoutes={onMatchedRoutes}/>
       <div className={styles.group}>
         <CheckoutForm />
         <CartSummary />
@@ -41,4 +43,4 @@ const CheckoutPage = ({ match, location }) => {
   )
 };
 
-export default withRouter(CheckoutPage);
+export default CheckoutPage;

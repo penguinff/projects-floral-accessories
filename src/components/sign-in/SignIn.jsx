@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
@@ -14,7 +14,11 @@ import { ReactComponent as FacebookIcon } from '../../assets/facebook-color-icon
 import styles from './sign-in.module.scss';
 
 // TODO: SignIn error -> firebase API problem?
-const SignIn = ({ location, history }) => {
+// TODO: Redirect to /cart not working!!
+const SignIn = () => {
+  const history = useHistory();
+  const { state } = useLocation();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
@@ -29,7 +33,7 @@ const SignIn = ({ location, history }) => {
   
   // redirect after signin
   const redirect = () => {
-    currentUser && (location.state ? history.push(location.state.from) : history.push('/user-profile'));
+    currentUser && (state ? history.push(state.from) : history.push('/user-profile'));
   }
 
   const handleChange = event => {
@@ -79,4 +83,4 @@ const SignIn = ({ location, history }) => {
   );
 };
 
-export default withRouter(SignIn);
+export default SignIn;

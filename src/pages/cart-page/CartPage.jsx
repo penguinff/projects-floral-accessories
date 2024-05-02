@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { selectCartItems, selectCartTotal, selectShippingFee } from '../../redux/cart/cart-selectors';
 import { selectCurrentUser } from '../../redux/user/user-selectors';
@@ -10,7 +10,9 @@ import CustomButton from '../../components/custom-button/CustomButton';
 
 import styles from './cart-page.module.scss';
 
-const CartPage = ({ location, history }) => {
+const CartPage = () => {
+  const history = useHistory();
+
   // if user not signed in, redirect to signin page and pass current path to location.state
   const redirect = () => {
     currentUser ? history.push('/checkout') : history.push({pathname: '/sign-in', state: {from: '/cart'}});
@@ -24,7 +26,7 @@ const CartPage = ({ location, history }) => {
 
   return (
     <section className={styles.cartPage}>
-      <Breadcrumb location={location}/>
+      <Breadcrumb />
       <h2>我的購物車</h2>
       {cartItems.length ? 
         <div className={styles.withCartItems}>
