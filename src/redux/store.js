@@ -1,24 +1,32 @@
-import { createStore, applyMiddleware } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './root-reducer';
 import rootSagas from './root-sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware];
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => {
+    const middleware = getDefaultMiddleware(
+      { 
+        thunk: false, 
+        serializableCheck: false
+      }
+    ).concat(sagaMiddleware);
 
-// use logger middleware in development environment
-if (process.env.NODE_ENV === 'development') {
-  middlewares.push(logger);
-}
+    // Conditionally add another middleware in dev
+    if (process.env.NODE_ENV !== 'production') {
+      middleware.push(logger)
+    }
 
-export const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(...middlewares) // connect middleware to the Store
-));
+    return middleware;
+  },
+  devTools: process.env.NODE_ENV !== 'production'
+})
 
 // to start Saga
 sagaMiddleware.run(rootSagas);

@@ -6,7 +6,7 @@ import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
 import { selectCurrentUser, selectUserError } from '../../redux/user/user-selectors';
-import { googleSignInStart, facebookSignInStart, emailSignInStart } from '../../redux/user/user-actions';
+import { googleSignInStart, facebookSignInStart, emailSignInStart } from '../../redux/user/user-slice';
 
 import { ReactComponent as GoogleIcon } from '../../assets/google-color-icon.svg';
 import { ReactComponent as FacebookIcon } from '../../assets/facebook-color-icon.svg';

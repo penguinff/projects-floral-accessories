@@ -6,7 +6,7 @@ import FormInput from '../form-input/FormInput';
 import CustomButton from '../custom-button/CustomButton';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
-import { signUpStart } from '../../redux/user/user-actions';
+import { signUpStart } from '../../redux/user/user-slice';
 
 import styles from './sign-up.module.scss';
 

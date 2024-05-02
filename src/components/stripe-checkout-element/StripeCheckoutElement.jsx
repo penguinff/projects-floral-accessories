@@ -7,7 +7,7 @@ import { createPaymentIntent, createOrder } from '../../firebase/firebase.utils'
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { selectCartItems } from '../../redux/cart/cart-selectors';
-import { clearCart } from '../../redux/cart/cart-actions';
+import { clearCart } from '../../redux/cart/cart-slice';
 
 import CustomButton from '../custom-button/CustomButton';
 

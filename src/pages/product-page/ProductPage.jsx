@@ -3,8 +3,8 @@ import Magnifier from 'react-magnifier';
 
 import { selectProduct } from '../../redux/shop/shop-selectors';
 import { selectWishlistItems } from '../../redux/wishlist/wishlist-selectors';
-import { addItem, toggleCartHidden } from '../../redux/cart/cart-actions';
-import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
+import { addItem, toggleCartHidden } from '../../redux/cart/cart-slice';
+import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishlist-slice';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CustomButton from '../../components/custom-button/CustomButton';

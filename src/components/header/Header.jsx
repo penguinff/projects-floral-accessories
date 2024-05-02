@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { selectCartHidden, selectCartItemsCount } from '../../redux/cart/cart-selectors';
 import { selectMessageHidden } from '../../redux/wishlist/wishlist-selectors';
-import { toggleCartHidden } from '../../redux/cart/cart-actions';
-import { toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
+import { toggleCartHidden } from '../../redux/cart/cart-slice';
+import { toggleMessageHidden } from '../../redux/wishlist/wishlist-slice';
 
 import SaleMessage from '../sale-message/SaleMessage';
 import SideNav from '../side-nav/SideNav';

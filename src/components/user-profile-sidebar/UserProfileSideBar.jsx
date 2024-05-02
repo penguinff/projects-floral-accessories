@@ -2,7 +2,7 @@ import { withRouter } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
-import { signOutStart, checkUserSession } from '../../redux/user/user-actions';
+import { signOutStart, checkUserSession } from '../../redux/user/user-slice';
 
 import CustomButton from '../custom-button/CustomButton';
 

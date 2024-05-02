@@ -1,14 +1,14 @@
 import { all, call, takeLatest, put } from 'redux-saga/effects';
 
-import UserActionTypes from '../user/user-types';
-import { clearWishlist } from './wishlist-actions';
+import { clearWishlist } from './wishlist-slice';
+import { signOutSuccess } from '../user/user-slice';
 
 export function* clearWishlistOnSignOut() {
   yield put(clearWishlist());
 }
 
 export function* onSignOutSuccess() {
-  yield takeLatest(UserActionTypes.SIGN_OUT_SUCCESS, clearWishlistOnSignOut);
+  yield takeLatest(signOutSuccess.type, clearWishlistOnSignOut);
 }
 
 export function* wishlistSagas() {

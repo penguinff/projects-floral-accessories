@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 
-import { addItem, toggleCartHidden } from '../../redux/cart/cart-actions';
-import { removeWishlist } from '../../redux/wishlist/wishlist-actions';
+import { addItem, toggleCartHidden } from '../../redux/cart/cart-slice';
+import { removeWishlist } from '../../redux/wishlist/wishlist-slice';
 
 import CustomButton from '../custom-button/CustomButton';
 

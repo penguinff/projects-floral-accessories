@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { addItem } from '../../redux/cart/cart-actions';
-import { toggleCartHidden } from '../../redux/cart/cart-actions';
-import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
+import { addItem } from '../../redux/cart/cart-slice';
+import { toggleCartHidden } from '../../redux/cart/cart-slice';
+import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishlist-slice';
 import { selectWishlistItems } from '../../redux/wishlist/wishlist-selectors';
 
 import styles from './product-item.module.scss';
