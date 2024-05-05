@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/665.89650eb9.chunk.css","mappings":"AAAA,sDACE,gCACA","sources":["pages/under-construction-page/under-construction-page.module.scss"],"sourcesContent":[".underConstructionPage {\n  grid-column: full-start / full-end;\n  min-height: 65vh;\n}\n"],"names":[],"sourceRoot":""}

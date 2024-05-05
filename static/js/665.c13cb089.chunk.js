@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfloral_accessories=self.webpackChunkfloral_accessories||[]).push([[665],{5665:(s,e,c)=>{c.r(e),c.d(e,{default:()=>o});var a=c(5420);const r="under-construction-page_underConstructionPage__Vnqr0";var n=c(579);const o=()=>(0,n.jsx)("section",{className:r,children:(0,n.jsx)(a.A,{message:"\u6b64\u9801\u9762\u9084\u5728\u5efa\u7acb\u4e2d"})})}}]);
+//# sourceMappingURL=665.c13cb089.chunk.js.map
