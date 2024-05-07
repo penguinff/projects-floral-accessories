@@ -18,6 +18,8 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const functions = firebase.functions();
+// Checking if dev is true. If yes, use Firebase emulator
+if (process.env.NODE_ENV !== 'production') functions.useEmulator("localhost", 5001);
 
 // ----- functions related to users ----- //
 export const createUserProfileDocument = async (userAuth, additionalData) => {
@@ -84,11 +86,30 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 };
 
 // ----- functions related to user orders ----- //
-export const createOrder = async (currentUser, cartItems, shippingInfo, orderRefNum, price) => {
+const generateOrderNumber = () => {
+  const now = new Date();
+  const year = now.getUTCFullYear().toString().substring(2);
+  const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+  const day = now.getUTCDate().toString().padStart(2, '0');
+  const hour = now.getUTCHours().toString().padStart(2, '0');
+  const minute = now.getUTCMinutes().toString().padStart(2, '0');
+  const second = now.getUTCSeconds().toString().padStart(2, '0');
+
+  const datePart = year + month + day + hour + minute + second;
+  const randomPart = Math.floor(100000 + Math.random() * 900000);
+
+  const orderRefNumStr = datePart + randomPart.toString();
+  const orderRefNum = parseInt(orderRefNumStr, 10);
+
+  return orderRefNum;
+}
+
+export const createOrder = async (currentUser, cartItems, shippingInfo, price) => {
   const currentUserId = currentUser ? currentUser.id : 'visitor';
   const userRef = firestore.doc(`users/${currentUserId}`);
   const ordersRef = firestore.doc('orders/users-orders');
   const createdAt = new Date();
+  const orderRefNum = generateOrderNumber();
   const orderDetails = {
     time: createdAt,
     items: cartItems,

@@ -17,7 +17,7 @@ const MyOrderHistoryPage = () => {
         <div>
           <h3>{Object.keys(currentUser.orders).length}項訂單</h3>
           <div className={styles.orderList}>
-            {Object.keys(currentUser.orders).map(key => {
+            {Object.keys(currentUser.orders).reverse().map(key => {
               const order = currentUser.orders[key];
               return <OrderHistoryItem key={key} order={order} />;
             }

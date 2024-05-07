@@ -13,7 +13,6 @@ import CustomButton from '../custom-button/CustomButton';
 
 import styles from './stripe-checkout-element.module.scss';
 
-//TODO: problem with this component!!
 const StripeCheckoutElement = ({ price, shippingInfo }) => {
   const history = useHistory();
 
@@ -46,12 +45,10 @@ const StripeCheckoutElement = ({ price, shippingInfo }) => {
     iconStyle: 'solid',
     hidePostalCode: true,
   };
-  
+
   const onSuccessfulPayment = () => {
-    // create a random order reference number
-    const orderRefNum = Math.floor(100000 + Math.random() * 900000);
     // upload the order details to firebase after payment successful
-    createOrder(currentUser, cartItems, shippingInfo, orderRefNum, price);
+    createOrder(currentUser, cartItems, shippingInfo, price);
     // after successful payment
     alert('Payment Successful');
     dispatch(clearCart());

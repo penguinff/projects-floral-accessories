@@ -41,10 +41,9 @@ const OrderConfirmation = ({ shippingInfo }) => {
         <p className={styles.testCardInfo}>
           <span>***請用以下信用卡資料作測試用途***</span>
           <br/>
-          <span>Card No.: 4242 4242 4242 4242 - Exp: 01/22 - CVV: 123</span>
+          <span>Card No.: 4242 4242 4242 4242 - Exp: 01/26 - CVV: 123</span>
         </p>
-        {/* TODO: error with StripeCheckoutElement -> comment out first */}
-        {/* <StripeCheckoutElement price={totalToPay} shippingInfo={shippingInfo} /> */}
+        <StripeCheckoutElement price={totalToPay} shippingInfo={shippingInfo} />
       </div>
     </div>
   )
