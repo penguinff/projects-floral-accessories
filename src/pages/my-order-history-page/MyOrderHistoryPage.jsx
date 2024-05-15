@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { selectCurrentUser } from '../../redux/user/user-selectors';
+import { selectCurrentUser, selectOrders } from '../../redux/user/user-selectors';
 
 import OrderHistoryItem from '../../components/order-history-item/OrderHistoryItem';
 
@@ -9,7 +9,8 @@ import styles from './my-order-history-page.module.scss';
 const MyOrderHistoryPage = () => {
   // react-redux hooks
   const currentUser = useSelector(selectCurrentUser);
-
+  const orders = useSelector(selectOrders);
+  
   return (
     <div className={styles.myOrderHistoryPage}>
       <h2>我的訂單記錄</h2>
@@ -17,11 +18,11 @@ const MyOrderHistoryPage = () => {
         <div>
           <h3>{Object.keys(currentUser.orders).length}項訂單</h3>
           <div className={styles.orderList}>
-            {Object.keys(currentUser.orders).reverse().map(key => {
-              const order = currentUser.orders[key];
-              return <OrderHistoryItem key={key} order={order} />;
+            {
+              orders.map(order => {
+                return <OrderHistoryItem key={order.orderRefNum} order={order} />;
+              })
             }
-            )}
           </div>
         </div>
         :
