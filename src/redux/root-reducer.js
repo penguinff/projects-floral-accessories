@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import userReducer from './user/user-reducer';
-import shopReducer from './shop/shop-reducer';
-import cartReducer from './cart/cart-reducer';
-import wishlistReducer from './wishlist/wishlist-reducer';
+import userReducer from './user/user-slice';
+import shopReducer from './shop/shop-slice';
+import cartReducer from './cart/cart-slice';
+import wishlistReducer from './wishlist/wishlist-slice';
 
 const persistConfig = {
   key: 'root', // the key used for key/value storage in localStorage

@@ -1,10 +1,8 @@
 import { takeLatest, put, all, call } from 'redux-saga/effects';
 
-import UserActionTypes from './user-types';
-
-import { signInSuccess, signInFailure, signOutSuccess, signOutFailure, signUpSuccess, signUpFailure } from './user-actions';
-import { restoreCart } from '../cart/cart-actions';
-import { restoreWishlist } from '../wishlist/wishlist-actions';
+import { googleSignInStart, facebookSignInStart, emailSignInStart, signInSuccess, signInFailure, checkUserSession, signOutStart, signOutSuccess, signOutFailure, signUpStart, signUpSuccess, signUpFailure } from './user-slice';
+import { restoreCart } from '../cart/cart-slice';
+import { restoreWishlist } from '../wishlist/wishlist-slice';
 
 import { auth, googleProvider, facebookProvider, createUserProfileDocument, getCurrentUser } from '../../firebase/firebase.utils';
 
@@ -83,35 +81,35 @@ export function* restoreCartAndWishlistAfterSignIn({ payload: { storedCart, stor
 }
 
 export function* onGoogleSignInStart() {
-  yield takeLatest(UserActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
+  yield takeLatest(googleSignInStart.type, signInWithGoogle);
 }
 
 export function* onFacebookSignInStart() {
-  yield takeLatest(UserActionTypes.FACEBOOK_SIGN_IN_START, signInWithFacebook);
+  yield takeLatest(facebookSignInStart.type, signInWithFacebook);
 }
 
 export function* onEmailSignInStart() {
-  yield takeLatest(UserActionTypes.EMAIL_SIGN_IN_START, signInWithEmail);
+  yield takeLatest(emailSignInStart.type, signInWithEmail);
 }
 
 export function* onCheckUserSession() {
-  yield takeLatest(UserActionTypes.CHECK_USER_SESSION, isUserAuthenticated);
+  yield takeLatest(checkUserSession.type, isUserAuthenticated);
 }
 
 export function* onSignOutStart() {
-  yield takeLatest(UserActionTypes.SIGN_OUT_START, signOut);
+  yield takeLatest(signOutStart.type, signOut);
 }
 
 export function* onSignUpStart() {
-  yield takeLatest(UserActionTypes.SIGN_UP_START, signUp);
+  yield takeLatest(signUpStart.type, signUp);
 }
 
 export function* onSignUpSuccess() {
-  yield takeLatest(UserActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
+  yield takeLatest(signUpSuccess.type, signInAfterSignUp);
 }
 
 export function* onSignInSuccess() {
-  yield takeLatest(UserActionTypes.SIGN_IN_SUCCESS, restoreCartAndWishlistAfterSignIn);
+  yield takeLatest(signInSuccess.type, restoreCartAndWishlistAfterSignIn);
 }
 
 export function* userSagas() {

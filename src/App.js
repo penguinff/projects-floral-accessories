@@ -7,8 +7,8 @@ import { Elements } from '@stripe/react-stripe-js';
 import { selectCurrentUser } from './redux/user/user-selectors';
 import { selectCartItems } from './redux/cart/cart-selectors';
 import { selectWishlistItems } from './redux/wishlist/wishlist-selectors';
-import { checkUserSession } from './redux/user/user-actions';
-import { fetchCollectionsStart } from './redux/shop/shop-actions';
+import { checkUserSession } from './redux/user/user-slice';
+import { fetchCollectionsStart } from './redux/shop/shop-slice';
 
 import { storeUserCartAndWishlist } from './firebase/firebase.utils';
 

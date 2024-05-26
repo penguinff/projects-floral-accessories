@@ -1,9 +1,8 @@
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
-import { signOutStart, checkUserSession } from '../../redux/user/user-actions';
+import { signOutStart, checkUserSession } from '../../redux/user/user-slice';
 
 import CustomButton from '../custom-button/CustomButton';
 
@@ -12,7 +11,14 @@ import GuestLogo from '../../assets/guest.png';
 
 import styles from './user-profile-sidebar.module.scss';
 
-const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUserSession }) => {
+const UserProfileSidebar = () => {
+  const history = useHistory();
+  const { path } = useRouteMatch();
+
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  
   return (
     <nav className={styles.userProfileSideBar}>
       {currentUser ? 
@@ -24,13 +30,13 @@ const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUs
           <div className={styles.list}>
             <li>我的賬戶</li>
             <li onClick={() => {
-                history.push(`${match.path}/my-order-history`);
-                checkUserSession();
+                history.push(`${path}/my-order-history`);
+                dispatch(checkUserSession());
             }}>
               訂單記錄
             </li>
-            <li onClick={() => history.push(`${match.path}/my-wishlist`)}>願望清單</li>
-            <li onClick={signOutStart}>登出</li>
+            <li onClick={() => history.push(`${path}/my-wishlist`)}>願望清單</li>
+            <li onClick={() => dispatch(signOutStart())}>登出</li>
           </div>
         </div>
         :
@@ -47,13 +53,4 @@ const UserProfileSidebar = ({ match, history, currentUser, signOutStart, checkUs
   )
 }
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
-})
-
-const mapDispatchToProps = dispatch => ({
-  signOutStart: () => dispatch(signOutStart()),
-  checkUserSession: () => dispatch(checkUserSession())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserProfileSidebar));
+export default UserProfileSidebar;

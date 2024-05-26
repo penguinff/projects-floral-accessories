@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { selectCartItems } from '../../redux/cart/cart-selectors';
 import { selectCartItemsCount } from '../../redux/cart/cart-selectors';
 import { selectCartTotal } from '../../redux/cart/cart-selectors';
-import { toggleCartHidden } from '../../redux/cart/cart-actions';
+import { toggleCartHidden } from '../../redux/cart/cart-slice';
 
 import CartItem from '../cart-item/CartItem';
 import CustomButton from '../custom-button/CustomButton';

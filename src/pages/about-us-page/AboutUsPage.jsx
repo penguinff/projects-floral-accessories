@@ -17,9 +17,9 @@ const data = [
   },
 ]
 
-const AboutUsPage = ({ location }) => (
+const AboutUsPage = () => (
   <section className={styles.aboutUsPage}>
-    <Breadcrumb location={location}/>
+    <Breadcrumb />
     <div className={styles.containers}>
       {data.map((item, index) => 
         <div key={index} className={styles.container}>

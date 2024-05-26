@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
@@ -8,17 +8,21 @@ import MyOrderHistoryPage from '../../pages/my-order-history-page/MyOrderHistory
 
 import styles from './user-profile-page.module.scss';
 
-const UserProfilePage = ({ match, location }) => (
-  <section className={styles.userProfilePage}>
-    <Breadcrumb location={location} />
-    <div className={styles.components}>
-      <UserProfileSidebar />
-      <Switch>
-        <Route exact path={`${match.path}/my-wishlist`} component={MyWishlistPage} />
-        <Route exact path={`${match.path}/my-order-history`} component={MyOrderHistoryPage} />
-      </Switch>
-    </div>
-  </section>
-)
+const UserProfilePage = () => {
+  const { path } = useRouteMatch();
+
+  return (
+    <section className={styles.userProfilePage}>
+      <Breadcrumb />
+      <div className={styles.components}>
+        <UserProfileSidebar />
+        <Switch>
+          <Route exact path={`${path}/my-wishlist`} component={MyWishlistPage} />
+          <Route exact path={`${path}/my-order-history`} component={MyOrderHistoryPage} />
+        </Switch>
+      </div>
+    </section>
+  )
+};
 
 export default UserProfilePage;

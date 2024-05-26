@@ -1,20 +1,26 @@
 import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import { createPaymentIntent, createOrder } from '../../firebase/firebase.utils';
 
 import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { selectCartItems } from '../../redux/cart/cart-selectors';
-import { clearCart } from '../../redux/cart/cart-actions';
+import { clearCart } from '../../redux/cart/cart-slice';
 
 import CustomButton from '../custom-button/CustomButton';
 
 import styles from './stripe-checkout-element.module.scss';
 
-const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, clearCart, history }) => {
+const StripeCheckoutElement = ({ price, shippingInfo }) => {
+  const history = useHistory();
+
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const currentUser = useSelector(selectCurrentUser);
+  
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
@@ -39,15 +45,13 @@ const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, cl
     iconStyle: 'solid',
     hidePostalCode: true,
   };
-  
+
   const onSuccessfulPayment = () => {
-    // create a random order reference number
-    const orderRefNum = Math.floor(100000 + Math.random() * 900000);
     // upload the order details to firebase after payment successful
-    createOrder(currentUser, cartItems, shippingInfo, orderRefNum, price);
+    createOrder(currentUser, cartItems, shippingInfo, price);
     // after successful payment
     alert('Payment Successful');
-    clearCart();
+    dispatch(clearCart());
     history.push('/user-profile');
   }
 
@@ -88,13 +92,4 @@ const StripeCheckoutElement = ({ price, shippingInfo, cartItems, currentUser, cl
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems,
-  currentUser: selectCurrentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-  clearCart: () => dispatch(clearCart())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(StripeCheckoutElement));
+export default StripeCheckoutElement;

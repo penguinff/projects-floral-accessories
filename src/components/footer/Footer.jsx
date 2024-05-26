@@ -50,7 +50,7 @@ const Footer = () => (
       </nav>
     </div>
 
-    <span className={styles.copyright}>Copyright © 2021 by Floral Accessories</span>
+    <span className={styles.copyright}>Copyright © 2024 by Floral Accessories</span>
 
     <div className={styles.footnote}>
       <span>練習作品 | 作者：Chirstine Fong | <a href='https://github.com/penguinff' target='_blank' rel='noreferrer noopener'>Github</a></span>

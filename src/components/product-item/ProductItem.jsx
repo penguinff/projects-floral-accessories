@@ -1,10 +1,9 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { addItem } from '../../redux/cart/cart-actions';
-import { toggleCartHidden } from '../../redux/cart/cart-actions';
-import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishlist-actions';
+import { addItem } from '../../redux/cart/cart-slice';
+import { toggleCartHidden } from '../../redux/cart/cart-slice';
+import { toggleWishlist, toggleMessageHidden } from '../../redux/wishlist/wishlist-slice';
 import { selectWishlistItems } from '../../redux/wishlist/wishlist-selectors';
 
 import styles from './product-item.module.scss';
@@ -12,7 +11,13 @@ import styles from './product-item.module.scss';
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
 import { ReactComponent as AddCartIcon } from '../../assets/addcart-icon.svg';
 
-const ProductItem = ({ history, item, addItem, toggleCartHidden, toggleWishlist, wishlistItems, toggleMessageHidden }) => {
+const ProductItem = ({ item }) => {
+  const history = useHistory();
+
+  // react-redux hooks
+  const dispatch = useDispatch();
+  const wishlistItems = useSelector(selectWishlistItems);
+
   const { id, category, name, price, imageUrl } = item;
   const productPath = `/shop/${category}/${id}`;
   const existingWishlistItem = wishlistItems.find(wishlistItem => wishlistItem.id === id);
@@ -26,14 +31,14 @@ const ProductItem = ({ history, item, addItem, toggleCartHidden, toggleWishlist,
         <FavoriteIcon 
           className={existingWishlistItem && styles.onWishlist}
           onClick={() => {
-            toggleWishlist(item);
-            !existingWishlistItem && toggleMessageHidden(false);
+            dispatch(toggleWishlist(item));
+            !existingWishlistItem && dispatch(toggleMessageHidden(false));
           }}
         />
         <AddCartIcon 
           onClick={() => {
-            addItem(item);
-            toggleCartHidden(false);
+            dispatch(addItem(item));
+            dispatch(toggleCartHidden(false));
           }} 
         />
       </div>
@@ -41,15 +46,4 @@ const ProductItem = ({ history, item, addItem, toggleCartHidden, toggleWishlist,
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  wishlistItems: selectWishlistItems
-})
-
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item)),
-  toggleCartHidden: isHidden => dispatch(toggleCartHidden(isHidden)),
-  toggleWishlist: item => dispatch(toggleWishlist(item)),
-  toggleMessageHidden: isHidden => dispatch(toggleMessageHidden(isHidden))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductItem));
+export default ProductItem;

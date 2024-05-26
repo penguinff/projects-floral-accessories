@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { selectAllProductsArray } from '../../redux/shop/shop-selectors';
 
@@ -9,7 +10,9 @@ import ProductItem from '../../components/product-item/ProductItem';
 
 import styles from './search-result-page.module.scss';
 
-const SearchResultPage = ({ location }) => {
+const SearchResultPage = () => {
+  const location = useLocation();
+
   // react-redux hook
   const allProductsArray = useSelector(selectAllProductsArray);
 
@@ -35,7 +38,7 @@ const SearchResultPage = ({ location }) => {
 
   return (
     <div className={styles.searchResultPage}>
-      <Breadcrumb location={location} />
+      <Breadcrumb />
 
       <div className={styles.searchResult}>
         {location.state.searchText ? 

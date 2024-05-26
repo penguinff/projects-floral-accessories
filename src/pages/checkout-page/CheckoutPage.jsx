@@ -1,8 +1,4 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
-
-import { selectCartItemsCount, selectCartItems, selectCartTotal } from '../../redux/cart/cart-selectors';
+import { useRouteMatch } from 'react-router-dom';
 
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 import CheckoutForm from '../../components/checkout-form/CheckoutForm';
@@ -10,7 +6,9 @@ import CartSummary from '../../components/cart-summary/CartSummary';
 
 import styles from './checkout-page.module.scss';
 
-const CheckoutPage = ({ match, location }) => {
+const CheckoutPage = () => {
+  const { path } = useRouteMatch();
+
   const onMatchedRoutes = () => {
     return [
       {
@@ -27,7 +25,7 @@ const CheckoutPage = ({ match, location }) => {
       },
       {
         route: {
-          path: `${match.path}`,
+          path: `${path}`,
           breadcrumbName: '結賬'
         }
       },
@@ -36,7 +34,7 @@ const CheckoutPage = ({ match, location }) => {
   
   return (
     <section className={styles.checkoutPage}>
-      <Breadcrumb location={location} onMatchedRoutes={onMatchedRoutes}/>
+      <Breadcrumb onMatchedRoutes={onMatchedRoutes}/>
       <div className={styles.group}>
         <CheckoutForm />
         <CartSummary />
@@ -45,10 +43,4 @@ const CheckoutPage = ({ match, location }) => {
   )
 };
 
-const mapStateToProps = createStructuredSelector({
-  itemsCount: selectCartItemsCount,
-  cartItems: selectCartItems,
-  total: selectCartTotal
-});
-
-export default connect(mapStateToProps)(withRouter(CheckoutPage));
+export default CheckoutPage;

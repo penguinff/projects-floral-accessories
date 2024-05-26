@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { toggleCartHidden } from '../../redux/cart/cart-actions';
+import { toggleCartHidden } from '../../redux/cart/cart-slice';
 import { selectCartItemsCount } from '../../redux/cart/cart-selectors';
 
 import styles from './cart-icon.module.scss';

@@ -1,13 +1,12 @@
-import { withRouter } from 'react-router-dom';
 import Breadcrumb from '../../components/breadcrumb/Breadcrumb';
 
 import SignIn from '../../components/sign-in/SignIn';
 import SignUp from '../../components/sign-up/SignUp';
 import styles from './signin-signup-page.module.scss';
 
-const SignInSignUpPage = ({ location }) => (
+const SignInSignUpPage = () => (
   <section className={styles.signInSignUpPage}>
-    <Breadcrumb location={location} />
+    <Breadcrumb />
     <div className={styles.signInSignUpGroup}>
       <SignIn />
       <SignUp />
@@ -15,4 +14,4 @@ const SignInSignUpPage = ({ location }) => (
   </section>
 );
 
-export default withRouter(SignInSignUpPage);
+export default SignInSignUpPage;

@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { addItem, removeItem, clearItemFromCart } from '../../redux/cart/cart-actions';
+import { addItem, removeItem, clearItemFromCart } from '../../redux/cart/cart-slice';
 
 import { ReactComponent as LeftIcon } from '../../assets/left-icon.svg';
 import { ReactComponent as RightIcon } from '../../assets/right-icon.svg';
