@@ -6,7 +6,6 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
     fallbackLng: "en",
     lng: "en",
     resources: {
@@ -50,9 +49,9 @@ i18n
           "商品特色": "Product Features",
           "新增至購物車": "Add to cart",
           "立即結賬": "Checkout",
-          "搜尋商品": "Search Product",
+          "搜尋商品": "Search Products",
           "我的購物車": "My Cart",
-          "商品": "Product",
+          "商品": "Products",
           "單價": "Unit Price",
           "數量": "Quantity",
           "總金額": "Price",

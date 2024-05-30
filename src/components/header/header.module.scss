@@ -18,13 +18,14 @@
     position: relative;
 
     .leftOptions {
-      width: 12rem;
-      padding-right: 4rem;
+      width: 16rem;
+      padding-right: 8rem;
       display: flex;
       justify-content: space-between;
 
       @include respond(phone) {
-        padding-right: 1.5rem;
+        width: 10rem;
+        padding-right: 0rem;
       }
     }
 
@@ -35,9 +36,13 @@
     }
 
     .rightOptions {
-      width: 12rem;
+      width: 16rem;
       display: flex;
       justify-content: space-between;
+
+      @include respond(phone) {
+        width: 10rem;
+      }
 
       .contactIcon,
       .userIcon {
