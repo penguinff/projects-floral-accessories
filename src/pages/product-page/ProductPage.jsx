@@ -14,8 +14,11 @@ import ErrorMessage from '../../components/error-message/ErrorMessage';
 import styles from './product-page.module.scss';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
+import { useTranslation } from 'react-i18next';
 
 const ProductPage = () => {
+  const {t, i18n} = useTranslation();
+
   const history = useHistory();
   const { url } = useRouteMatch();
   const { collectionId, productId } = useParams();
@@ -25,9 +28,9 @@ const ProductPage = () => {
   const product = useSelector(selectProduct(collectionId, productId));
   const wishlistItems = useSelector(selectWishlistItems);
 
-  if (!product) return (<ErrorMessage message='此頁面不存在' />);
+  if (!product) return (<ErrorMessage message={t('此頁面不存在')} />);
 
-  const { details, id, imageUrl, name, price } = product;
+  const { details, id, imageUrl, name, price, enName, enDetails } = product;
   const existingWishlistItem = wishlistItems.find(wishlistItem => wishlistItem.id === id);
   const onMatchedRoutes = (matchedRoutes) => {
     return [
@@ -35,7 +38,8 @@ const ProductPage = () => {
       {
         route: {
           path: `${url}`,
-          breadcrumbName: name
+          breadcrumbName: name,
+          enBreadcrumbName: enName
         }
       }
     ]
@@ -50,7 +54,7 @@ const ProductPage = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.title}>
-            <h2>{name}</h2>
+            <h2>{i18n.language === 'zh' ? name : enName}</h2>
             <FavoriteIcon 
               className={existingWishlistItem && styles.onWishlist}
               onClick={() => {
@@ -60,9 +64,13 @@ const ProductPage = () => {
             />
           </div>
           <div className={styles.details}>
-            <h3>商品特色：</h3>
+            <h3>{t('商品特色')}</h3>
             <ul>
-              {details.map((detail, index) => <li key={index}>{detail}</li>)}
+              {
+                i18n.language === 'zh' ?
+                details.map((detail, index) => <li key={index}>{detail}</li>) :
+                enDetails.map((detail, index) => <li key={index}>{detail}</li>)
+              }
             </ul>
           </div>
           <h2 className={styles.price}>
@@ -73,7 +81,7 @@ const ProductPage = () => {
               dispatch(addItem(product));
               dispatch(toggleCartHidden(false));
             }}>
-              新增至購物車
+              {t('新增至購物車')}
             </CustomButton>
             <CustomButton
               onClick={() => {
@@ -81,7 +89,7 @@ const ProductPage = () => {
                 history.push('/checkout');
               }}
             >
-              立即結賬
+              {t('立即結賬')}
             </CustomButton>
           </div>
         </div>

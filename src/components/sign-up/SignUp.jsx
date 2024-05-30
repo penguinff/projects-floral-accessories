@@ -9,9 +9,12 @@ import { selectCurrentUser } from '../../redux/user/user-selectors';
 import { signUpStart } from '../../redux/user/user-slice';
 
 import styles from './sign-up.module.scss';
+import { useTranslation } from 'react-i18next';
 
 // TODO: Redirect to /cart not working!!
 const SignUp = () => {
+  const {t} = useTranslation();
+
   const history = useHistory();
   const { state } = useLocation();
 
@@ -50,15 +53,15 @@ const SignUp = () => {
 
   return (
     <div className={styles.signUp}>
-      <h2>立即註冊</h2>
-      <span>立即註冊即可獲得官網會員獨家優惠</span>
+      <h2>{t('立即註冊')}</h2>
+      <span>{t('立即註冊即可獲得官網會員獨家優惠')}</span>
       <form className={styles.signUpForm} onSubmit={handleSubmit}>
         <FormInput 
           type='text'
           name='displayName'
           value={displayName}
           onChange={handleChange}
-          label='賬戶名稱'
+          label={t('賬戶名稱')}
           required
         />
         <FormInput 
@@ -66,7 +69,7 @@ const SignUp = () => {
           name='email'
           value={email}
           onChange={handleChange}
-          label='電子信箱'
+          label={t('電子信箱')}
           required
         />
         <FormInput 
@@ -74,7 +77,7 @@ const SignUp = () => {
           name='password'
           value={password}
           onChange={handleChange}
-          label='密碼'
+          label={t('密碼')}
           required
         />
         <FormInput 
@@ -82,10 +85,10 @@ const SignUp = () => {
           name='confirmPassword'
           value={confirmPassword}
           onChange={handleChange}
-          label='確認密碼'
+          label={t('確認密碼')}
           required
         />
-        <CustomButton type='submit'>註冊</CustomButton>
+        <CustomButton type='submit'>{t('註冊')}</CustomButton>
       </form>
     </div>
   );

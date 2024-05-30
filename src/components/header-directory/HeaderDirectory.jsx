@@ -3,8 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { directoryData } from '../directory/directory-data';
 
 import styles from './header-directory.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const HeaderDirectory = ({ setShowDirectory }) => {
+  const {i18n} = useTranslation();
+
   const history = useHistory();
 
   return (
@@ -19,7 +22,9 @@ const HeaderDirectory = ({ setShowDirectory }) => {
           }}
         >
           <img src={item.imageUrl} alt={item.title} />
-          <span>{item.zhTitle}</span>
+          <span>
+            {i18n.language === 'zh' ? item.zhTitle : item.title}
+          </span>
         </div>
       ))}
     </nav>

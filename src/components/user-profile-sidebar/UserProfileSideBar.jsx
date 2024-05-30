@@ -10,8 +10,11 @@ import UserFemaleLogo from '../../assets/user-female.png';
 import GuestLogo from '../../assets/guest.png';
 
 import styles from './user-profile-sidebar.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const UserProfileSidebar = () => {
+  const {t} = useTranslation();
+
   const history = useHistory();
   const { path } = useRouteMatch();
 
@@ -28,15 +31,15 @@ const UserProfileSidebar = () => {
             {currentUser.displayName}
           </div>
           <div className={styles.list}>
-            <li>我的賬戶</li>
+            <li>{t('我的賬戶')}</li>
             <li onClick={() => {
                 history.push(`${path}/my-order-history`);
                 dispatch(checkUserSession());
             }}>
-              訂單記錄
+              {t('訂單記錄')}
             </li>
-            <li onClick={() => history.push(`${path}/my-wishlist`)}>願望清單</li>
-            <li onClick={() => dispatch(signOutStart())}>登出</li>
+            <li onClick={() => history.push(`${path}/my-wishlist`)}>{t('願望清單')}</li>
+            <li onClick={() => dispatch(signOutStart())}>{t('登出')}</li>
           </div>
         </div>
         :
@@ -45,8 +48,8 @@ const UserProfileSidebar = () => {
             <img src={GuestLogo} className={styles.userLogo} alt='user logo'/>
             Guest
           </div>
-          <p>登入即可永久儲存願望清單，並在任何裝置上管理。</p>
-          <CustomButton onClick={() => history.push('/sign-in')}>登入</CustomButton>
+          <p>{t('登入即可永久儲存願望清單，並在任何裝置上管理。')}</p>
+          <CustomButton onClick={() => history.push('/sign-in')}>{t('登入')}</CustomButton>
         </div>
       }
     </nav>

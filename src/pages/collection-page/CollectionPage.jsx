@@ -9,8 +9,11 @@ import SortBar from '../../components/sort-bar/SortBar';
 import ProductItem from '../../components/product-item/ProductItem';
 import ErrorMessage from '../../components/error-message/ErrorMessage';
 import styles from './collection-page.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const CollectionPage = () => {
+  const {t} = useTranslation();
+
   const { collectionId } = useParams();
 
   const [productOrder, setProductOrder] = useState(null);
@@ -18,7 +21,7 @@ const CollectionPage = () => {
   // react-redux hooks
   const collection = useSelector(collectionId === 'new-arrival' ? selectNewArrival : selectCollection(collectionId));
 
-  if (!collection) return (<ErrorMessage message='此頁面不存在' />);
+  if (!collection) return (<ErrorMessage message={t('此頁面不存在')} />);
 
   let collectionData = {};
   if (collectionId === 'new-arrival') {

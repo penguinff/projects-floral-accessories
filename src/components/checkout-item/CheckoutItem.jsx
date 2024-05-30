@@ -7,12 +7,15 @@ import { ReactComponent as RightIcon } from '../../assets/right-icon.svg';
 import { ReactComponent as ClearIcon } from '../../assets/clear-icon.svg';
 
 import styles from './checkout-item.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const CheckoutItem = ({ cartItem }) => {
+  const {i18n} = useTranslation();
+
   // react-redux hook
   const dispatch = useDispatch();
 
-  const { imageUrl, name, quantity, price } = cartItem;
+  const { imageUrl, name, quantity, price, enName } = cartItem;
   
   return (
     <div className={styles.checkoutItem}>
@@ -22,7 +25,7 @@ const CheckoutItem = ({ cartItem }) => {
 
       <div className={styles.group}>
         <div className={styles.name}>
-          <span>{name}</span>
+          <span>{i18n.language === 'zh' ? name : enName}</span>
         </div>
 
         <div className={styles.price}>
