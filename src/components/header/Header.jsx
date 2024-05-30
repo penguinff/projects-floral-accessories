@@ -22,8 +22,12 @@ import CompanyLogo from '../../assets/logo_transparent_cut.png';
 import { ReactComponent as SideNavIcon } from '../../assets/sidenav-icon.svg';
 import { ReactComponent as ContactIcon } from '../../assets/contact-icon.svg';
 import { ReactComponent as UserIcon } from '../../assets/user-icon-2.svg';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../languange-selector/LanguageSelector';
 
 const Header = () => {
+  const {t} = useTranslation();
+
   const history = useHistory();
 
   // react-redux hooks
@@ -74,7 +78,9 @@ const Header = () => {
           <Link to='/contact-us'>
             <ContactIcon className={styles.contactIcon}/>
           </Link>
-          <UserIcon className={styles.userIcon} onClick={redirect} />
+          <Link>
+            <UserIcon className={styles.userIcon} onClick={redirect} />
+          </Link>
           <div 
             className={styles.cartGroup} 
             onMouseEnter={() => dispatch(toggleCartHidden(false))} 
@@ -85,21 +91,22 @@ const Header = () => {
             </Link>
             { cartHidden || cartItemsCount === 0 ? null : <CartDropdown /> }
           </div>
+          <LanguageSelector />
         </div>
       </div>
 
       <nav className={styles.categoryList}>
-        <Link to='/shop/new-arrival'><span>新品上市</span></Link>
+        <Link to='/shop/new-arrival'><span>{t('新品上市')}</span></Link>
         <div 
           className={styles.directory}
           onMouseEnter={() => setShowDirectory(true)}
           onMouseLeave={() => setShowDirectory(false)}
         >
-          <Link to='/shop'><span>商品分類</span></Link>
+          <Link to='/shop'><span>{t('商品分類')}</span></Link>
           { showDirectory ? <HeaderDirectory setShowDirectory={setShowDirectory} /> : null }
         </div>
-        <Link to='/under-construction'><span>會員專區</span></Link>
-        <Link to='/under-construction'><span>潮流話題</span></Link>
+        <Link to='/under-construction'><span>{t('會員專區')}</span></Link>
+        <Link to='/under-construction'><span>{t('潮流話題')}</span></Link>
       </nav>
 
     </header>

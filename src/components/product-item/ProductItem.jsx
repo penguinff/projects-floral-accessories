@@ -10,22 +10,27 @@ import styles from './product-item.module.scss';
 
 import { ReactComponent as FavoriteIcon } from '../../assets/favorite-icon.svg';
 import { ReactComponent as AddCartIcon } from '../../assets/addcart-icon.svg';
+import { useTranslation } from 'react-i18next';
 
 const ProductItem = ({ item }) => {
+  const {i18n} = useTranslation();
+
   const history = useHistory();
 
   // react-redux hooks
   const dispatch = useDispatch();
   const wishlistItems = useSelector(selectWishlistItems);
 
-  const { id, category, name, price, imageUrl } = item;
+  const { id, category, name, price, imageUrl, enName } = item;
   const productPath = `/shop/${category}/${id}`;
   const existingWishlistItem = wishlistItems.find(wishlistItem => wishlistItem.id === id);
 
   return (
     <div className={styles.productItem}>
       <img src={imageUrl} alt='product' className={styles.image} onClick={() => history.push(productPath)}/>
-      <span className={styles.productName} onClick={() => history.push(productPath)}>{name}</span>
+      <span className={styles.productName} onClick={() => history.push(productPath)}>
+        {i18n.language === 'zh' ? name : enName}
+      </span>
       <span className={styles.productPrice}>{`NT$${price.toLocaleString()}`}</span>
       <div className={styles.icons}>
         <FavoriteIcon 

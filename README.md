@@ -120,11 +120,15 @@ This website is a front-end practice project.
 
   <img src='https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/m_homepage.jpeg' width='375px'/>
 
+### 12. Internationalization
+- User can choose either English or Chinese version of the website.
+
 ## Plugins Used
 
 - react-transition-group (React transition animation)
 - react-multi-carousel (slidable slideshow)
 - react-magnifier (product image magnifier feature)
+- react-i18next (internationalization)
 
 ## Production Time
 

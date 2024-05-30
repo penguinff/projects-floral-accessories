@@ -13,8 +13,11 @@ import { ReactComponent as FacebookIcon } from '../../assets/facebook-icon.svg';
 import { ReactComponent as InstagramIcon } from '../../assets/instagram-icon.svg';
 import { ReactComponent as YoutubeIcon } from '../../assets/youtube-icon.svg';
 import { ReactComponent as LineIcon } from '../../assets/line-icon.svg';
+import { useTranslation } from 'react-i18next';
 
 const ContactUsPage = () => {
+  const {t} = useTranslation();
+
   const [contactInfo, setContactInfo] = useState({
     displayName: '',
     email: '',
@@ -37,7 +40,7 @@ const ContactUsPage = () => {
       email: '',
       message: ''
     })
-    alert('謝謝您的意見！我們會儘快回覆您。');
+    alert(`${t('謝謝您的意見！我們會儘快回覆您。')}`);
   }
 
   return (
@@ -46,26 +49,26 @@ const ContactUsPage = () => {
 
       <div className={styles.containers}>
         <div className={styles.container}>
-          <h2>聯絡我們</h2>
+          <h2>{t('聯絡我們')}</h2>
           <div className={styles.infoCards}>
             <div className={styles.infoCard}>
               <AddressIcon />
               <div>
-                <h3>實體店地址</h3>
-                <span><a href='https://goo.gl/maps/byBcss7v5p7G3H8u8' target='_blank' rel='noreferrer'>台北市信義區信義路五段7號</a></span>
+                <h3>{t('實體店地址')}</h3>
+                <span><a href='https://goo.gl/maps/byBcss7v5p7G3H8u8' target='_blank' rel='noreferrer'>{t('台北市信義區信義路五段7號')}</a></span>
               </div>
             </div>
             <div className={styles.infoCard}>
               <PhoneIcon />
               <div>
-                <h3>客服專綫</h3>
+                <h3>{t('客服專綫')}</h3>
                 <span><a href='tel:0960888333'>0960-888-333</a></span>
               </div>
             </div>
             <div className={styles.infoCard}>
               <EmailIcon />
               <div>
-                <h3>客服信箱</h3>
+                <h3>{t('客服信箱')}</h3>
                 <span><a href='mailto:enquiry@floral-accessories.com'>enquiry@floral-accessories.com</a></span>
               </div>
             </div>
@@ -73,21 +76,21 @@ const ContactUsPage = () => {
         </div>
 
         <div className={styles.container}>
-          <h2>我們希望聽到您的意見</h2>
+          <h2>{t('我們希望聽到您的意見')}</h2>
           <form onSubmit={handleSubmit}>
             <FormInput 
               name='displayName'
               type='text'
               value={displayName}
               onChange={handleChange}
-              label='你的名字'
+              label={t('你的名字')}
               required />
             <FormInput 
               name='email'
               type='email'
               value={email}
               onChange={handleChange}
-              label='電子信箱'
+              label={t('電子信箱')}
               required />
             <FormInput
               textArea
@@ -95,14 +98,14 @@ const ContactUsPage = () => {
               type='text'
               value={message}
               onChange={handleChange}
-              label='輸入評論'
+              label={t('輸入評論')}
               required />
-            <CustomButton type='submit'>送出</CustomButton>
+            <CustomButton type='submit'>{t('送出')}</CustomButton>
           </form>
         </div>
 
         <div className={styles.container}>
-          <h2>追蹤我們</h2>
+          <h2>{t('追蹤我們')}</h2>
           <div className={styles.infoCards}>
             <div className={`${styles.infoCard} ${styles.socialMedia}`}>
               <FacebookIcon />

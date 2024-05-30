@@ -4,8 +4,11 @@ import { useHistory } from 'react-router-dom';
 import styles from './search.module.scss';
 
 import { ReactComponent as SearchIcon } from '../../assets/search-icon.svg';
+import { useTranslation } from 'react-i18next';
 
 const Search = () => {
+  const {t} = useTranslation();
+
   const history = useHistory();
 
   // local state
@@ -40,7 +43,7 @@ const Search = () => {
               className={styles.searchInput} 
               onChange={handleChange}
               value={searchText}
-              placeholder='搜尋商品'
+              placeholder={t('搜尋商品')}
               autoFocus
               onBlur={toggleSearchInput}
             />

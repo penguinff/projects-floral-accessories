@@ -14,19 +14,22 @@ const CheckoutPage = () => {
       {
         route: {
           path: '/',
-          breadcrumbName: '首頁'
+          breadcrumbName: '首頁',
+          enBreadcrumbName: 'Homepage'
         }
       },
       {
         route: {
           path: '/cart',
-          breadcrumbName: '我的購物車'
+          breadcrumbName: '我的購物車',
+          enBreadcrumbName: 'My Cart'
         }
       },
       {
         route: {
           path: `${path}`,
-          breadcrumbName: '結賬'
+          breadcrumbName: '結賬',
+          enBreadcrumbName: 'Checkout'
         }
       },
     ]

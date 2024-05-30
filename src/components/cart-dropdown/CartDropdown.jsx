@@ -10,8 +10,11 @@ import CartItem from '../cart-item/CartItem';
 import CustomButton from '../custom-button/CustomButton';
 
 import styles from './cart-dropdown.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const CartDropdown = () => {
+  const {t} = useTranslation();
+
   // react-redux hooks
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
@@ -20,15 +23,15 @@ const CartDropdown = () => {
 
   return (
     <div className={styles.cartDropdown}>
-      <span>產品（{cartItemsCount}）</span>
+      <span>{t('商品')}（{cartItemsCount}）</span>
       <div className={styles.cartItems}>
         {cartItems.map(cartItem => <CartItem key={cartItem.id} cartItem={cartItem} />)}
       </div>
       <div className={styles.total}>
-        <span>全部</span>
+        <span>{t('小計')}</span>
         <span>NT${cartTotal.toLocaleString()}</span>
       </div>
-      <Link to='/cart'><CustomButton onClick={() => dispatch(toggleCartHidden(true))}>查看購物車</CustomButton></Link>
+      <Link to='/cart'><CustomButton onClick={() => dispatch(toggleCartHidden(true))}>{t('查看購物車')}</CustomButton></Link>
     </div>
   )
 };
