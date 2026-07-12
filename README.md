@@ -4,7 +4,7 @@
 
 ## Web Demo
 
-https://floral-accessories.christinefong.site/
+https://floral-accessories.christinefong.dev/
 
 ## Introduction
 
@@ -13,7 +13,6 @@ This website is a front-end practice project.
 ### Main Features
 
 - Front-end:
-
   - Product display
   - Shopping cart functionality
   - Wishlist functionality
@@ -121,6 +120,7 @@ This website is a front-end practice project.
   <img src='https://github.com/penguinff/readme_pictures/blob/bb5f466a2b1e53f8dbf005d7da9519687cee986c/floral-accessories/m_homepage.jpeg' width='375px'/>
 
 ### 12. Internationalization
+
 - User can choose either English or Chinese version of the website.
 
 ## Plugins Used
